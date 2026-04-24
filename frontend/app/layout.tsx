@@ -1,16 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Barlow } from "next/font/google"
-import "./globals.css";
-
-const geistSans = Inter({
-  variable: "--font-geist-sans",
-  subsets: ['latin']
-});
-const geistMono = Barlow({
-  variable: "--font-geist-mono",
-    subsets: ["latin"],
-     weight: "400",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,9 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.className} ${geistMono.variable} antialiased`}
-      >
+      <body>
         {children}
       </body>
     </html>
