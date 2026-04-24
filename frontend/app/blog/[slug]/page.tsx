@@ -1,0 +1,205 @@
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { Clock, Calendar, ArrowLeft, ChevronRight } from 'lucide-react';
+import type { Metadata } from 'next';
+import { BLOG_POSTS, formatDate } from '@/data/data';
+
+interface Props { params: Promise<{ slug: string }> }
+
+export async function generateStaticParams() {
+  return BLOG_POSTS.map(p => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = BLOG_POSTS.find(p => p.slug === slug);
+  if (!post) return { title: 'Post Not Found' };
+  return { title: post.title, description: post.excerpt };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = BLOG_POSTS.find(p => p.slug === slug);
+  if (!post) notFound();
+
+  const related = BLOG_POSTS.filter(p => p._id !== post._id).slice(0, 2);
+
+  return (
+    <>
+      {/* Breadcrumb */}
+      <div className="bg-[var(--color-primary)]" style={{ paddingTop: 'calc(var(--spacing-navbar) + 1.5rem)', paddingBottom: '1.5rem' }}>
+        <div className="container-site">
+          <nav className="flex items-center gap-2 text-sm text-white/50 flex-wrap">
+            <Link href="/"    className="text-white/50 no-underline hover:text-white/80 transition-colors">Home</Link>
+            <ChevronRight size={13}/>
+            <Link href="/blog" className="text-white/50 no-underline hover:text-white/80 transition-colors">Blog</Link>
+            <ChevronRight size={13}/>
+            <span className="text-white/85 truncate max-w-xs">{post.title}</span>
+          </nav>
+        </div>
+      </div>
+
+      {/* Hero image */}
+      <section className="relative overflow-hidden" style={{ paddingBottom: '35%', minHeight: 420 }}>
+        <img
+          src={typeof post.mainImage === 'string' ? post.mainImage : ''}
+          alt={post.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,29,43,0.9) 0%, rgba(15,29,43,0.4) 60%, transparent 100%)' }} />
+        <div className="container-site absolute bottom-12 left-1/2 -translate-x-1/2 w-full">
+          <div className="max-w-3xl">
+            <span className="badge badge-sale mb-4 inline-block">{post.category}</span>
+            <h1 className="heading-1 text-white mb-5">{post.title}</h1>
+            <div className="flex items-center gap-6 flex-wrap">
+              <div className="flex items-center gap-3">
+                <img
+                  src={typeof post.author.photo === 'string' ? post.author.photo : ''}
+                  alt={post.author.name}
+                  className="w-11 h-11 rounded-full object-cover border-2 border-[var(--color-accent)]"
+                />
+                <div>
+                  <div className="text-sm font-semibold text-white">{post.author.name}</div>
+                  <div className="text-xs text-white/55">{post.author.role}</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm text-white/60">
+                <Calendar size={13}/> {formatDate(post.publishedAt)}
+              </div>
+              {post.readingTime && (
+                <div className="flex items-center gap-1.5 text-sm text-white/60">
+                  <Clock size={13}/> {post.readingTime} min read
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="section">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-16 items-start">
+
+            {/* Article body */}
+            <article>
+              {/* Lead paragraph */}
+              <p className="text-xl text-[var(--color-neutral-900)] font-medium leading-relaxed pb-8 mb-8 border-b-2 border-[var(--color-accent)]">
+                {post.excerpt}
+              </p>
+
+              {/* Body content — replace with <PortableText> after Sanity is wired up */}
+              <div className="text-lg text-[var(--color-neutral-500)] leading-relaxed space-y-6">
+                <p>
+                  The luxury real estate market continues to evolve at a remarkable pace. Understanding the forces shaping today's high-end property landscape is essential for anyone looking to make strategic decisions — whether buying, selling, or investing.
+                </p>
+
+                <h2 className="font-display text-2xl font-semibold text-[var(--color-neutral-900)] mt-10">
+                  The Shifting Landscape
+                </h2>
+                <p>
+                  Remote work has fundamentally altered buyer preferences, with a dramatic shift toward larger homes with dedicated office spaces, access to nature, and proximity to secondary markets. The definition of luxury itself is being rewritten — wellness amenities, sustainable design, and smart home integration are now non-negotiable for discerning buyers.
+                </p>
+
+                <blockquote className="border-l-[3px] border-[var(--color-accent)] pl-6 my-10 font-display italic text-xl text-[var(--color-neutral-900)] leading-snug">
+                  "The most sought-after properties today offer more than square footage — they offer a complete lifestyle."
+                </blockquote>
+
+                <p>
+                  Inventory constraints continue to favour sellers in most tier-one markets, but the picture is nuanced. Ultra-luxury properties — those above $10 million — are seeing longer days on market as buyers become more selective. Meanwhile, the $1M–$5M segment remains intensely competitive.
+                </p>
+
+                <h2 className="font-display text-2xl font-semibold text-[var(--color-neutral-900)] mt-10">
+                  What Buyers Are Prioritising
+                </h2>
+                <p>
+                  Our data from over 400 transactions in the past year reveals clear patterns. Buyers are placing unprecedented value on outdoor space, home wellness facilities, energy efficiency, and technology infrastructure.
+                </p>
+
+                <p className="text-sm text-[var(--color-neutral-400)] italic">
+                  {/* TODO: Replace with <PortableText value={post.body} components={ptComponents} /> after Sanity integration */}
+                  [Full article body will be rendered from Sanity Portable Text after CMS integration]
+                </p>
+              </div>
+
+              {/* Tags */}
+              <div className="flex gap-2 flex-wrap mt-12 pt-8 border-t border-[var(--color-neutral-200)]">
+                {['Real Estate', 'Luxury', 'Market Trends', '2024'].map(tag => (
+                  <span key={tag} className="badge badge-outline">{tag}</span>
+                ))}
+              </div>
+
+              {/* Back link */}
+              <div className="mt-10 pt-8 border-t border-[var(--color-neutral-200)]">
+                <Link href="/blog" className="btn btn-ghost btn-sm gap-1.5">
+                  <ArrowLeft size={13}/> Back to Blog
+                </Link>
+              </div>
+            </article>
+
+            {/* Sidebar */}
+            <aside className="sticky flex flex-col gap-6" style={{ top: 'calc(var(--spacing-navbar) + 2rem)' }}>
+
+              {/* Author card */}
+              <div className="bg-white rounded-2xl border border-[var(--color-neutral-200)] p-6"
+                style={{ boxShadow: 'var(--shadow-card)' }}>
+                <p className="eyebrow mb-4">Written By</p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={typeof post.author.photo === 'string' ? post.author.photo : ''}
+                    alt={post.author.name}
+                    className="w-14 h-14 rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="font-semibold text-[var(--color-neutral-900)] mb-0.5">{post.author.name}</div>
+                    <div className="text-sm text-[var(--color-neutral-400)]">{post.author.role}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Related posts */}
+              {related.length > 0 && (
+                <div className="bg-white rounded-2xl border border-[var(--color-neutral-200)] p-6"
+                  style={{ boxShadow: 'var(--shadow-card)' }}>
+                  <p className="eyebrow mb-5">Related Articles</p>
+                  <div className="flex flex-col gap-5">
+                    {related.map(rp => (
+                      <Link
+                        key={rp._id}
+                        href={`/blog/${rp.slug}`}
+                        className="flex gap-3 no-underline group"
+                      >
+                        <img
+                          src={typeof rp.mainImage === 'string' ? rp.mainImage : ''}
+                          alt={rp.title}
+                          className="w-18 h-14 rounded-xl object-cover shrink-0"
+                        />
+                        <div>
+                          <div className="text-sm font-semibold text-[var(--color-neutral-900)] leading-snug line-clamp-2 mb-1 group-hover:text-[var(--color-accent)] transition-colors">
+                            {rp.title}
+                          </div>
+                          <div className="text-xs text-[var(--color-neutral-400)]">{formatDate(rp.publishedAt)}</div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Properties CTA */}
+              <div className="bg-[var(--color-primary)] rounded-2xl p-7 text-white text-center">
+                <h3 className="font-display text-xl font-semibold mb-2">Looking for a Property?</h3>
+                <p className="text-sm text-white/60 leading-relaxed mb-5">
+                  Browse our curated listings and find your perfect home.
+                </p>
+                <Link href="/properties" className="btn btn-primary w-full">
+                  View Properties
+                </Link>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
