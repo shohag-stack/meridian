@@ -73,7 +73,7 @@ export default function PropertiesClient() {
   return (
     <>
       {/* Page header */}
-      <div className="bg-[var(--color-primary)]" style={{ paddingTop: 'calc(var(--spacing-navbar) + 4rem)', paddingBottom: '3rem' }}>
+      <div className="bg-primary" style={{ paddingTop: 'calc(var(--spacing-navbar) + 4rem)', paddingBottom: '3rem' }}>
         <div className="container-site">
           <span className="eyebrow block mb-2">Browse Listings</span>
           <h1 className="heading-1 text-white mb-2">All Properties</h1>
@@ -84,11 +84,11 @@ export default function PropertiesClient() {
       <div className="container-site pt-10 pb-24">
 
         {/* ── Toolbar ──────────────────────────────────────── */}
-        <div className="flex items-center justify-between gap-4 flex-wrap mb-8 pb-6 border-b border-[var(--color-neutral-200)]">
+        <div className="flex items-center justify-between gap-4 flex-wrap mb-8 pb-6 border-b border-neutral-200">
 
           <div className="flex items-center gap-3 flex-wrap">
             {/* Status tabs */}
-            <div className="flex gap-1 p-1 bg-[var(--color-neutral-100)] rounded-full">
+            <div className="flex gap-1 p-1 bg-neutral-100 rounded-full">
               {(['all', 'for-sale', 'for-rent'] as const).map(s => (
                 <button
                   key={s}
@@ -96,8 +96,8 @@ export default function PropertiesClient() {
                   className={[
                     'btn btn-sm rounded-full border-none',
                     filters.status === s
-                      ? 'bg-[var(--color-primary)] text-white'
-                      : 'bg-transparent text-[var(--color-neutral-400)]',
+                      ? 'bg-primary text-white'
+                      : 'bg-transparent text-neutral-400',
                   ].join(' ')}
                 >
                   {s === 'all' ? 'All' : s === 'for-sale' ? 'For Sale' : 'For Rent'}
@@ -112,7 +112,7 @@ export default function PropertiesClient() {
             >
               <SlidersHorizontal size={14} /> Filters
               {activeCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-[var(--color-accent)] text-white text-[0.6rem] font-bold flex items-center justify-center">
+                <span className="w-4 h-4 rounded-full bg-accent text-white text-[0.6rem] font-bold flex items-center justify-center">
                   {activeCount}
                 </span>
               )}
@@ -121,7 +121,7 @@ export default function PropertiesClient() {
             {activeCount > 0 && (
               <button
                 onClick={clearFilters}
-                className="flex items-center gap-1 text-sm text-[var(--color-neutral-400)] bg-transparent border-none cursor-pointer hover:text-[var(--color-neutral-700)]"
+                className="flex items-center gap-1 text-sm text-neutral-400 bg-transparent border-none cursor-pointer hover:text-neutral-700"
               >
                 <X size={12} /> Clear all
               </button>
@@ -129,7 +129,7 @@ export default function PropertiesClient() {
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-sm text-[var(--color-neutral-400)]">
+            <span className="text-sm text-neutral-400">
               {filtered.length} {filtered.length === 1 ? 'property' : 'properties'}
             </span>
 
@@ -142,7 +142,7 @@ export default function PropertiesClient() {
             </select>
 
             {/* View toggle */}
-            <div className="flex border border-[var(--color-neutral-200)] rounded-lg overflow-hidden">
+            <div className="flex border border-neutral-200 rounded-lg overflow-hidden">
               {([['grid', Grid3X3], ['list', List]] as const).map(([mode, Icon]) => (
                 <button
                   key={mode}
@@ -150,8 +150,8 @@ export default function PropertiesClient() {
                   className={[
                     'px-3 py-2 border-none cursor-pointer transition-all duration-200 flex items-center',
                     view === mode
-                      ? 'bg-[var(--color-primary)] text-white'
-                      : 'bg-transparent text-[var(--color-neutral-400)] hover:bg-[var(--color-neutral-100)]',
+                      ? 'bg-primary text-white'
+                      : 'bg-transparent text-neutral-400 hover:bg-neutral-100',
                   ].join(' ')}
                 >
                   <Icon size={15} />
@@ -163,7 +163,7 @@ export default function PropertiesClient() {
 
         {/* ── Filter panel ─────────────────────────────────── */}
         {showFilters && (
-          <div className="bg-white rounded-2xl border border-[var(--color-neutral-200)] p-7 mb-8"
+          <div className="bg-white rounded-2xl border border-neutral-200 p-7 mb-8"
             style={{ boxShadow: 'var(--shadow-card)' }}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
@@ -194,9 +194,9 @@ export default function PropertiesClient() {
         {/* ── Results ──────────────────────────────────────── */}
         {filtered.length === 0 ? (
           <div className="text-center py-24 flex flex-col items-center gap-4">
-            <Search size={48} className="text-[var(--color-neutral-300)]" />
+            <Search size={48} className="text-neutral-300" />
             <h3 className="heading-3">No properties found</h3>
-            <p className="text-[var(--color-neutral-500)] mb-2">Try adjusting your filters.</p>
+            <p className="text-neutral-500 mb-2">Try adjusting your filters.</p>
             <button onClick={clearFilters} className="btn btn-secondary">Clear Filters</button>
           </div>
         ) : view === 'grid' ? (

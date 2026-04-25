@@ -31,7 +31,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-primary-dark)] text-white">
+    <footer className="bg-primary-dark text-white">
 
       {/* Main grid */}
       <div className="container-site pt-20 pb-12">
@@ -40,7 +40,7 @@ export default function Footer() {
           {/* Brand — spans 2 cols on large */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-9 h-9 rounded bg-[var(--color-accent)] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-sm bg-accent flex items-center justify-center">
                 <span className="font-display font-bold text-lg text-white">E</span>
               </div>
               <span className="font-display font-bold text-xl text-white">EstateHaven</span>
@@ -55,7 +55,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg border border-white/15 flex items-center justify-center text-white/55 transition-all duration-250 hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] hover:text-white"
+                  className="w-9 h-9 rounded-lg border border-white/15 flex items-center justify-center text-white/55 transition-all duration-250 hover:bg-accent hover:border-accent hover:text-white"
                 >
                   <Icon size={15} />
                 </a>
@@ -66,7 +66,7 @@ export default function Footer() {
           {/* Nav columns */}
           {Object.entries(FOOTER_LINKS).map(([title, links]) => (
             <div key={title}>
-              <h4 className="eyebrow text-[var(--color-accent)] mb-5">{title}</h4>
+              <h4 className="eyebrow text-accent mb-5">{title}</h4>
               <ul className="flex flex-col gap-3">
                 {links.map(({ label, href }) => (
                   <li key={href}>
@@ -91,7 +91,7 @@ export default function Footer() {
             { Icon: Mail,    text: 'hello@estatehaven.com'   },
           ].map(({ Icon, text }) => (
             <div key={text} className="flex items-start gap-3">
-              <Icon size={15} className="text-[var(--color-accent)] mt-0.5 shrink-0" />
+              <Icon size={15} className="text-accent mt-0.5 shrink-0" />
               <span className="text-sm text-white/55 whitespace-pre-line leading-relaxed">{text}</span>
             </div>
           ))}
@@ -103,7 +103,7 @@ export default function Footer() {
         <div className="container-site py-5 flex flex-wrap justify-between items-center gap-4">
           <p className="text-xs text-white/35">
             © {new Date().getFullYear()} EstateHaven. All rights reserved. Template by{' '}
-            <a href="https://rayso.studio" className="text-[var(--color-accent)] no-underline">rayso.studio</a>
+            <a href="https://rayso.studio" className="text-accent no-underline">rayso.studio</a>
           </p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(item => (

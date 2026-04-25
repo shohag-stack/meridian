@@ -12,10 +12,9 @@ export default function FeaturedProperties() {
         <div className="flex justify-between items-end mb-14 flex-wrap gap-6">
           <div>
             <span className="eyebrow block mb-3">Handpicked for You</span>
-            <h2 className="heading-1 text-[var(--color-neutral-900)]">
-              Featured <em className="italic text-[var(--color-accent)]">Listings</em>
+            <h2 className="heading-1 text-neutral-900">
+              Featured Listings
             </h2>
-            <span className="divider-accent mt-4" />
           </div>
           <Link href="/properties" className="btn btn-secondary">
             View All Properties <ArrowRight size={15} />

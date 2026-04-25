@@ -37,7 +37,7 @@ export default async function PropertyPage({ params }: Props) {
   return (
     <>
       {/* Breadcrumb */}
-      <div className="bg-[var(--color-primary)]" style={{ paddingTop: 'calc(var(--spacing-navbar) + 1.5rem)', paddingBottom: '1.5rem' }}>
+      <div className="bg-primary" style={{ paddingTop: 'calc(var(--spacing-navbar) + 1.5rem)', paddingBottom: '1.5rem' }}>
         <div className="container-site">
           <nav className="flex items-center gap-2 text-sm text-white/50 flex-wrap">
             <Link href="/"           className="text-white/50 no-underline hover:text-white/80 transition-colors">Home</Link>
@@ -66,13 +66,13 @@ export default async function PropertyPage({ params }: Props) {
 
               <h1 className="heading-1 mb-3">{property.title}</h1>
 
-              <div className="flex items-center gap-2 text-[var(--color-neutral-400)] mb-5">
+              <div className="flex items-center gap-2 text-neutral-400 mb-5">
                 <MapPin size={14} className="shrink-0" />
                 <span className="text-base">{property.address}, {property.city}, {property.state} {property.zipCode}</span>
               </div>
 
               <div className="flex items-center justify-between flex-wrap gap-4">
-                <span className="font-display text-4xl font-bold text-[var(--color-primary)]">
+                <span className="font-display text-4xl font-bold text-primary">
                   {formatPrice(property.price, property.priceFrequency)}
                 </span>
                 <div className="flex gap-3">
@@ -116,10 +116,10 @@ export default async function PropertyPage({ params }: Props) {
                 ...(property.garages   ? [{ icon: Car,      value: property.garages,   label: 'Garages'    }] : []),
                 ...(property.yearBuilt ? [{ icon: Calendar,  value: property.yearBuilt, label: 'Year Built' }] : []),
               ].map(({ icon: Icon, value, label }) => (
-                <div key={label} className="bg-white border border-[var(--color-neutral-200)] rounded-xl p-5 text-center" style={{ boxShadow: 'var(--shadow-card)' }}>
-                  <Icon size={20} className="text-[var(--color-accent)] mx-auto mb-2" />
-                  <div className="font-display text-xl font-bold text-[var(--color-primary)] mb-1">{value}</div>
-                  <div className="text-xs text-[var(--color-neutral-400)] uppercase tracking-wider">{label}</div>
+                <div key={label} className="bg-white border border-neutral-200 rounded-xl p-5 text-center" style={{ boxShadow: 'var(--shadow-card)' }}>
+                  <Icon size={20} className="text-accent mx-auto mb-2" />
+                  <div className="font-display text-xl font-bold text-primary mb-1">{value}</div>
+                  <div className="text-xs text-neutral-400 uppercase tracking-wider">{label}</div>
                 </div>
               ))}
             </div>
@@ -128,7 +128,7 @@ export default async function PropertyPage({ params }: Props) {
             <div className="mb-10">
               <h2 className="heading-2 mb-4">About This Property</h2>
               <span className="divider-accent block mb-6" />
-              <p className="text-lg text-[var(--color-neutral-500)] leading-relaxed">{property.description}</p>
+              <p className="text-lg text-neutral-500 leading-relaxed">{property.description}</p>
             </div>
 
             {/* Features */}
@@ -139,8 +139,8 @@ export default async function PropertyPage({ params }: Props) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {property.features.map(feat => (
                     <div key={feat} className="flex items-center gap-2.5">
-                      <CheckCircle size={15} className="text-[var(--color-accent)] shrink-0" />
-                      <span className="text-sm font-medium text-[var(--color-neutral-900)]">{feat}</span>
+                      <CheckCircle size={15} className="text-accent shrink-0" />
+                      <span className="text-sm font-medium text-neutral-900">{feat}</span>
                     </div>
                   ))}
                 </div>
@@ -151,7 +151,7 @@ export default async function PropertyPage({ params }: Props) {
             <div className="mb-14">
               <h2 className="heading-2 mb-4">Property Details</h2>
               <span className="divider-accent block mb-6" />
-              <div className="bg-white border border-[var(--color-neutral-200)] rounded-2xl overflow-hidden">
+              <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden">
                 {[
                   { label: 'Property Type', value: getPropertyTypeLabel(property.type) },
                   { label: 'Status',        value: property.status === 'for-sale' ? 'For Sale' : 'For Rent' },
@@ -168,10 +168,10 @@ export default async function PropertyPage({ params }: Props) {
                 ].map(({ label, value }, i) => (
                   <div
                     key={label}
-                    className={`flex justify-between items-center px-5 py-3.5 border-b border-[var(--color-neutral-100)] last:border-b-0 ${i % 2 === 1 ? 'bg-[var(--color-neutral-50)]' : 'bg-transparent'}`}
+                    className={`flex justify-between items-center px-5 py-3.5 border-b border-neutral-100 last:border-b-0 ${i % 2 === 1 ? 'bg-neutral-50' : 'bg-transparent'}`}
                   >
-                    <span className="text-sm text-[var(--color-neutral-400)]">{label}</span>
-                    <span className="text-sm font-semibold text-[var(--color-neutral-900)]">{String(value)}</span>
+                    <span className="text-sm text-neutral-400">{label}</span>
+                    <span className="text-sm font-semibold text-neutral-900">{String(value)}</span>
                   </div>
                 ))}
               </div>
@@ -181,7 +181,7 @@ export default async function PropertyPage({ params }: Props) {
           {/* ─── RIGHT SIDEBAR ────────────────────────────────── */}
           <div className="sticky" style={{ top: 'calc(var(--spacing-navbar) + 2rem)' }}>
             {agent && (
-              <div className="bg-white rounded-2xl border border-[var(--color-neutral-200)] overflow-hidden mb-5"
+              <div className="bg-white rounded-2xl border border-neutral-200 overflow-hidden mb-5"
                 style={{ boxShadow: 'var(--shadow-card)' }}>
                 {/* Top accent bar */}
                 <div className="h-1.5" style={{ background: 'linear-gradient(90deg, var(--color-primary), var(--color-accent))' }} />
@@ -190,14 +190,14 @@ export default async function PropertyPage({ params }: Props) {
                     <img
                       src={typeof agent.photo === 'string' ? agent.photo : ''}
                       alt={agent.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-[var(--color-accent)]"
+                      className="w-16 h-16 rounded-full object-cover border-2 border-accent"
                     />
                     <div>
-                      <div className="font-display font-semibold text-lg text-[var(--color-neutral-900)]">{agent.name}</div>
-                      <div className="text-sm text-[var(--color-neutral-400)] mb-1">{agent.title}</div>
+                      <div className="font-display font-semibold text-lg text-neutral-900">{agent.name}</div>
+                      <div className="text-sm text-neutral-400 mb-1">{agent.title}</div>
                       <div className="flex gap-4">
-                        {agent.listings      && <span className="text-xs text-[var(--color-neutral-400)]"><b className="text-[var(--color-primary)]">{agent.listings}</b> listings</span>}
-                        {agent.soldProperties && <span className="text-xs text-[var(--color-neutral-400)]"><b className="text-[var(--color-primary)]">{agent.soldProperties}</b> sold</span>}
+                        {agent.listings      && <span className="text-xs text-neutral-400"><b className="text-primary">{agent.listings}</b> listings</span>}
+                        {agent.soldProperties && <span className="text-xs text-neutral-400"><b className="text-primary">{agent.soldProperties}</b> sold</span>}
                       </div>
                     </div>
                   </div>
@@ -228,7 +228,7 @@ export default async function PropertyPage({ params }: Props) {
             )}
 
             {/* Schedule tour */}
-            <div className="bg-[var(--color-primary)] rounded-2xl p-7 text-white">
+            <div className="bg-primary rounded-2xl p-7 text-white">
               <h3 className="font-display text-xl font-semibold mb-2">Schedule a Tour</h3>
               <p className="text-sm text-white/60 leading-relaxed mb-6">
                 See this property in person. Our agents are available 7 days a week.

@@ -9,8 +9,8 @@ export function BlogPreviewSection() {
         <div className="flex justify-between items-end mb-14 flex-wrap gap-6">
           <div>
             <span className="eyebrow block mb-3">Insights & Advice</span>
-            <h2 className="heading-1 text-[var(--color-neutral-900)]">
-              Latest from<br /><em className="italic text-[var(--color-accent)]">Our Blog</em>
+            <h2 className="heading-1 text-neutral-900">
+              Latest from<br /><em className="italic text-accent">Our Blog</em>
             </h2>
             <span className="divider-accent mt-4" />
           </div>
@@ -24,7 +24,7 @@ export function BlogPreviewSection() {
             <Link
               key={post._id}
               href={`/blog/${post.slug}`}
-              className="block no-underline group rounded-2xl overflow-hidden bg-white border border-[var(--color-neutral-200)] card-hover"
+              className="block no-underline group rounded-2xl overflow-hidden bg-white border border-neutral-200 card-hover"
             >
               <div className="relative overflow-hidden" style={{ paddingBottom: '56%' }}>
                 <img
@@ -33,7 +33,7 @@ export function BlogPreviewSection() {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-600 group-hover:scale-105"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="text-[0.65rem] font-semibold uppercase tracking-widest bg-white/95 text-[var(--color-primary)] rounded-full px-3 py-1">
+                  <span className="text-[0.65rem] font-semibold uppercase tracking-widest bg-white/95 text-primary rounded-full px-3 py-1">
                     {post.category}
                   </span>
                 </div>
@@ -46,20 +46,20 @@ export function BlogPreviewSection() {
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <div>
-                    <div className="text-xs font-semibold text-[var(--color-neutral-900)]">{post.author.name}</div>
-                    <div className="text-xs text-[var(--color-neutral-400)]">{formatDate(post.publishedAt)}</div>
+                    <div className="text-xs font-semibold text-neutral-900">{post.author.name}</div>
+                    <div className="text-xs text-neutral-400">{formatDate(post.publishedAt)}</div>
                   </div>
                   {post.readingTime && (
-                    <div className="ml-auto flex items-center gap-1 text-xs text-[var(--color-neutral-400)]">
+                    <div className="ml-auto flex items-center gap-1 text-xs text-neutral-400">
                       <Clock size={11} />{post.readingTime} min
                     </div>
                   )}
                 </div>
-                <h3 className="font-display text-xl font-semibold text-[var(--color-neutral-900)] leading-snug mb-3 line-clamp-2">
+                <h3 className="font-display text-xl font-semibold text-neutral-900 leading-snug mb-3 line-clamp-2">
                   {post.title}
                 </h3>
-                <p className="text-sm text-[var(--color-neutral-500)] leading-relaxed line-clamp-3">{post.excerpt}</p>
-                <div className="flex items-center gap-1.5 mt-5 text-sm font-semibold text-[var(--color-accent)]">
+                <p className="text-sm text-neutral-500 leading-relaxed line-clamp-3">{post.excerpt}</p>
+                <div className="flex items-center gap-1.5 mt-5 text-sm font-semibold text-accent">
                   Read More <ArrowRight size={13} />
                 </div>
               </div>

@@ -38,35 +38,35 @@ export default function ContactPage() {
                   { icon: Clock,  title: 'Office Hours',  lines: ['Mon – Fri: 9am – 7pm', 'Sat – Sun: 10am – 5pm'] },
                 ].map(({ icon: Icon, title, lines }) => (
                   <div key={title} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[var(--color-cream)] border border-[var(--color-neutral-200)] flex items-center justify-center shrink-0">
-                      <Icon size={19} className="text-[var(--color-accent)]" />
+                    <div className="w-12 h-12 rounded-xl bg-cream border border-neutral-200 flex items-center justify-center shrink-0">
+                      <Icon size={19} className="text-accent" />
                     </div>
                     <div>
-                      <div className="font-semibold text-sm text-[var(--color-neutral-900)] mb-1">{title}</div>
-                      {lines.map(l => <div key={l} className="text-sm text-[var(--color-neutral-500)]">{l}</div>)}
+                      <div className="font-semibold text-sm text-neutral-900 mb-1">{title}</div>
+                      {lines.map(l => <div key={l} className="text-sm text-neutral-500">{l}</div>)}
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Map placeholder */}
-              <div className="rounded-2xl border border-[var(--color-neutral-200)] h-56 bg-[var(--color-neutral-100)] flex flex-col items-center justify-center gap-3">
-                <MapPin size={30} className="text-[var(--color-accent)]" />
-                <span className="text-sm text-[var(--color-neutral-400)]">Map integration goes here</span>
+              <div className="rounded-2xl border border-neutral-200 h-56 bg-neutral-100 flex flex-col items-center justify-center gap-3">
+                <MapPin size={30} className="text-accent" />
+                <span className="text-sm text-neutral-400">Map integration goes here</span>
               </div>
             </div>
 
             {/* Form */}
-            <div className="bg-white rounded-3xl p-10 border border-[var(--color-neutral-200)]"
+            <div className="bg-white rounded-3xl p-10 border border-neutral-200"
               style={{ boxShadow: 'var(--shadow-glass)' }}>
               {submitted ? (
                 <div className="text-center py-12 flex flex-col items-center gap-5">
                   <div className="w-18 h-18 rounded-full flex items-center justify-center"
                     style={{ background: 'rgba(45,122,79,0.1)' }}>
-                    <CheckCircle size={36} className="text-[var(--color-success)]" />
+                    <CheckCircle size={36} className="text-success" />
                   </div>
                   <h3 className="heading-2">Message Sent!</h3>
-                  <p className="text-[var(--color-neutral-500)] max-w-sm">
+                  <p className="text-neutral-500 max-w-sm">
                     Thank you for reaching out. One of our agents will be in touch within 24 hours.
                   </p>
                   <button className="btn btn-secondary" onClick={() => setSubmitted(false)}>
@@ -76,7 +76,7 @@ export default function ContactPage() {
               ) : (
                 <>
                   <h2 className="heading-2 mb-1">Send Us a Message</h2>
-                  <p className="text-sm text-[var(--color-neutral-500)] mb-8">Fill out the form and we'll get back to you shortly.</p>
+                  <p className="text-sm text-neutral-500 mb-8">Fill out the form and we'll get back to you shortly.</p>
 
                   <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -125,7 +125,7 @@ export default function ContactPage() {
                     <button type="submit" className="btn btn-primary btn-lg w-full gap-2">
                       <Send size={17} /> Send Message
                     </button>
-                    <p className="text-xs text-[var(--color-neutral-400)] text-center">
+                    <p className="text-xs text-neutral-400 text-center">
                       By submitting, you agree to our Privacy Policy. We never share your information.
                     </p>
                   </form>

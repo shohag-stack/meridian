@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import {Bricolage_Grotesque, Manrope} from "next/font/google"
 
 export const metadata: Metadata = {
   title: {
@@ -17,10 +18,20 @@ export const metadata: Metadata = {
   },
 };
 
+const brico_grotesque = Bricolage_Grotesque({
+  variable: "--font-sans",
+  subsets: ["latin"]
+})
+
+const manrope = Manrope({
+  variable: "--font-sans",
+  subsets: ["latin"]
+})
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${brico_grotesque.variable}`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
