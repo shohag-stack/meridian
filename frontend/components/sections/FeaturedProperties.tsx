@@ -7,7 +7,7 @@ export default function FeaturedProperties() {
   const featured = PROPERTIES.filter(p => p.featured).slice(0, 3);
 
   return (
-    <section className="section">
+    <section className="section-cream">
       <div className="container-site">
         <div className="flex justify-between items-end mb-14 flex-wrap gap-6">
           <div>

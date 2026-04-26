@@ -312,15 +312,6 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     content: 'I\'ve worked with real estate agents across three cities, and EstateHaven stands apart. Responsive, honest, and genuinely invested in finding the right fit rather than just closing a deal.',
   },
-  {
-    _id: 'test-4',
-    name: 'Marcus & Lin Wei',
-    role: 'Purchased in Miami Beach',
-    photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop',
-    rating: 5,
-    content: 'Our agent guided us through an international purchase with expertise and patience. The attention to detail and constant communication made what could have been stressful feel seamless.',
-    propertyBought: 'Azure Bay Residence',
-  },
 ];
 
 // Utility functions

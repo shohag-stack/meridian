@@ -28,7 +28,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
           <Image src={img} alt={property.title} fill className="card-img" />
           <div className="absolute top-3 left-3 flex gap-1.5">
             <span
-              className={`badge badge-${property.status === "for-sale" ? "sale" : "rent"}`}
+              className={`badge ${property.status === "for-sale" ? "badge-sale" : "badge-rent"}`}
             >
               {property.status === "for-sale" ? "For Sale" : "For Rent"}
             </span>
@@ -84,7 +84,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
           <span
-            className={`badge badge-${property.status === "for-sale" ? "sale" : "rent"}`}
+            className={`badge ${property.status === "for-sale" ? "badge-sale" : "badge-rent"}`}
           >
             {property.status === "for-sale" ? "For Sale" : "For Rent"}
           </span>

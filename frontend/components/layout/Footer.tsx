@@ -31,7 +31,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-dark text-white">
+    <footer className="bg-neutral-950 text-white">
 
       {/* Main grid */}
       <div className="container-site pt-20 pb-12">

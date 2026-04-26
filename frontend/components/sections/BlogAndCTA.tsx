@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import { BLOG_POSTS, formatDate } from '@/data/data';
+import Image from 'next/image';
 
 export function BlogPreviewSection() {
   return (
-    <section className="section">
+    <section className="section-cream">
       <div className="container-site">
         <div className="flex justify-between items-end mb-14 flex-wrap gap-6">
           <div>
             <span className="eyebrow block mb-3">Insights & Advice</span>
             <h2 className="heading-1 text-neutral-900">
-              Latest from<br /><em className="italic text-accent">Our Blog</em>
+              Latest from Our Blog
             </h2>
-            <span className="divider-accent mt-4" />
           </div>
           <Link href="/blog" className="btn btn-secondary">
             All Articles <ArrowRight size={15} />
@@ -24,44 +24,26 @@ export function BlogPreviewSection() {
             <Link
               key={post._id}
               href={`/blog/${post.slug}`}
-              className="block no-underline group rounded-2xl overflow-hidden bg-white border border-neutral-200 card-hover"
+              className="block no-underline group overflow-hidden bg-white card-hover"
             >
-              <div className="relative overflow-hidden" style={{ paddingBottom: '56%' }}>
-                <img
+              <div className="relative overflow-hidden aspect-ratio-4/3" style={{ paddingBottom: '56%' }}>
+                <Image
+                  fill
                   src={typeof post.mainImage === 'string' ? post.mainImage : ''}
                   alt={post.title}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-600 group-hover:scale-105"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="text-[0.65rem] font-semibold uppercase tracking-widest bg-white/95 text-primary rounded-full px-3 py-1">
+                  <span className="text-xs font-bold uppercase tracking-widest bg-white/95 text-neutral-900 px-3 py-1">
                     {post.category}
                   </span>
                 </div>
               </div>
               <div className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <img
-                    src={typeof post.author.photo === 'string' ? post.author.photo : ''}
-                    alt={post.author.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="text-xs font-semibold text-neutral-900">{post.author.name}</div>
-                    <div className="text-xs text-neutral-400">{formatDate(post.publishedAt)}</div>
-                  </div>
-                  {post.readingTime && (
-                    <div className="ml-auto flex items-center gap-1 text-xs text-neutral-400">
-                      <Clock size={11} />{post.readingTime} min
-                    </div>
-                  )}
-                </div>
-                <h3 className="font-display text-xl font-semibold text-neutral-900 leading-snug mb-3 line-clamp-2">
+                <h3 className="font-display text-2xl font-semibold text-neutral-900 leading-snug mb-3 line-clamp-2 hover:text-accent transition-all">
                   {post.title}
                 </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed line-clamp-3">{post.excerpt}</p>
-                <div className="flex items-center gap-1.5 mt-5 text-sm font-semibold text-accent">
-                  Read More <ArrowRight size={13} />
-                </div>
+                
               </div>
             </Link>
           ))}
@@ -73,21 +55,19 @@ export function BlogPreviewSection() {
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1920&h=600&fit=crop)' }}
-      />
-      <div className="absolute inset-0 overlay-solid" />
-
-      <div className="container-site section relative z-10 text-center">
-        <span className="eyebrow block mb-4">Ready to Begin?</span>
-        <h2 className="heading-1 text-white max-w-xl mx-auto mb-6">
-          Let's Find Your Perfect Property Together
-        </h2>
-        <p className="text-lg text-white/65 max-w-md mx-auto mb-10 leading-relaxed">
-          Our expert team is ready to guide you through every step of your real estate journey.
-        </p>
+    <section className="relative overflow-hidden min-h-125 md:min-h-290">
+        <Image className='object-cover' src={'/img/footer-bg.png'} fill alt='estate-heaven-footer' />
+      <div className="absolute inset-0 bg-cover"/>
+      <div className="flex flex-col justify-between min-h-125 md:min-h-290 relative z-10 text-center section">
+        <div>
+              <span className="eyebrow block mb-4">Ready to Begin?</span>
+            <h2 className="heading-1 text-neutral-950 max-w-3xl mx-auto mb-6">
+              Let's Find Your Perfect Property Together
+            </h2>
+            <p className="text-lg text-neutral-700 mx-auto max-w-lg font-semibold mb-10 leading-relaxed">
+              Our expert team is ready to guide you through every step of your real estate journey.
+            </p>
+        </div>
         <div className="flex gap-4 justify-center flex-wrap">
           <Link href="/properties" className="btn btn-primary btn-lg">
             Browse Properties <ArrowRight size={17} />
