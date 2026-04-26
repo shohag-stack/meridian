@@ -38,7 +38,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
           <span className="eyebrow mb-1">
             {property.neighborhood || property.city}
           </span>
-          <h3 className="heading-3 text-neutral-900 mb-2">{property.title}</h3>
+          <h3 className="heading-5 text-neutral-900 mb-2">{property.title}</h3>
           <p className="text-sm text-neutral-500 leading-relaxed line-clamp-2 mb-4">
             {property.shortDescription || property.description}
           </p>
@@ -94,7 +94,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
         </div>
 
         {/* Wishlist */}
-        <button
+        {/* <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -103,7 +103,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
           aria-label="Save property"
         >
           <Heart size={14} className="text-neutral-900" />
-        </button>
+        </button> */}
 
         {/* Price */}
         <div className="absolute bottom-3 left-3 right-3">

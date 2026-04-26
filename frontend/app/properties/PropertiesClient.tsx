@@ -6,6 +6,7 @@ import { SlidersHorizontal, Grid3X3, List, X, Search } from 'lucide-react';
 import PropertyCard from '@/components/ui/PropertyCard';
 import { PROPERTIES } from '@/data/data';
 import type { PropertyFilters, PropertyStatus, PropertyType } from '@/types';
+import PageHeader from '@/components/sections/PageHeader';
 
 const PROPERTY_TYPES = [
   { value: 'all',       label: 'All Types'   },
@@ -73,13 +74,7 @@ export default function PropertiesClient() {
   return (
     <>
       {/* Page header */}
-      <div className="bg-primary" style={{ paddingTop: 'calc(var(--spacing-navbar) + 4rem)', paddingBottom: '3rem' }}>
-        <div className="container-site">
-          <span className="eyebrow block mb-2">Browse Listings</span>
-          <h1 className="heading-1 text-white mb-2">All Properties</h1>
-          <p className="text-lg text-white/55">{PROPERTIES.length} exclusive listings available</p>
-        </div>
-      </div>
+      <PageHeader title='All Listings' eyebrow='Browse Listing' subtitle='Browse Exclusive Properties' path='/img/listingbg1.png' />
 
       <div className="container-site pt-10 pb-24">
 
@@ -97,7 +92,7 @@ export default function PropertiesClient() {
                     'btn btn-sm rounded-full border-none',
                     filters.status === s
                       ? 'bg-primary text-white'
-                      : 'bg-transparent text-neutral-400',
+                      : 'bg-transparent text-neutral-900',
                   ].join(' ')}
                 >
                   {s === 'all' ? 'All' : s === 'for-sale' ? 'For Sale' : 'For Rent'}
@@ -129,7 +124,7 @@ export default function PropertiesClient() {
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-sm text-neutral-400">
+            <span className="text-sm font-medium text-neutral-600">
               {filtered.length} {filtered.length === 1 ? 'property' : 'properties'}
             </span>
 
@@ -163,8 +158,7 @@ export default function PropertiesClient() {
 
         {/* ── Filter panel ─────────────────────────────────── */}
         {showFilters && (
-          <div className="bg-white rounded-2xl border border-neutral-200 p-7 mb-8"
-            style={{ boxShadow: 'var(--shadow-card)' }}>
+          <div className="bg-white p-7 mb-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
                 <label className="label-text">Property Type</label>

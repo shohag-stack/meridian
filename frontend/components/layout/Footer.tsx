@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Globe, MessageCircle, Share2, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 const FOOTER_LINKS = {
   Properties: [
@@ -40,10 +41,7 @@ export default function Footer() {
           {/* Brand — spans 2 cols on large */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-9 h-9 rounded-sm bg-accent flex items-center justify-center">
-                <span className="font-display font-bold text-lg text-white">E</span>
-              </div>
-              <span className="font-display font-bold text-xl text-white">EstateHaven</span>
+              <Image src={'/img/logo.svg'} width={182} height={30} alt='estate-heaven-logo' />
             </div>
             <p className="text-sm text-white/55 leading-relaxed mb-8 max-w-xs">
               Redefining the luxury real estate experience. We connect discerning buyers and sellers with exceptional properties.
