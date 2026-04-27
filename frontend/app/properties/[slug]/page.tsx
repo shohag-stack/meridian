@@ -216,9 +216,9 @@ export default async function PropertyPage({ params }: Props) {
             )}
 
             {/* Schedule tour */}
-            <div className="bg-primary rounded-2xl p-7 text-white">
-              <h3 className="font-display text-xl font-semibold mb-2">Schedule a Tour</h3>
-              <p className="text-sm text-white/60 leading-relaxed mb-6">
+            <div className="bg-white p-7 text-white">
+              <h3 className="font-display text-neutral-900 text-xl font-semibold mb-2">Schedule a Tour</h3>
+              <p className="text-sm text-neutral-700 leading-relaxed mb-6">
                 See this property in person. Our agents are available 7 days a week.
               </p>
               <Link href="/contact"
