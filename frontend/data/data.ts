@@ -39,6 +39,18 @@ export const AGENTS: PropertyAgent[] = [
     listings: 31,
     soldProperties: 203,
   },
+
+  {
+    _id: 'agent-4',
+    name: 'Sophia Chen',
+    title: 'Residential Sales Expert',
+    phone: '+1 (555) 456-7890',
+    email: 'sophia@estatehaven.com',
+    photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
+    bio: 'A data-driven approach combined with a passion for design makes Sophia a top performer.',
+    listings: 31,
+    soldProperties: 203,
+  },
 ];
 
 export const PROPERTIES: Property[] = [
