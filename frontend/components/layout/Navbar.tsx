@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 import Image from 'next/image';
+import Logo from '../ui/Logo';
 
 const NAV_LINKS = [
   { label: 'Properties', href: '/properties' },
@@ -44,7 +45,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="shrink-0 items-center gap-2 no-underline">
-            <Image src={'/img/logo.svg'} alt='estate-heaven' width={182} height={29} />
+            <Logo color={transparent ? "white" : "black"} />
           </Link>
 
           {/* Desktop links */}
