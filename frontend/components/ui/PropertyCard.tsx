@@ -21,7 +21,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
   if (variant === "horizontal") {
     return (
       <Link
-        href={`/property/${property.slug}`}
+        href={`/properties/${property.slug}`}
         className="property-card flex flex-row"
       >
         <div className="w-64 shrink-0 relative overflow-hidden">
@@ -65,7 +65,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
   }
 
   return (
-    <Link href={`/property/${property.slug}`} className="property-card">
+    <Link href={`/properties/${property.slug}`} className="property-card">
       {/* Image */}
       <div
         className="relative w-full overflow-hidden"

@@ -1,4 +1,5 @@
 import { AGENTS } from "@/data/data";
+import Image from "next/image";
 import React from "react";
 
 export default function Team() {
@@ -16,13 +17,14 @@ export default function Team() {
               className="bg-white overflow-hidden"
             >
               <div
-                className="relative overflow-hidden"
+                className="relative overflow-hidden min-h-[360px] aspect-ratio-3/4"
                 style={{ paddingBottom: "100%" }}
               >
-                <img
+                <Image
                   src={typeof agent.photo === "string" ? agent.photo : ""}
                   alt={agent.name}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="inset-0 object-cover"
+                  fill
                 />
               </div>
               <div className="p-6">
@@ -31,7 +33,7 @@ export default function Team() {
                 </h3>
                 <p className="eyebrow mb-4">{agent.title}</p>
                 {agent.bio && (
-                  <p className="text-sm text-neutral-700 leading-relaxed mb-5">
+                  <p className="text-md text-neutral-700 leading-relaxed mb-5">
                     {agent.bio}
                   </p>
                 )}

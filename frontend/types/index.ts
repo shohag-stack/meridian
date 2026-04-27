@@ -64,7 +64,7 @@ export interface Property {
   
   // Media
   mainImage: SanityImage | string;
-  gallery?: (SanityImage | string)[];
+  gallery?: SliderImage[];
   
   // Content
   description: string;
@@ -79,6 +79,12 @@ export interface Property {
   createdAt: string;
   updatedAt: string;
 }
+
+export type SliderImage = {
+  asset: {
+    url: string;
+  };
+};
 
 export interface BlogPost {
   _id: string;

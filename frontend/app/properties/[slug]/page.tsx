@@ -7,6 +7,10 @@ import {
 import PropertyCard from '@/components/ui/PropertyCard';
 import { PROPERTIES, formatPrice, formatArea, getPropertyTypeLabel, formatDate } from '@/data/data';
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import PropertyHeader from '@/components/sections/PropertyHeader';
+import PropertySlider from '@/components/sections/PropertySlider';
+import { SliderImage } from '@/types';
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -22,21 +26,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PropertyPage({ params }: Props) {
+
   const { slug } = await params;
   const property = PROPERTIES.find(p => p.slug === slug);
   if (!property) notFound();
 
   const agent   = property.agent;
-  const gallery = [
-    typeof property.mainImage === 'string' ? property.mainImage : '',
-    ...(property.gallery?.map(g => typeof g === 'string' ? g : '') ?? []),
-  ].filter(Boolean);
+
+  const gallery: SliderImage[] = [
+  ...(typeof property.mainImage === 'string'
+    ? [{ asset: { url: property.mainImage } }]
+    : []),
+  ...(property.gallery ?? []),
+];
 
   const related = PROPERTIES.filter(p => p._id !== property._id && p.city === property.city).slice(0, 3);
 
   return (
     <>
-      {/* Breadcrumb */}
       <div className="bg-primary" style={{ paddingTop: 'calc(var(--spacing-navbar) + 1.5rem)', paddingBottom: '1.5rem' }}>
         <div className="container-site">
           <nav className="flex items-center gap-2 text-sm text-white/50 flex-wrap">
@@ -48,6 +55,13 @@ export default async function PropertyPage({ params }: Props) {
           </nav>
         </div>
       </div>
+
+      {/* Gallery */}
+            <div className="mb-10 overflow-hidden">
+              <PropertySlider sliders={gallery} />
+            </div>
+
+      {/* <PropertyHeader property={property} /> */}
 
       <div className="container-site pt-10 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 items-start">
@@ -64,11 +78,11 @@ export default async function PropertyPage({ params }: Props) {
                 {property.newListing && <span className="badge badge-featured">New Listing</span>}
               </div>
 
-              <h1 className="heading-1 mb-3">{property.title}</h1>
+              <h1 className="heading-3 mb-3">{property.title}</h1>
 
               <div className="flex items-center gap-2 text-neutral-400 mb-5">
                 <MapPin size={14} className="shrink-0" />
-                <span className="text-base">{property.address}, {property.city}, {property.state} {property.zipCode}</span>
+                <span className="text-base text-neutral-700">{property.address}, {property.city}, {property.state} {property.zipCode}</span>
               </div>
 
               <div className="flex items-center justify-between flex-wrap gap-4">
@@ -82,31 +96,6 @@ export default async function PropertyPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Gallery */}
-            <div className="mb-10 rounded-3xl overflow-hidden" style={{ boxShadow: 'var(--shadow-glass)' }}>
-              <div className="relative w-full" style={{ paddingBottom: '56%' }}>
-                <img
-                  src={gallery[0] || 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=700&fit=crop'}
-                  alt={property.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-              {gallery.length > 1 && (
-                <div className={`grid gap-1`} style={{ gridTemplateColumns: `repeat(${Math.min(gallery.length - 1, 4)}, 1fr)` }}>
-                  {gallery.slice(1, 5).map((img, i) => (
-                    <div key={i} className="relative cursor-pointer overflow-hidden" style={{ paddingBottom: '66%' }}>
-                      <img src={img} alt={`View ${i + 2}`} className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-400" />
-                      {i === 3 && gallery.length > 5 && (
-                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                          <span className="text-white font-semibold text-lg">+{gallery.length - 5} more</span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* Key stats */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
               {[
@@ -116,26 +105,24 @@ export default async function PropertyPage({ params }: Props) {
                 ...(property.garages   ? [{ icon: Car,      value: property.garages,   label: 'Garages'    }] : []),
                 ...(property.yearBuilt ? [{ icon: Calendar,  value: property.yearBuilt, label: 'Year Built' }] : []),
               ].map(({ icon: Icon, value, label }) => (
-                <div key={label} className="bg-white border border-neutral-200 rounded-xl p-5 text-center" style={{ boxShadow: 'var(--shadow-card)' }}>
+                <div key={label} className="bg-white p-5 text-center" >
                   <Icon size={20} className="text-accent mx-auto mb-2" />
-                  <div className="font-display text-xl font-bold text-primary mb-1">{value}</div>
-                  <div className="text-xs text-neutral-400 uppercase tracking-wider">{label}</div>
+                  <div className="font-display text-2xl font-bold text-neutral-900 mb-1">{value}</div>
+                  <div className="text-xs text-neutral-700 font-semibold uppercase tracking-wider">{label}</div>
                 </div>
               ))}
             </div>
 
             {/* Description */}
             <div className="mb-10">
-              <h2 className="heading-2 mb-4">About This Property</h2>
-              <span className="divider-accent block mb-6" />
-              <p className="text-lg text-neutral-500 leading-relaxed">{property.description}</p>
+              <h2 className="heading-4 mb-4">About This Property</h2>
+              <p className="text-lg text-neutral-900 leading-relaxed">{property.description}</p>
             </div>
 
             {/* Features */}
             {property.features && property.features.length > 0 && (
               <div className="mb-10">
-                <h2 className="heading-2 mb-4">Features & Amenities</h2>
-                <span className="divider-accent block mb-6" />
+                <h2 className="heading-4 mb-4">Features & Amenities</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {property.features.map(feat => (
                     <div key={feat} className="flex items-center gap-2.5">
@@ -149,9 +136,8 @@ export default async function PropertyPage({ params }: Props) {
 
             {/* Details table */}
             <div className="mb-14">
-              <h2 className="heading-2 mb-4">Property Details</h2>
-              <span className="divider-accent block mb-6" />
-              <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden">
+              <h2 className="heading-4 mb-4">Property Details</h2>
+              <div className="bg-white overflow-hidden">
                 {[
                   { label: 'Property Type', value: getPropertyTypeLabel(property.type) },
                   { label: 'Status',        value: property.status === 'for-sale' ? 'For Sale' : 'For Rent' },
@@ -168,10 +154,10 @@ export default async function PropertyPage({ params }: Props) {
                 ].map(({ label, value }, i) => (
                   <div
                     key={label}
-                    className={`flex justify-between items-center px-5 py-3.5 border-b border-neutral-100 last:border-b-0 ${i % 2 === 1 ? 'bg-neutral-50' : 'bg-transparent'}`}
+                    className={`flex justify-between items-center px-5 py-3.5 ${i % 2 === 1 ? 'bg-neutral-50' : 'bg-transparent'}`}
                   >
-                    <span className="text-sm text-neutral-400">{label}</span>
-                    <span className="text-sm font-semibold text-neutral-900">{String(value)}</span>
+                    <span className="text-base text-neutral-900">{label}</span>
+                    <span className="text-base font-semibold text-neutral-900">{String(value)}</span>
                   </div>
                 ))}
               </div>
@@ -181,23 +167,25 @@ export default async function PropertyPage({ params }: Props) {
           {/* ─── RIGHT SIDEBAR ────────────────────────────────── */}
           <div className="sticky" style={{ top: 'calc(var(--spacing-navbar) + 2rem)' }}>
             {agent && (
-              <div className="bg-white rounded-2xl border border-neutral-200 overflow-hidden mb-5"
-                style={{ boxShadow: 'var(--shadow-card)' }}>
+              <div className="bg-white rounded-2xl overflow-hidden mb-5"
+              >
                 {/* Top accent bar */}
                 <div className="h-1.5" style={{ background: 'linear-gradient(90deg, var(--color-primary), var(--color-accent))' }} />
                 <div className="p-7">
                   <div className="flex gap-4 items-center mb-6">
-                    <img
+                    <Image
                       src={typeof agent.photo === 'string' ? agent.photo : ''}
                       alt={agent.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-accent"
+                      className=" w-16 h-16 rounded-full object-cover border-2 border-accent"
+                      width={70}
+                      height={70}
                     />
                     <div>
                       <div className="font-display font-semibold text-lg text-neutral-900">{agent.name}</div>
-                      <div className="text-sm text-neutral-400 mb-1">{agent.title}</div>
+                      <div className="text-md text-neutral-700 mb-1">{agent.title}</div>
                       <div className="flex gap-4">
-                        {agent.listings      && <span className="text-xs text-neutral-400"><b className="text-primary">{agent.listings}</b> listings</span>}
-                        {agent.soldProperties && <span className="text-xs text-neutral-400"><b className="text-primary">{agent.soldProperties}</b> sold</span>}
+                        {agent.listings && <span className="text-sm text-neutral-700"><b className="text-primary">{agent.listings}</b> listings</span>}
+                        {agent.soldProperties && <span className="text-sm text-neutral-700"><b className="text-primary">{agent.soldProperties}</b> sold</span>}
                       </div>
                     </div>
                   </div>
@@ -216,10 +204,10 @@ export default async function PropertyPage({ params }: Props) {
                   </div>
 
                   <div className="flex gap-3">
-                    <a href={`tel:${agent.phone}`} className="btn btn-ghost btn-sm flex-1 gap-1.5">
+                    <a href={`tel:${agent.phone}`} className="btn btn-secondary btn-sm flex-1 gap-1.5">
                       <Phone size={13}/> Call
                     </a>
-                    <a href={`mailto:${agent.email}`} className="btn btn-ghost btn-sm flex-1 gap-1.5">
+                    <a href={`mailto:${agent.email}`} className="btn btn-secondary btn-sm flex-1 gap-1.5">
                       <Mail size={13}/> Email
                     </a>
                   </div>

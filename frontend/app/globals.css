@@ -479,3 +479,22 @@
     background: var(--color-neutral-400);
   }
 }
+
+.embla {
+  overflow: hidden;
+}
+.embla__viewport {
+  overflow:hidden
+}
+.embla__container {
+  display: flex;
+}
+.embla_slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.embla_thumb .embla_slide {
+  min-width: auto; /* thumbnails smaller */
+  flex: 0 0 auto;
+}
