@@ -23,13 +23,15 @@ const PROPERTY_BY_SLUG = `
     ...,
 "slug": slug.current,
 "mainImage": mainImage.asset->url,
-"gallery": gallery[].asset->url,
+gallery[]{
+  asset->{url}
+},
 agent->{
   _id,
   name,
   title,
   "photo": photo.asset->url,
-  "activeListings": count(*[_type == "property" && agent._ref == ^._id && status != "sold"]),
+  "listings": count(*[_type == "property" && agent._ref == ^._id && status != "sold"]),
   "soldProperties": count(*[_type == "property" && agent._ref == ^._id && status == "sold"])
 }
   }

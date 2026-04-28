@@ -68,6 +68,9 @@ export default async function PropertyPage({ params }: Props) {
     ...(property.gallery ?? []),
   ];
 
+
+  console.log("showing gallery images", gallery)
+
   const related = PROPERTIES.filter(
     (p) => p._id !== property._id && p.city === property.city,
   ).slice(0, 3);
@@ -306,20 +309,18 @@ export default async function PropertyPage({ params }: Props) {
                         {agent.title}
                       </div>
                       <div className="flex gap-4">
-                        {agent.listings && (
+                        
                           <span className="text-sm text-neutral-700">
                             <b className="text-primary">{agent.listings}</b>{" "}
                             listings
                           </span>
-                        )}
-                        {agent.soldProperties && (
+
                           <span className="text-sm text-neutral-700">
                             <b className="text-primary">
                               {agent.soldProperties}
                             </b>{" "}
-                            sold
+                              sold
                           </span>
-                        )}
                       </div>
                     </div>
                   </div>
