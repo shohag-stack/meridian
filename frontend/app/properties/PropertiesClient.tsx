@@ -4,8 +4,7 @@ import { useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { SlidersHorizontal, Grid3X3, List, X, Search } from 'lucide-react';
 import PropertyCard from '@/components/ui/PropertyCard';
-import { PROPERTIES } from '@/data/data';
-import type { PropertyFilters, PropertyStatus, PropertyType } from '@/types';
+import type { Property, PropertyFilters, PropertyStatus, PropertyType } from '@/types';
 import PageHeader from '@/components/sections/PageHeader';
 
 const PROPERTY_TYPES = [
@@ -33,7 +32,7 @@ const SORT_OPTIONS = [
   { value: 'area-desc',  label: 'Largest First'      },
 ];
 
-export default function PropertiesClient() {
+export default function PropertiesClient({properties}: {properties: Property[]}) {
   const searchParams = useSearchParams();
   const [view, setView]               = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(false);
@@ -46,7 +45,7 @@ export default function PropertiesClient() {
   const [bedsMin, setBedsMin]         = useState(0);
 
   const filtered = useMemo(() => {
-    let r = [...PROPERTIES];
+    let r = [...properties];
     if (filters.status && filters.status !== 'all') r = r.filter(p => p.status === filters.status);
     if (filters.type   && filters.type   !== 'all') r = r.filter(p => p.type   === filters.type);
     if (priceRange.max !== Infinity) r = r.filter(p => p.price >= priceRange.min && p.price <= priceRange.max);

@@ -6,6 +6,9 @@ const nextConfig = {
             hostname: "images.unsplash.com"
         }, {
             hostname: 'res.cloudinary.com'
+        }, 
+        {
+            hostname: "cdn.sanity.io"
         }
     ]
     }
