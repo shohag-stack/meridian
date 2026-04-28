@@ -25,6 +25,7 @@ export default function PropertyHeader({property}: {property: Property}) {
                   {property.status === 'for-sale' ? 'For Sale' : 'For Rent'}
                 </span>
           {/* Headline */}
+          
           <h1 className="text-[50px] md:text-[120px] leading-30 text-white mb-6 opacity-0 animate-fade-in-up delay-200">
             {property.title}
           </h1>

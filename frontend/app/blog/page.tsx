@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   description: 'Real estate insights, market trends, buying guides, and neighbourhood spotlights from the EstateHaven team.',
 };
 
-const CATEGORIES = ['All', 'Market Insights', "Buyer's Guide", 'Neighborhoods', 'Investment', 'Design & Renovation'];
 
 export default function BlogPage() {
   const featured = BLOG_POSTS[0];
@@ -23,21 +22,6 @@ export default function BlogPage() {
       <PageHeader eyebrow='The eastern heaven blog' title='Insights & Advice' subtitle='Market intelligence, expert advice, and stories from the world of real estate.' path='/img/listingbg1.png' />
       <section className="section">
         <div className="container-site">
-
-          {/* Category pills */}
-          <div className="flex gap-2 flex-wrap mb-14">
-            {CATEGORIES.map(cat => (
-              <button
-                key={cat}
-                className={[
-                  'btn btn-sm',
-                  cat === 'All' ? 'btn-secondary' : 'btn-ghost',
-                ].join(' ')}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
 
           {/* Featured post */}
           <Link
@@ -67,10 +51,12 @@ export default function BlogPage() {
                 <p className="text-neutral-700 leading-relaxed mb-6">{featured.excerpt}</p>
                 <div className="flex items-center gap-4 mb-6 flex-wrap">
                   <div className="flex items-center gap-3">
-                    <img
+                    <Image
                       src={typeof featured.author.photo === 'string' ? featured.author.photo : ''}
                       alt={featured.author.name}
-                      className="w-11 h-11 object-cover"
+                      className="w-11 h-11 object-cover rounded-full"
+                      width={110}
+                      height={110}
                     />
                     <div>
                       <div className="text-sm font-semibold text-neutral-900">{featured.author.name}</div>

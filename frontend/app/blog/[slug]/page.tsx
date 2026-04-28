@@ -40,34 +40,23 @@ export default async function BlogPostPage({ params }: Props) {
       </div>
 
       {/* Hero image */}
-      <section className="relative overflow-hidden" style={{ paddingBottom: '35%', minHeight: 420 }}>
+      <section className="relative overflow-hidden" style={{ paddingBottom: '45%', minHeight: 420 }}>
         <img
           src={typeof post.mainImage === 'string' ? post.mainImage : ''}
           alt={post.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,29,43,0.9) 0%, rgba(15,29,43,0.4) 60%, transparent 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%)' }} />
         <div className="container-site absolute bottom-12 left-1/2 -translate-x-1/2 w-full">
           <div className="max-w-3xl">
             <span className="badge badge-sale mb-4 inline-block">{post.category}</span>
             <h1 className="heading-1 text-white mb-5">{post.title}</h1>
             <div className="flex items-center gap-6 flex-wrap">
-              <div className="flex items-center gap-3">
-                <img
-                  src={typeof post.author.photo === 'string' ? post.author.photo : ''}
-                  alt={post.author.name}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-accent"
-                />
-                <div>
-                  <div className="text-sm font-semibold text-white">{post.author.name}</div>
-                  <div className="text-xs text-white/55">{post.author.role}</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5 text-sm text-white/60">
+              <div className="flex items-center gap-1.5 text-sm text-neutral-300">
                 <Calendar size={13}/> {formatDate(post.publishedAt)}
               </div>
               {post.readingTime && (
-                <div className="flex items-center gap-1.5 text-sm text-white/60">
+                <div className="flex items-center gap-1.5 text-sm text-neutral-300">
                   <Clock size={13}/> {post.readingTime} min read
                 </div>
               )}
@@ -84,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Article body */}
             <article>
               {/* Lead paragraph */}
-              <p className="text-xl text-neutral-900 font-medium leading-relaxed pb-8 mb-8 border-b-2 border-accent">
+              <p className="text-xl text-neutral-900 font-medium leading-relaxed pb-8 mb-8">
                 {post.excerpt}
               </p>
 
@@ -140,27 +129,10 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Sidebar */}
             <aside className="sticky flex flex-col gap-6" style={{ top: 'calc(var(--spacing-navbar) + 2rem)' }}>
 
-              {/* Author card */}
-              <div className="bg-white rounded-2xl border border-neutral-200 p-6"
-                style={{ boxShadow: 'var(--shadow-card)' }}>
-                <p className="eyebrow mb-4">Written By</p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src={typeof post.author.photo === 'string' ? post.author.photo : ''}
-                    alt={post.author.name}
-                    className="w-14 h-14 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold text-neutral-900 mb-0.5">{post.author.name}</div>
-                    <div className="text-sm text-neutral-400">{post.author.role}</div>
-                  </div>
-                </div>
-              </div>
-
               {/* Related posts */}
               {related.length > 0 && (
-                <div className="bg-white rounded-2xl border border-neutral-200 p-6"
-                  style={{ boxShadow: 'var(--shadow-card)' }}>
+                <div className="bg-white p-6"
+                  >
                   <p className="eyebrow mb-5">Related Articles</p>
                   <div className="flex flex-col gap-5">
                     {related.map(rp => (
@@ -172,7 +144,7 @@ export default async function BlogPostPage({ params }: Props) {
                         <img
                           src={typeof rp.mainImage === 'string' ? rp.mainImage : ''}
                           alt={rp.title}
-                          className="w-18 h-14 rounded-xl object-cover shrink-0"
+                          className="w-18 h-14 object-cover shrink-0"
                         />
                         <div>
                           <div className="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-accent transition-colors">
@@ -187,7 +159,7 @@ export default async function BlogPostPage({ params }: Props) {
               )}
 
               {/* Properties CTA */}
-              <div className="bg-primary rounded-2xl p-7 text-white text-center">
+              <div className="bg-primary p-7 text-white text-center">
                 <h3 className="font-display text-xl font-semibold mb-2">Looking for a Property?</h3>
                 <p className="text-sm text-white/60 leading-relaxed mb-5">
                   Browse our curated listings and find your perfect home.

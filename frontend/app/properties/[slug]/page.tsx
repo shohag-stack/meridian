@@ -8,7 +8,6 @@ import PropertyCard from '@/components/ui/PropertyCard';
 import { PROPERTIES, formatPrice, formatArea, getPropertyTypeLabel, formatDate } from '@/data/data';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import PropertyHeader from '@/components/sections/PropertyHeader';
 import PropertySlider from '@/components/sections/PropertySlider';
 import { SliderImage } from '@/types';
 
@@ -90,8 +89,8 @@ export default async function PropertyPage({ params }: Props) {
                   {formatPrice(property.price, property.priceFrequency)}
                 </span>
                 <div className="flex gap-3">
-                  <button className="btn btn-ghost btn-sm gap-1.5"><Heart size={14}/> Save</button>
-                  <button className="btn btn-ghost btn-sm gap-1.5"><Share2 size={14}/> Share</button>
+                  <button className="btn border border-neutral-200  btn-sm gap-1.5"><Heart size={14}/> Save</button>
+                  <button className="btn border border-neutral-200 btn-sm gap-1.5"><Share2 size={14}/> Share</button>
                 </div>
               </div>
             </div>
@@ -167,7 +166,7 @@ export default async function PropertyPage({ params }: Props) {
           {/* ─── RIGHT SIDEBAR ────────────────────────────────── */}
           <div className="sticky" style={{ top: 'calc(var(--spacing-navbar) + 2rem)' }}>
             {agent && (
-              <div className="bg-white rounded-2xl overflow-hidden mb-5"
+              <div className="bg-white overflow-hidden mb-5"
               >
                 {/* Top accent bar */}
                 <div className="h-1.5" style={{ background: 'linear-gradient(90deg, var(--color-primary), var(--color-accent))' }} />

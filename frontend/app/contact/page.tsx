@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import PageHeader from '@/components/sections/PageHeader';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -11,17 +12,9 @@ export default function ContactPage() {
 
   return (
     <>
-      <div className="page-header">
-        <div className="container-site">
-          <span className="eyebrow block mb-2">Reach Out</span>
-          <h1 className="heading-1 text-white mb-3">Get in Touch</h1>
-          <p className="text-lg text-white/60 max-w-lg">
-            Whether you're ready to buy, sell, or simply explore your options — our team is here to help.
-          </p>
-        </div>
-      </div>
+      <PageHeader path='/img/listingbg1.png' title='Get in Touch'  eyebrow='Reach Out' subtitle="Whether you&apos;re ready to buy, sell, or simply explore your options — our team is here to help." />
 
-      <section className="section">
+      <section className="section-cream">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 items-start">
 
@@ -38,12 +31,12 @@ export default function ContactPage() {
                   { icon: Clock,  title: 'Office Hours',  lines: ['Mon – Fri: 9am – 7pm', 'Sat – Sun: 10am – 5pm'] },
                 ].map(({ icon: Icon, title, lines }) => (
                   <div key={title} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-cream border border-neutral-200 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-neutral-50 flex items-center justify-center shrink-0">
                       <Icon size={19} className="text-accent" />
                     </div>
                     <div>
-                      <div className="font-semibold text-sm text-neutral-900 mb-1">{title}</div>
-                      {lines.map(l => <div key={l} className="text-sm text-neutral-500">{l}</div>)}
+                      <div className="font-semibold text-xl text-neutral-900 mb-1">{title}</div>
+                      {lines.map(l => <div key={l} className="text-base text-neutral-500">{l}</div>)}
                     </div>
                   </div>
                 ))}
@@ -57,15 +50,14 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="bg-white rounded-3xl p-10 border border-neutral-200"
-              style={{ boxShadow: 'var(--shadow-glass)' }}>
+            <div className="bg-white p-10">
               {submitted ? (
                 <div className="text-center py-12 flex flex-col items-center gap-5">
                   <div className="w-18 h-18 rounded-full flex items-center justify-center"
                     style={{ background: 'rgba(45,122,79,0.1)' }}>
                     <CheckCircle size={36} className="text-success" />
                   </div>
-                  <h3 className="heading-2">Message Sent!</h3>
+                  <h3 className="heading-3">Message Sent!</h3>
                   <p className="text-neutral-500 max-w-sm">
                     Thank you for reaching out. One of our agents will be in touch within 24 hours.
                   </p>
@@ -75,7 +67,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <>
-                  <h2 className="heading-2 mb-1">Send Us a Message</h2>
+                  <h2 className="heading-3 mb-1">Send Us a Message</h2>
                   <p className="text-sm text-neutral-500 mb-8">Fill out the form and we'll get back to you shortly.</p>
 
                   <form onSubmit={handleSubmit} className="flex flex-col gap-5">

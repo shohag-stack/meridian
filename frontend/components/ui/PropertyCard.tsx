@@ -65,7 +65,7 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
   }
 
   return (
-    <Link href={`/properties/${property.slug}`} className="property-card">
+    <Link href={`/properties/${property.slug}`} className="property-card group">
       {/* Image */}
       <div
         className="relative w-full overflow-hidden"
@@ -119,9 +119,19 @@ export default function PropertyCard({ property, variant = "default" }: Props) {
           {property.neighborhood || property.city}
         </span>
 
-        <h3 className="font-display text-2xl font-semibold text-neutral-900 leading-snug mb-2 line-clamp-1">
-          {property.title}
-        </h3>
+        <div className="overflow-hidden h-[2em] my-2">
+            <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:-translate-y-3/6">
+                    {/* Original */}
+                    <h3 className="font-display text-2xl font-semibold text-neutral-900 leading-none mb-2 line-clamp-1">
+                      {property.title}
+                    </h3>
+
+                    {/* Duplicate */}
+                    <h3 className="font-display text-2xl font-semibold text-neutral-900 leading-none mb-2 line-clamp-1">
+                      {property.title}
+                    </h3>
+                  </div>
+        </div>
         <div className="flex gap-5 mb-4">
           <StatItem icon={Bed} value={property.bedrooms} label="Beds" />
           <StatItem icon={Bath} value={property.bathrooms} label="Baths" />

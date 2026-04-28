@@ -5,6 +5,8 @@ import Image from 'next/image';
 import PostCard from '../ui/PostCard';
 
 export function BlogPreviewSection() {
+
+  const featured = BLOG_POSTS.slice(0,3)
   return (
     <section className="section-cream">
       <div className="container-site">
@@ -21,7 +23,7 @@ export function BlogPreviewSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map(post => (
+          {featured.map(post => (
             <PostCard post={post} />
           ))}
         </div>
