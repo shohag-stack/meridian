@@ -23,7 +23,7 @@ export interface PropertyAgent {
   title: string;
   phone: string;
   email: string;
-  photo: SanityImage | string;
+  photo?: string;
   bio?: string;
   listings?: number;
   soldProperties?: number;

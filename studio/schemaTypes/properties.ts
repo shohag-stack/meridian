@@ -1,3 +1,4 @@
+import { ParamsOf } from './../../frontend/.next/dev/types/routes.d';
 import { defineType, defineField } from "sanity";
 
 export default defineType({
@@ -18,6 +19,14 @@ export default defineType({
       type: "slug",
       options: { source: "title", maxLength: 96 },
       validation: (Rule) => Rule.required(),
+    }),
+
+    // agent select
+
+    defineField({
+      name: "agent",
+      type: "reference",
+      to: [{type: "agent"}]
     }),
 
     // Status (single select)

@@ -51,6 +51,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PropertyPage({ params }: Props) {
   const { slug } = await params;
   const property = await getPropertyBySlug({slug})
+
+
+  console.log("showing single property from slug page", property)
+
+
+
   if (!property) notFound();
 
   const agent = property.agent;
@@ -286,7 +292,7 @@ export default async function PropertyPage({ params }: Props) {
                 <div className="p-7">
                   <div className="flex gap-4 items-center mb-6">
                     <Image
-                      src={typeof agent.photo === "string" ? agent.photo : ""}
+                      src={agent.photo || "/placeholder.png"}
                       alt={agent.name}
                       className=" w-16 h-16 rounded-full object-cover border-2 border-accent"
                       width={70}
