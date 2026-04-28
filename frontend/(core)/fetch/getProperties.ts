@@ -1,14 +1,16 @@
-import { client } from "@/(core)/sanity/lib/client";
-import { PROPERTIES } from "@/data/data";
+// lib/getProperties.ts
+import { client, isSanityConfigured } from "@/(core)/sanity/lib/client";
 import { getAllPropertiesQueries } from "../sanity/queries/propertyQueries";
-import { Property } from "@/types/index";
-
-const hasSanity = !!(
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID &&
-  process.env.NEXT_PUBLIC_SANITY_DATASET
-);
+import { PROPERTIES } from "@/data/data";
+import { Property } from "@/types";
 
 export async function getProperties(): Promise<Property[]> {
-  if (!hasSanity) return PROPERTIES;
-  return client.fetch(getAllPropertiesQueries);
+  if (!isSanityConfigured) return PROPERTIES;
+
+  try {
+    return await client.fetch(getAllPropertiesQueries);
+  } catch (e) {
+    console.error("Sanity fetch failed, falling back to dummy data", e);
+    return PROPERTIES;
+  }
 }
