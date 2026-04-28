@@ -20,23 +20,10 @@ const getAllPropertiesQueries = `*[_type == "property" && defined(slug.current)]
 
 const PROPERTY_BY_SLUG = `
   *[_type == "property" && slug.current == $slug][0]{
-    _id,
-    title,
-    price,
-    description,
-    location,
-    bedrooms,
-    bathrooms,
-    area,
-    tags,
-    gallery[]{
-      asset->{url}
-    },
-    mainImage{
-      asset->{url}
-    },
-    features,
-    agent
+    ...,
+"slug": slug.current,
+"mainImage": mainImage.asset->url,
+"gallery": gallery[].asset->url,
   }
 `;
 
@@ -46,5 +33,9 @@ const PROPERTY_SLUGS = `
   }
 `;
 
-
-export { FEATURED_QUERIES, PROPERTY_BY_SLUG,PROPERTY_SLUGS,getAllPropertiesQueries }
+export {
+  FEATURED_QUERIES,
+  PROPERTY_BY_SLUG,
+  PROPERTY_SLUGS,
+  getAllPropertiesQueries,
+};

@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import PropertyCard from '@/components/ui/PropertyCard';
-import { PROPERTIES } from '@/data/data';
+import { getProperties } from '@/(core)/fetch/getProperties';
 
-export default function FeaturedProperties() {
+export default async function FeaturedProperties() {
+  const PROPERTIES = await getProperties()
   const featured = PROPERTIES.filter(p => p.featured).slice(0, 3);
 
   return (
