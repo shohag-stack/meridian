@@ -1,11 +1,10 @@
-// lib/getProperties.ts
-import { client, isSanityConfigured } from "@/(core)/sanity/lib/client";
-import { getAllPropertiesQueries } from "../sanity/queries/propertyQueries";
 import { PROPERTIES } from "@/data/data";
+import { client, isSanityConfigured } from "../sanity/lib/client";
+import { getAllPropertiesQueries } from "../sanity/queries/propertyQueries";
 import { Property } from "@/types";
 
 export async function getProperties(): Promise<Property[]> {
-  if (!isSanityConfigured) return PROPERTIES;
+  if (!isSanityConfigured || !client) return PROPERTIES;
 
   try {
     return await client.fetch(getAllPropertiesQueries);
