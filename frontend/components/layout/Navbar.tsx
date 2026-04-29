@@ -50,7 +50,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center justify-between w-full gap-8">
+          <div className="hidden md:flex items-center justify-center w-full gap-8">
             {NAV_LINKS.map(({ label, href }) => {
               const active =
                 pathname === href || pathname.startsWith(href + "/");
@@ -89,7 +89,7 @@ export default function Navbar() {
             })}
           </div>
 
-          <Link href="/contact" className="btn-gradient ml-4">
+          <Link href="/contact" className="btn-gradient-sm ml-4">
               Get in Touch
             </Link>
 

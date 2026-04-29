@@ -188,6 +188,13 @@
     background-size: 200% 200%;
     animation: gradient-move 4s ease infinite;
   }
+
+  .btn-gradient-sm {
+    @apply inline-flex items-center justify-center gap-2 font-body text-xs font-bold tracking-wider uppercase transition-all duration-300 ease-in-out cursor-pointer select-none whitespace-nowrap outline-none no-underline px-4 py-3 text-white bg-gradient-to-tr from-[#ff8400] via-orange-600 to-yellow-500;
+
+    background-size: 200% 200%;
+    animation: gradient-move 4s ease infinite;
+  }
 }
 
 @utility btn-lg {
