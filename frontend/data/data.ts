@@ -260,12 +260,8 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Luxury Real Estate Trends Reshaping the Market in 2024',
     excerpt: 'From wellness-focused amenities to sustainable design, discover the defining trends that are shaping high-end residential real estate this year.',
     mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmWcqCGdfoRy2D5ChJcfQDwe4Aqr3CwUEVnZtvx9sME7GK_epkvqp.avif',
-    author: {
-      name: 'Alexandra Morrison',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop',
-      role: 'Senior Property Consultant',
-    },
-    category: 'Market Insights',
+
+
     publishedAt: '2024-03-08T10:00:00Z',
     readingTime: 6,
   },
@@ -275,12 +271,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'The Definitive Guide to Purchasing Your First Luxury Home',
     excerpt: 'Navigating the luxury real estate market requires a different playbook. Here\'s everything you need to know before making your move.',
     mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362598/QmdprfJvhYmtNr9U9JNbFjV75bT25xXmkUNkk9ePLxsPiP_mtbhvu.avif',
-    author: {
-      name: 'James Whitfield',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop',
-      role: 'Luxury Estates Specialist',
-    },
-    category: 'Buyer\'s Guide',
+
     publishedAt: '2024-02-22T10:00:00Z',
     readingTime: 9,
   },
@@ -290,12 +281,8 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard',
     excerpt: 'Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America\'s most coveted addresses.',
     mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362598/QmPr7ZsLPPoyeJgPpbw1KscGgAadrTdkxtHBDWMQRRW2N7_be2l5u.avif',
-    author: {
-      name: 'Sophia Chen',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop',
-      role: 'Residential Sales Expert',
-    },
-    category: 'Neighborhoods',
+
+
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
   },
@@ -306,43 +293,16 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'The Definitive Guide to Purchasing Your First Luxury Home',
     excerpt: 'Navigating the luxury real estate market requires a different playbook. Here\'s everything you need to know before making your move.',
     mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/Qmb8QFfcVgGXXSJjx7wjZQFCbiu8psPFp7iZk9SpkTHzf9_exscj3.avif',
-    author: {
-      name: 'James Whitfield',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop',
-      role: 'Luxury Estates Specialist',
-    },
-    category: 'Buyer\'s Guide',
+
     publishedAt: '2024-02-22T10:00:00Z',
     readingTime: 9,
   },
-  {
-    _id: 'blog-4',
-    slug: 'neighborhood-spotlight-brooklyn-heights',
-    title: 'Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard',
-    excerpt: 'Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America\'s most coveted addresses.',
-    mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmXX4NNBg9UnkSNhUnmEppHFhfcY1nSfeybs3SVPYmhaTW_cmelgo.avif',
-    author: {
-      name: 'Sophia Chen',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop',
-      role: 'Residential Sales Expert',
-    },
-    category: 'Neighborhoods',
-    publishedAt: '2024-02-10T10:00:00Z',
-    readingTime: 5,
-  },
-
   {
     _id: 'blog-5',
     slug: 'neighborhood-spotlight-brooklyn-heights',
     title: 'Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard',
     excerpt: 'Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America\'s most coveted addresses.',
-    mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362598/QmT56yUdVS7r9vXWyeZQBktDoVLeTLQz3xmm6YFbhCxHP4_hmpkrn.avif',
-    author: {
-      name: 'Sophia Chen',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop',
-      role: 'Residential Sales Expert',
-    },
-    category: 'Neighborhoods',
+    mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmXX4NNBg9UnkSNhUnmEppHFhfcY1nSfeybs3SVPYmhaTW_cmelgo.avif',
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
   },
@@ -352,13 +312,19 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'neighborhood-spotlight-brooklyn-heights',
     title: 'Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard',
     excerpt: 'Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America\'s most coveted addresses.',
+    mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362598/QmT56yUdVS7r9vXWyeZQBktDoVLeTLQz3xmm6YFbhCxHP4_hmpkrn.avif',
+
+    publishedAt: '2024-02-10T10:00:00Z',
+    readingTime: 5,
+  },
+
+  {
+    _id: 'blog-7',
+    slug: 'neighborhood-spotlight-brooklyn-heights',
+    title: 'Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard',
+    excerpt: 'Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America\'s most coveted addresses.',
     mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmaNkSh7suVAjasho4VzETvP9McqjL8cGpa8HvZdNfiHyY_eghmvq.avif',
-    author: {
-      name: 'Sophia Chen',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop',
-      role: 'Residential Sales Expert',
-    },
-    category: 'Neighborhoods',
+
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
   },

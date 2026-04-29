@@ -4,6 +4,7 @@ import { getAllPropertiesQueries, PROPERTY_BY_SLUG } from "../sanity/queries/pro
 import { Property } from "@/types";
 
 export async function getProperties(): Promise<Property[]> {
+  
   if (!isSanityConfigured || !client) return PROPERTIES;
 
   try {

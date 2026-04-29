@@ -20,6 +20,18 @@ export default defineType({
       },
     }),
     defineField({
+      name: "mainImage",
+      title: "Featured Image",
+      type: "image"
+    }),
+
+defineField({
+  name: "featured",
+  type: "boolean",
+  initialValue: false
+}),
+
+    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',

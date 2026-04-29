@@ -4,6 +4,8 @@
 // When you integrate Sanity, replace mock data with GROQ queries.
 // ============================================================
 
+import { PortableTextBlock } from "next-sanity";
+
 export interface SanityImage {
   _type: 'image';
   asset: {
@@ -91,16 +93,10 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  mainImage: SanityImage | string;
-  author: {
-    name: string;
-    photo: SanityImage | string;
-    role?: string;
-  };
-  category: string;
+  mainImage: string;
   publishedAt: string;
   readingTime?: number;
-  // body: PortableTextBlock[]; // Uncomment when Sanity is integrated
+  body: PortableTextBlock[]; // Uncomment when Sanity is integrated
 }
 
 export interface Testimonial {

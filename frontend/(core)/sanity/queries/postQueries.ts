@@ -1,39 +1,21 @@
 export const POST_QUERIES = `
 *[_type == "post"]{
-  _id,
-  title,
-  slug,
-  excerpt,
-  featuredImage{
-    asset->{
-      url
-    }
-  }
+...,
+  "excerpt": pt::text(body),
+  "slug": slug.current,
+  "mainImage": mainImage.asset->url
+    
+  
 }[0...20]
 `
 
 
 export const SINGLE_POST_QUERY = `
 *[_type == "post" && slug.current == $slug][0]{
-  _id,
-  title,
-  excerpt,
+  ...,
   "slug": slug.current,
-  publishedAt,
-  featuredImage{
-    asset->{
-      url
-    }
-  },
-  author{
-    name,
-    image{
-      asset->{
-        url
-      }
-    }
-  },
-  body
+  "mainImage": mainImage.asset->url,
+  body,
 }
 `;
 
