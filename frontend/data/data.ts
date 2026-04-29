@@ -264,6 +264,40 @@ export const BLOG_POSTS: BlogPost[] = [
 
     publishedAt: '2024-03-08T10:00:00Z',
     readingTime: 6,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
   {
     _id: 'blog-2',
@@ -274,6 +308,40 @@ export const BLOG_POSTS: BlogPost[] = [
 
     publishedAt: '2024-02-22T10:00:00Z',
     readingTime: 9,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
   {
     _id: 'blog-3',
@@ -285,6 +353,40 @@ export const BLOG_POSTS: BlogPost[] = [
 
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
 
   {
@@ -296,6 +398,40 @@ export const BLOG_POSTS: BlogPost[] = [
 
     publishedAt: '2024-02-22T10:00:00Z',
     readingTime: 9,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
   {
     _id: 'blog-5',
@@ -305,6 +441,40 @@ export const BLOG_POSTS: BlogPost[] = [
     mainImage: 'https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmXX4NNBg9UnkSNhUnmEppHFhfcY1nSfeybs3SVPYmhaTW_cmelgo.avif',
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
 
   {
@@ -316,6 +486,40 @@ export const BLOG_POSTS: BlogPost[] = [
 
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
 
   {
@@ -327,6 +531,40 @@ export const BLOG_POSTS: BlogPost[] = [
 
     publishedAt: '2024-02-10T10:00:00Z',
     readingTime: 5,
+    body: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "The luxury real estate market continues to evolve rapidly, driven by lifestyle shifts, remote work, and sustainability demands."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h2",
+        children: [
+          {
+            _type: "span",
+            text: "Wellness Becomes a Priority"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text:
+              "Buyers are now prioritizing wellness-focused amenities such as home spas, gyms, and natural lighting integration."
+          }
+        ]
+      }
+    ]
   },
 ];
 
