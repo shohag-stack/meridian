@@ -3,10 +3,14 @@ import { ArrowRight, Clock } from 'lucide-react';
 import { BLOG_POSTS, formatDate } from '@/data/data';
 import Image from 'next/image';
 import PostCard from '../ui/PostCard';
+import { getBlogs } from '@/(core)/fetch/getBlogs';
 
-export function BlogPreviewSection() {
+export default async function BlogPreviewSection() {
 
-  const featured = BLOG_POSTS.slice(0,3)
+  const blogPosts = await getBlogs();
+  
+    const featured = blogPosts.slice(0,3)
+
   return (
     <section className="section-cream">
       <div className="container-site">
