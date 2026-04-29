@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 export default function SmoothScrollWrapper({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   return <ReactLenis root>{children}</ReactLenis>;
 }
