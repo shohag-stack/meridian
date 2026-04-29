@@ -11,7 +11,7 @@ export default function TestimonialsSection() {
       <div className="container-site relative z-10">
         <div className="text-center mb-16">
           <span className="eyebrow block mb-3">Client Stories</span>
-          <h2 className="heading-1 mb-4">
+          <h2 className="heading-2 mb-4">
             What Our Clients <em className="italic">Say</em>
           </h2>
           <p className="text-neutral-700 font-semibold max-w-lg mx-auto leading-relaxed">
@@ -19,14 +19,14 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="flex gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {TESTIMONIALS.map(t => (
             <div
               key={t._id}
               className="relative rounded-2xl p-8 backdrop-blur-xs border border-neutral-200"
             >
 
-              <div className="flex items-center gap-4 mb-20 pb-8 border-b border-b-neutral-200">
+              <div className="flex items-center gap-4 mb-4 md:mb-20 pb-8 border-b border-b-neutral-200">
                 {t.photo && (
                   <img
                     src={typeof t.photo === 'string' ? t.photo : ''}

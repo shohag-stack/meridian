@@ -13,7 +13,7 @@ export default async function FeaturedProperties() {
         <div className="flex justify-between items-end mb-14 flex-wrap gap-6">
           <div>
             <span className="eyebrow block mb-3">Handpicked for You</span>
-            <h2 className="heading-1 text-neutral-900">
+            <h2 className="heading-2 text-neutral-900">
               Featured Listings
             </h2>
           </div>

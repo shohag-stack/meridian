@@ -50,7 +50,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="bg-white p-10">
+            <div className="bg-white p-4 md:p-10">
               {submitted ? (
                 <div className="text-center py-12 flex flex-col items-center gap-5">
                   <div className="w-18 h-18 rounded-full flex items-center justify-center"

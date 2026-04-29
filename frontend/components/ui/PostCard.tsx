@@ -21,7 +21,7 @@ export default function PostCard({post}: {post: BlogPost}) {
         />
       </div>
       <div className="p-6">
-        <h3 className="font-display text-2xl font-semibold text-neutral-900 leading-snug mb-3 line-clamp-2 group-hover:text-accent transition-all">
+        <h3 className="font-display heading-5 font-semibold text-neutral-900 leading-snug mb-3 line-clamp-2 group-hover:text-accent transition-all">
           {post.title}
         </h3>
       </div>

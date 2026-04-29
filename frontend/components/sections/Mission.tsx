@@ -8,7 +8,7 @@ export default function Mission() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div>
             <span className="eyebrow block mb-3">Our Mission</span>
-            <h2 className="heading-1 mb-6">
+            <h2 className="heading-2 mb-6">
               More Than Transactions We Build Legacies
             </h2>
             <p className="text-xl text-neutral-900 font-semibold leading-relaxed mb-5">

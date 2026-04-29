@@ -8,7 +8,7 @@ export default function Values() {
       <div className="w-full">
         <div className="text-center mb-16">
           <span className="eyebrow block mb-3">What Drives Us</span>
-          <h2 className="heading-1 text-neutral-50">Our Core Values</h2>
+          <h2 className="heading-2 text-neutral-50">Our Core Values</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {VALUES.map(({ image, title, description }) => (

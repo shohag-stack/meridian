@@ -4,21 +4,20 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
-import Image from 'next/image';
 import Logo from '../ui/Logo';
 
 const NAV_LINKS = [
   { label: 'Properties', href: '/properties' },
-  { label: 'About',      href: '/about'      },
-  { label: 'Blog',       href: '/blog'       },
-  { label: 'Contact',    href: '/contact'    },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isHome   = pathname === '/';
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,97 +25,119 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
-  /* transparent over hero only on home + not scrolled */
   const transparent = isHome && !scrolled && !open;
 
   return (
     <>
+      {/* NAVBAR */}
       <nav
         className={[
-          'fixed inset-x-0 top-0 z-50 transition-all duration-400',
+          'fixed inset-x-0 top-0 z-50 transition-all duration-300',
           scrolled || !isHome || open
-            ? 'bg-white/95 backdrop-blur-md'
+            ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200'
             : 'bg-transparent',
         ].join(' ')}
       >
-        <div className="container-site h-full flex items-center justify-between gap-20 border-b border-white/40 py-4">
+        <div className="container-site flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
-          <Link href="/" className="shrink-0 items-center gap-2 no-underline">
-            <Logo color={transparent ? "white" : "black"} />
+          <Link href="/" className="flex items-center">
+            <Logo color={transparent ? 'white' : 'black'} />
           </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex flex-1 items-center justify-between">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ label, href }) => {
-              const active = pathname === href || pathname.startsWith(href + '/');
+              const active =
+                pathname === href || pathname.startsWith(href + '/');
+
               return (
                 <Link
                   key={href}
                   href={href}
                   className={[
-                    'relative text-md font-semibold tracking-wide no-underline pb-1 transition-colors duration-250',
+                    'relative text-base font-medium transition-colors no-underline',
                     transparent
-                      ? active ? 'text-accent-light' : 'text-white/90'
-                      : active ? 'text-accent'       : 'text-neutral-900',
+                      ? active
+                        ? 'text-white'
+                        : 'text-white/80'
+                      : active
+                      ? 'text-accent'
+                      : 'text-neutral-900',
                   ].join(' ')}
                 >
                   {label}
                   {active && (
-                    <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-accent" />
+                    <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent rounded-full" />
                   )}
                 </Link>
               );
             })}
-          </div>
 
-          {/* Right side */}
-          <div className="shrink-0 items-center gap-4">
-            <Link href="/contact" className="btn-gradient hidden md:inline-flex">
+            <Link href="/contact" className="btn-gradient ml-4">
               Get in Touch
             </Link>
-
-            <button
-              onClick={() => setOpen(!open)}
-              className={[
-                'md:hidden p-1.5 rounded-sm transition-colors',
-                transparent ? 'text-white' : 'text-primary',
-              ].join(' ')}
-              aria-label="Toggle menu"
-            >
-              {open ? <X size={22} /> : <Menu size={22} />}
-            </button>
           </div>
+
+          {/* Mobile button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className={[
+              'md:hidden p-2 rounded-md transition-colors',
+              transparent ? 'text-white' : 'text-neutral-900',
+            ].join(' ')}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* MOBILE MENU */}
       <div
-        style={{ top: 'var(--spacing-navbar)' }}
         className={[
-          'fixed inset-x-0 bottom-0 z-40 bg-white flex flex-col',
-          'transition-transform duration-350 ease-(--ease-smooth)',
+          'fixed inset-0 z-40 bg-white transition-transform duration-300 md:hidden',
           open ? 'translate-x-0' : 'translate-x-full',
         ].join(' ')}
+        style={{ paddingTop: '5rem' }}
       >
-        <div className="flex flex-col px-6 pt-4 overflow-y-auto">
-          {NAV_LINKS.map(({ label, href }) => (
+        <div className="flex flex-col px-6">
+
+          {/* Links */}
+          <div className="flex flex-col gap-2">
+            {NAV_LINKS.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className={[
+                  'py-4 text-xl font-semibold border-b border-neutral-100 no-underline',
+                  pathname === href ? 'text-accent' : 'text-neutral-900',
+                ].join(' ')}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-10 flex flex-col gap-4">
             <Link
-              key={href}
-              href={href}
-              className={[
-                'py-5 font-display text-2xl font-semibold no-underline border-b border-neutral-100 transition-colors',
-                pathname === href ? 'text-accent' : 'text-neutral-900',
-              ].join(' ')}
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="btn btn-primary w-full"
             >
-              {label}
+              Get in Touch
             </Link>
-          ))}
-          <div className="flex flex-col gap-3 mt-8 pb-8">
-            <Link href="/contact" className="btn btn-primary btn-lg w-full">Get in Touch</Link>
-            <a href="tel:+15551234567" className="btn btn-ghost btn-lg w-full">
+
+            <a
+              href="tel:+15551234567"
+              className="btn btn-ghost w-full flex items-center justify-center gap-2"
+            >
               <Phone size={16} /> +1 (555) 123-4567
             </a>
           </div>

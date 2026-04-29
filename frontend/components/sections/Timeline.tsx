@@ -7,7 +7,7 @@ export default function Timeline() {
       <div className="container-site">
         <div className="text-center mb-16">
           <span className="eyebrow block mb-3">Our Journey</span>
-          <h2 className="heading-1">Milestones That Matter</h2>
+          <h2 className="heading-2">Milestones That Matter</h2>
         </div>
         <div className="max-w-2xl mx-auto relative">
           <div className="flex flex-col">

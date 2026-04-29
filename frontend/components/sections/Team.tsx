@@ -8,7 +8,7 @@ export default function Team() {
       <div className="container-site">
         <div className="text-center mb-16">
           <span className="eyebrow block mb-3">The People Behind It All</span>
-          <h2 className="heading-1">Meet Our Team</h2>
+          <h2 className="heading-2">Meet Our Team</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {AGENTS.map((agent) => (

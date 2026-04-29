@@ -35,7 +35,7 @@ export function StatsSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {STATS.map(({ value, label, description }) => (
             <div key={label} className="text-left px-4">
               <div className="font-display heading-3 font-medium leading-none mb-4">{value}</div>
@@ -59,7 +59,7 @@ export function WhyUsSection() {
           {/* Left copy */}
           <div>
             <span className="eyebrow block mb-3">Why Choose Us</span>
-            <h2 className="heading-1 text-neutral-900 mb-6">
+            <h2 className="heading-2 text-neutral-900 mb-6">
               The EstateHaven Difference
             </h2>
             <p className="text-lg font-medium text-neutral-700 leading-relaxed mt-6 mb-10">

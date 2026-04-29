@@ -13,7 +13,7 @@ export function BlogPreviewSection() {
         <div className="flex justify-between items-end mb-14 flex-wrap gap-6">
           <div>
             <span className="eyebrow block mb-3">Insights & Advice</span>
-            <h2 className="heading-1 text-neutral-900">
+            <h2 className="heading-2 text-neutral-900">
               Latest from Our Blog
             </h2>
           </div>

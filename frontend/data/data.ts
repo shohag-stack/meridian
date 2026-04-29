@@ -455,7 +455,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         _type: "block",
-        style: "h2",
+        style: "h3",
         children: [
           {
             _type: "span",
@@ -500,7 +500,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         _type: "block",
-        style: "h2",
+        style: "h3",
         children: [
           {
             _type: "span",

@@ -40,7 +40,7 @@ export default function HeroSection() {
       >
         <div className="max-w-3xl">
           {/* Headline */}
-          <h1 className="text-[50px] md:text-[120px] leading-30 text-white mb-6 opacity-0 animate-fade-in-up delay-200">
+          <h1 className="heading-1 leading-none md:text-[120px] md:leading-30 text-white mb-6 opacity-0 animate-fade-in-up delay-200">
             Find Your Dream Home
           </h1>
 
