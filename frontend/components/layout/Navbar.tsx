@@ -38,7 +38,7 @@ export default function Navbar() {
         className={[
           'fixed inset-x-0 top-0 z-50 transition-all duration-300',
           scrolled || !isHome || open
-            ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200'
+            ? 'bg-white/95 backdrop-blur-md'
             : 'bg-transparent',
         ].join(' ')}
       >
