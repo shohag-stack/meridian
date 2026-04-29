@@ -7,6 +7,7 @@ import { Menu, X, Phone } from "lucide-react";
 import Logo from "../ui/Logo";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "Properties", href: "/properties" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
@@ -42,14 +43,14 @@ export default function Navbar() {
             : "bg-transparent",
         ].join(" ")}
       >
-        <div className="container-site flex items-center justify-between h-16 md:h-20">
+        <div className="container-site flex items-center justify-between md:gap-40 h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Logo color={transparent ? "white" : "black"} />
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center justify-between w-full gap-8">
             {NAV_LINKS.map(({ label, href }) => {
               const active =
                 pathname === href || pathname.startsWith(href + "/");
@@ -69,14 +70,14 @@ export default function Navbar() {
                         : "text-neutral-900",
                   ].join(" ")}
                 >
-                  <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:-translate-y-3/6">
+                  <div className="flex flex-col transition-transform font-display duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:-translate-y-3/6">
                     {/* Original */}
-                    <div className="leading-[1.6] mb-2 line-clamp-1">
+                    <div className="leading-[1.6] line-clamp-1">
                       {label}
                     </div>
 
                     {/* Duplicate */}
-                    <div className="leading-[1.6] mb-2 line-clamp-2">
+                    <div className="leading-[1.6] line-clamp-2">
                       {label}
                     </div>
                   </div>
@@ -86,11 +87,11 @@ export default function Navbar() {
                 </Link>
               );
             })}
+          </div>
 
-            <Link href="/contact" className="btn-gradient ml-4">
+          <Link href="/contact" className="btn-gradient ml-4">
               Get in Touch
             </Link>
-          </div>
 
           {/* Mobile button */}
           <button

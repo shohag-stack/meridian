@@ -63,10 +63,10 @@ export default function HeroSection() {
                   key={s}
                   onClick={() => setStatus(s)}
                   className={[
-                    "btn btn-sm border-none transition-all duration-250",
+                    "btn btn-sm border-none font-semibold text-sm transition-all duration-250",
                     status === s
                       ? "bg-primary text-white"
-                      : "bg-transparent text-neutral-400",
+                      : "bg-transparent text-neutral-700",
                   ].join(" ")}
                 >
                   {s === "for-sale" ? "Buy" : "Rent"}
@@ -128,7 +128,7 @@ export default function HeroSection() {
 
             {/* Quick links */}
             <div className="flex gap-2 flex-wrap items-center">
-              <span className="text-xs text-neutral-400">Popular:</span>
+              <span className="text-sm text-neutral-700">Popular:</span>
               {[
                 "New York",
                 "Beverly Hills",
@@ -138,7 +138,7 @@ export default function HeroSection() {
                 <button
                   key={city}
                   onClick={() => router.push(`/properties?city=${city}`)}
-                  className="text-xs text-neutral-600 border border-neutral-200 px-3 py-1 bg-transparent cursor-pointer transition-all duration-200 hover:border-accent hover:text-accent"
+                  className="text-sm text-neutral-700 border border-neutral-200 px-3 py-1 bg-transparent cursor-pointer transition-all duration-200 hover:border-accent hover:text-accent"
                 >
                   {city}
                 </button>
