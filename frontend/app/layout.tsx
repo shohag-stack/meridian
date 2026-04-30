@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import SmoothScrollWrapper from "@/components/animation/LenisWrapper";
+import RaysoCta from "@/components/RaysoCta";
 
 export const metadata: Metadata = {
   title: {
@@ -43,8 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${brico_grotesque.variable}`}>
+        <RaysoCta />
         <Navbar />
-
         <main>
           <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
         </main>
