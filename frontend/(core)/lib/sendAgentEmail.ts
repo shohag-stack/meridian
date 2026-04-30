@@ -15,20 +15,15 @@ export async function sendAgentEmail(form: AgentForm, agent: PropertyAgent, titl
   const [firstName, ...rest] = form.name.split(" ")
   const lastName = rest.join(" ") || ""
 
-  console.log("sending mail to agent", agent.email)
-
   return await sendEmail({
-    firstName,
-    lastName,
+    name: form.name,
+    firstName: firstName,
+    lastName: lastName,
     email: form.email,
     phone: form.phone,
-    budget: "N/A",
-    hearAboutUs: `Agent Sidebar (${form.name || "Unknown"})`,
-    businessType: "Property Inquiry",
-    service: "Agent Contact",
-    website: "",
-    projectDetails: form.message,
+    message: form.message,
+    property: title,
     to: agent.email,
-    property: title
+    template: "agent"
   })
 }

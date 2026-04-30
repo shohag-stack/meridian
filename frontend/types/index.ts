@@ -1,3 +1,4 @@
+import { Message } from './../../node_modules/react-hook-form/dist/types/errors.d';
 // ============================================================
 // RAYSO.STUDIO — Real Estate Template Types
 // These interfaces mirror your Sanity CMS schema.
@@ -18,6 +19,31 @@ export interface SanityImage {
 
 export type PropertyStatus = 'for-sale' | 'for-rent' | 'sold' | 'off-market';
 export type PropertyType = 'house' | 'apartment' | 'condo' | 'villa' | 'penthouse' | 'townhouse' | 'land' | 'commercial';
+
+
+export interface Form {
+  name: string,
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  phone: string;
+  interest?: string;
+  subject?: string;
+  message?: string;
+  budget?: string;
+  to: string;
+  property?: string;
+  template: "agent" | "contact";
+}
+
+export interface ContactForm {
+  name: string,
+  email: string,
+  phone: string,
+  subject: string[],
+  message: string,
+  interest: string,
+}
 
 export interface PropertyAgent {
   _id: string;

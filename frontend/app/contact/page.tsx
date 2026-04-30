@@ -1,14 +1,34 @@
 'use client';
-
-import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
 import PageHeader from '@/components/sections/PageHeader';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Form } from '@/types';
+import { sendContactEmail } from '@/(core)/lib/sendContactEmail';
+import { useState } from 'react';
+
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '', interest: '' });
 
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const {register, handleSubmit,reset ,formState: {isSubmitting, isSubmitSuccessful}} = useForm<Form>()
+
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+
+  const onSubmit: SubmitHandler<Form> = async (value) => {
+    try{
+      const res = await sendContactEmail(value)
+      if(res.success){
+        setStatus('success');
+        reset()
+      }
+      else {
+        setStatus("idle")
+      }
+    }
+    catch(err){
+      console.log("error", err);
+      setStatus("idle");
+    } 
+  };
 
   return (
     <>
@@ -51,17 +71,17 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="bg-white p-4 md:p-10">
-              {submitted ? (
+              {isSubmitSuccessful ? (
                 <div className="text-center py-12 flex flex-col items-center gap-5">
                   <div className="w-18 h-18 rounded-full flex items-center justify-center"
                     style={{ background: 'rgba(45,122,79,0.1)' }}>
-                    <CheckCircle size={36} className="text-success" />
+                    <CheckCircle size={36} className="text-accent" />
                   </div>
                   <h3 className="heading-3">Message Sent!</h3>
                   <p className="text-neutral-500 max-w-sm">
                     Thank you for reaching out. One of our agents will be in touch within 24 hours.
                   </p>
-                  <button className="btn btn-secondary" onClick={() => setSubmitted(false)}>
+                  <button className="btn btn-secondary" onClick={() => reset()}>
                     Send Another Message
                   </button>
                 </div>
@@ -70,29 +90,25 @@ export default function ContactPage() {
                   <h2 className="heading-3 mb-1">Send Us a Message</h2>
                   <p className="text-sm text-neutral-500 mb-8">Fill out the form and we'll get back to you shortly.</p>
 
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                  <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="label-text">Full Name *</label>
-                        <input className="input" placeholder="John Smith" required
-                          value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                        <input className="input" placeholder="John Smith" {...register('name', {required: true})} />
                       </div>
                       <div>
                         <label className="label-text">Email Address *</label>
-                        <input className="input" type="email" placeholder="john@email.com" required
-                          value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                        <input className="input" type="email" placeholder="john@email.com" {...register("email", {required: true})} />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="label-text">Phone Number</label>
-                        <input className="input" type="tel" placeholder="+1 (555) 000-0000"
-                          value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
+                        <input className="input" type="tel" placeholder="+1 (555) 000-0000" {...register("phone", {required: true})}/>
                       </div>
                       <div>
                         <label className="label-text">I'm Interested In</label>
-                        <select className="input select" value={form.interest}
-                          onChange={e => setForm(f => ({ ...f, interest: e.target.value }))}>
+                        <select className="input select" {...register("interest")}>
                           <option value="">Select...</option>
                           <option value="buying">Buying a Property</option>
                           <option value="selling">Selling a Property</option>
@@ -104,18 +120,20 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="label-text">Subject</label>
-                      <input className="input" placeholder="How can we help you?"
-                        value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))} />
+                      <input className="input" placeholder="How can we help you?" {...register("subject")} />
                     </div>
                     <div>
                       <label className="label-text">Message *</label>
-                      <textarea className="input" rows={5} required
+                      <textarea className="input" rows={5}
                         placeholder="Tell us about your property goals, timeline, budget, or specific requirements..."
-                        style={{ resize: 'vertical' }}
-                        value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
+                        style={{ resize: 'vertical' }} {...register("message", {required: true})} />
                     </div>
-                    <button type="submit" className="btn btn-primary btn-lg w-full gap-2">
-                      <Send size={17} /> Send Message
+                    <button type="submit" className="btn btn-primary btn-lg w-full gap-2" disabled={status === "submitting"}>
+                      <Send size={17} /> {status === "submitting"
+                                            ? "Sending..."
+                                            : status === "success"
+                                            ? "Sent ✔"
+                                            : "Send Message"}
                     </button>
                     <p className="text-xs text-neutral-400 text-center">
                       By submitting, you agree to our Privacy Policy. We never share your information.

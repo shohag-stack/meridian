@@ -21,20 +21,30 @@ export default function Sidebar({
   agent: PropertyAgent;
   title: string;
 }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { isLoading, isSubmitSuccessful },
+    reset,
+  } = useForm<Inputs>();
 
 
-  const { register, handleSubmit,formState:{isLoading, isSubmitSuccessful}, reset } = useForm<Inputs>();
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">('idle')
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-
-    try{
-        const res = await sendAgentEmail(data, agent, title)
-        if(res.success === true) reset()
+    try {
+      const res = await sendAgentEmail(data, agent, title);
+      if (res.success === true){
+        setStatus('success')
+        reset()
+      }
+      else {
+        setStatus('idle')
+      };
+    } catch (err) {
+      console.log("error", err);
+      setStatus("idle");
     }
-    catch(err){
-        console.log('contacting with agent is faild', err)
-    }
-
-
   };
 
   return (
@@ -108,7 +118,13 @@ export default function Sidebar({
                 style={{ resize: "none" }}
                 {...register("message")}
               />
-              <button className="btn btn-primary w-full">{`${isLoading ? "Sending..." : isSubmitSuccessful? "Submited" : "Send Message" }`} </button>
+              <button className="btn btn-primary w-full" disabled={ status === "submitting"}>
+                {status === "submitting"
+                  ? "Sending..."
+                  : status === "success"
+                    ? "Sent ✔"
+                    : "Send Message"}{" "}
+              </button>
             </form>
 
             <div className="flex gap-3">
