@@ -63,10 +63,18 @@ export default function ContactPage() {
               </div>
 
               {/* Map placeholder */}
-              <div className="rounded-2xl border border-neutral-200 h-56 bg-neutral-100 flex flex-col items-center justify-center gap-3">
-                <MapPin size={30} className="text-accent" />
-                <span className="text-sm text-neutral-400">Map integration goes here</span>
-              </div>
+              <div className="rounded-xl overflow-hidden border border-neutral-200 h-56">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(
+                      `new york`
+                    )}&output=embed`}
+                  />
+                </div>
             </div>
 
             {/* Form */}
