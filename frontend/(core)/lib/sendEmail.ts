@@ -15,6 +15,8 @@ interface Form {
   website: string;
   projectDetails: string;
   budget: string;
+  to: string;
+  property: string
 }
 
 export default async function sendEmail(form: Form) {
@@ -24,12 +26,12 @@ export default async function sendEmail(form: Form) {
     email,
     phone,
     budget,
-    hearAboutUs,
     projectDetails,
+    property
   } = form;
   const fullName = `${firstName} ${lastName}`;
 
-  const toEmail = process.env.CONTACT_EMAIL;
+  const toEmail = form.to;
   const fromEmail = process.env.RESEND_FROM_EMAIL;
 
   if (!toEmail) {
@@ -48,14 +50,33 @@ export default async function sendEmail(form: Form) {
       to: toEmail,
       subject: `New inquiry from ${fullName}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Budget:</strong> ${budget}</p>
-        <p><strong>How they heard about us:</strong> ${hearAboutUs}</p>
-        <p><strong>Project Details:</strong></p>
-        <p>${projectDetails}</p>
+        <h2>🏡 New Property Inquiry</h2>
+
+          <p>You have received a new inquiry from a potential buyer.</p>
+
+          <hr />
+
+          <h3>👤 Contact Details</h3>
+          <p><strong>Name:</strong> ${fullName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+
+          <hr />
+
+          <h3>📌 Inquiry Details</h3>
+          <p><strong>Property:</strong> ${property}</p>
+          <p><strong>Budget:</strong> ${budget}</p>
+
+          <p><strong>Message:</strong></p>
+          <p style="background:#f5f5f5; padding:10px; border-radius:6px;">
+            ${projectDetails}
+          </p>
+
+          <hr />
+
+          <p style="font-size:12px; color:#777;">
+            You can reply directly to this email to respond to the client.
+          </p>
       `,
     });
     console.log(res);

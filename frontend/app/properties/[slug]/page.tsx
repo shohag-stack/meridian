@@ -8,8 +8,6 @@ import {
   MapPin,
   Calendar,
   CheckCircle,
-  Phone,
-  Mail,
   Share2,
   Heart,
   ChevronRight,
@@ -22,10 +20,10 @@ import {
   formatDate,
 } from "@/data/data";
 import type { Metadata } from "next";
-import Image from "next/image";
 import PropertySlider from "@/components/sections/PropertySlider";
 import { SliderImage } from "@/types";
 import { getProperties, getPropertyBySlug } from "@/(core)/fetch/getProperties";
+import Sidebar from "@/components/ui/Sidebar";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -50,16 +48,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PropertyPage({ params }: Props) {
   const { slug } = await params;
-  const property = await getPropertyBySlug({slug})
-
-
-  console.log("showing single property from slug page", property)
-
-
+  const property = await getPropertyBySlug({ slug });
 
   if (!property) notFound();
 
-  const agent = property.agent;
 
   const gallery: SliderImage[] = [
     ...(typeof property.mainImage === "string"
@@ -67,9 +59,6 @@ export default async function PropertyPage({ params }: Props) {
       : []),
     ...(property.gallery ?? []),
   ];
-
-
-  console.log("showing gallery images", gallery)
 
   const related = PROPERTIES.filter(
     (p) => p._id !== property._id && p.city === property.city,
@@ -278,115 +267,7 @@ export default async function PropertyPage({ params }: Props) {
           </div>
 
           {/* ─── RIGHT SIDEBAR ────────────────────────────────── */}
-          <div
-            className="sticky"
-            style={{ top: "calc(var(--spacing-navbar) + 2rem)" }}
-          >
-            {agent && (
-              <div className="bg-white overflow-hidden mb-5">
-                {/* Top accent bar */}
-                <div
-                  className="h-1.5"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, var(--color-primary), var(--color-accent))",
-                  }}
-                />
-                <div className="p-7">
-                  <div className="flex gap-4 items-center mb-6">
-                    <Image
-                      src={agent.photo || "/placeholder.png"}
-                      alt={agent.name}
-                      className=" w-16 h-16 rounded-full object-cover border-2 border-accent"
-                      width={70}
-                      height={70}
-                    />
-                    <div>
-                      <div className="font-display font-semibold text-lg text-neutral-900">
-                        {agent.name}
-                      </div>
-                      <div className="text-md text-neutral-700 mb-1">
-                        {agent.title}
-                      </div>
-                      <div className="flex gap-4">
-                        
-                          <span className="text-sm text-neutral-700">
-                            <b className="text-primary">{agent.listings}</b>{" "}
-                            listings
-                          </span>
-
-                          <span className="text-sm text-neutral-700">
-                            <b className="text-primary">
-                              {agent.soldProperties}
-                            </b>{" "}
-                              sold
-                          </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-3 mb-4">
-                    <input className="input" placeholder="Your Name" />
-                    <input
-                      className="input"
-                      type="email"
-                      placeholder="Email Address"
-                    />
-                    <input
-                      className="input"
-                      type="tel"
-                      placeholder="Phone Number"
-                    />
-                    <textarea
-                      className="input"
-                      rows={3}
-                      placeholder={`I'm interested in ${property.title}...`}
-                      style={{ resize: "none" }}
-                    />
-                    <button className="btn btn-primary w-full">
-                      Send Message
-                    </button>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <a
-                      href={`tel:${agent.phone}`}
-                      className="btn btn-secondary btn-sm flex-1 gap-1.5"
-                    >
-                      <Phone size={13} /> Call
-                    </a>
-                    <a
-                      href={`mailto:${agent.email}`}
-                      className="btn btn-secondary btn-sm flex-1 gap-1.5"
-                    >
-                      <Mail size={13} /> Email
-                    </a>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Schedule tour */}
-            <div className="bg-white p-7 text-white">
-              <h3 className="font-display text-neutral-900 text-xl font-semibold mb-2">
-                Schedule a Tour
-              </h3>
-              <p className="text-sm text-neutral-700 leading-relaxed mb-6">
-                See this property in person. Our agents are available 7 days a
-                week.
-              </p>
-              <Link
-                href="/contact"
-                className="btn btn-primary w-full"
-                style={{
-                  background: "var(--color-accent)",
-                  borderColor: "var(--color-accent)",
-                }}
-              >
-                Book a Viewing
-              </Link>
-            </div>
-          </div>
+          <Sidebar agent={property.agent} title={property.title} />
         </div>
 
         {/* Related */}

@@ -3,7 +3,7 @@ import FeaturedProperties from '@/components/sections/FeaturedProperties';
 import { StatsSection, WhyUsSection } from '@/components/sections/WhyUsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import BlogPreviewSection  from '@/components/sections/BlogAndCTA';
-import CTASection from '@/components/Footer';
+import CTASection from '@/components/sections/CTASection';
 
 export default function HomePage() {
   return (

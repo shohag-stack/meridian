@@ -29,6 +29,8 @@ gallery[]{
 agent->{
   _id,
   name,
+  email,
+  phone,
   title,
   "photo": photo.asset->url,
   "listings": count(*[_type == "property" && agent._ref == ^._id && status != "sold"]),

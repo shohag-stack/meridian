@@ -99,13 +99,13 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container-site py-5 flex flex-wrap justify-between items-center gap-4">
-          <p className="text-xs text-white/35">
+          <p className="text-sm text-white/35">
             © {new Date().getFullYear()} EstateHaven. All rights reserved. Template by{' '}
             <a href="https://rayso.studio" className="text-accent no-underline">rayso.studio</a>
           </p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(item => (
-              <Link key={item} href="#" className="text-xs text-white/35 no-underline hover:text-white/60 transition-colors">
+              <Link key={item} href="#" className="text-sm text-white/35 no-underline hover:text-white/60 transition-colors">
                 {item}
               </Link>
             ))}

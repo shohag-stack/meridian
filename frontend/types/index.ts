@@ -75,7 +75,7 @@ export interface Property {
   amenities?: string[];
   
   // Relations
-  agent?: PropertyAgent;
+  agent: PropertyAgent;
   
   // Meta
   createdAt: string;
