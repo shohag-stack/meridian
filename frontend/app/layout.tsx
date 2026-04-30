@@ -8,7 +8,7 @@ import RaysoCta from "@/components/RaysoCta";
 
 export const metadata: Metadata = {
   title: {
-    default: "EstateHaven — Premium Real Estate",
+    default: "EstateHaven — Premium Real Estate nextjs Template",
     template: "%s | EstateHaven",
   },
   description:
