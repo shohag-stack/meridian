@@ -18,10 +18,7 @@ export default async function sendEmail(form: Form) {
   } = form;
   const fullName = `${firstName} ${lastName}`;
 
-const toEmail =
-  form.template === "agent"
-    ? to
-    : process.env.CONTACT_EMAIL!;
+const toEmail = process.env.CONTACT_EMAIL!;
 
   const fromEmail = process.env.RESEND_FROM_EMAIL;
 
@@ -35,37 +32,7 @@ const toEmail =
     );
   }
 
-const html =
-  form.template === "agent"
-    ? `
-      <h2>🏡 New Property Inquiry</h2>
-
-      <p>You have received a new inquiry from a potential buyer.</p>
-
-      <hr />
-
-      <h3>👤 Contact Details</h3>
-      <p><strong>Name:</strong> ${fullName}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-
-      <hr />
-
-      <h3>📌 Inquiry Details</h3>
-      <p><strong>Property:</strong> ${property}</p>
-
-      <p><strong>Message:</strong></p>
-      <p style="background:#f5f5f5; padding:10px; border-radius:6px;">
-        ${message}
-      </p>
-
-      <hr />
-
-      <p style="font-size:12px; color:#777;">
-        You can reply directly to this email to respond to the client.
-      </p>
-    `
-    : `
+const html =`
       <h2 style="margin-bottom: 8px;">📩 New Contact Message</h2>
 <p style="color:#666; margin-top:0;">
   You’ve received a new message from your website contact form.
