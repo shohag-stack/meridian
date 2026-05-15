@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import PropertiesClient from './PropertiesClient';
-import { getProperties } from '@/(core)/fetch/getProperties';
+import { getAccommodations } from '@/(core)/fetch/getAccomodations';
 
 export default async function PropertiesPage() {
 
-  const properties = await getProperties()
+  const properties = await getAccommodations()
 
   console.log("showing properties from property page", properties)
 
@@ -14,7 +14,6 @@ export default async function PropertiesPage() {
         <div className="text-neutral-400">Loading properties…</div>
       </div>
     }>
-      <PropertiesClient properties={properties} />
     </Suspense>
   );
 }

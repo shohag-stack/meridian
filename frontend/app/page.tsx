@@ -1,20 +1,13 @@
 import HeroSection from '@/components/sections/HeroSection';
-import FeaturedProperties from '@/components/sections/FeaturedProperties';
-import { StatsSection, WhyUsSection } from '@/components/sections/WhyUsSection';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import BlogPreviewSection  from '@/components/sections/BlogAndCTA';
-import CTASection from '@/components/sections/CTASection';
+import Accommodations from '@/components/sections/Accomodations';
+import AccommodationSlider from '@/components/sections/AccommodationSlider';
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <FeaturedProperties />
-      <StatsSection />
-      <WhyUsSection />
-      <TestimonialsSection />
-      <BlogPreviewSection />
-      <CTASection />
+      <Accommodations />
     </>
   );
 }

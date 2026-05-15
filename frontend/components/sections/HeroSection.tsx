@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, MapPin } from "lucide-react";
 
@@ -10,6 +10,7 @@ export default function HeroSection() {
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [budget, setBudget] = useState("");
+  const [scrollY, setScrollY] = useState(0);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,130 +22,59 @@ export default function HeroSection() {
     router.push(`/properties?${p.toString()}`);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        backgroundImage:
-          "url('/img/hero.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      // style={{
+      //   backgroundImage:
+      //     "url('/img/hero.jpg')",
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      // }}
     >
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/videos/hero.mp4"
+        autoPlay
+        muted
+        playsInline
+        loop
+        style={{
+          transform: `translateY(${scrollY * 0.25}px)`,
+        }}
+      />
       {/* overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/10" />
 
       <div
-        className="container-site relative z-10 w-full"
+        className="container mx-auto absolute z-10 min-w-full"
         style={{ paddingTop: "var(--spacing-navbar)" }}
       >
-        <div className="max-w-3xl">
+        <div className="mx-auto text-center flex flex-col items-center" style={{
+
+    transform: `translateY(${scrollY * 0.5}px)`,
+
+  }}>
           {/* Headline */}
-          <h1 className="heading-1 leading-none md:text-[120px] md:leading-30 text-white mb-6 opacity-0 animate-fade-in-up delay-200">
-            Find Your Dream Home
+          <h1 className="heading-1 text-center leading-none md:text-[300px] md:leading-50 font-serif text-white mb-6 opacity-0 animate-fade-in-up delay-200">
+            Meridian
           </h1>
 
-          <p className="text-xl font-semibold text-white leading-relaxed max-w-2xl mb-12 opacity-0 animate-fade-in-up delay-300">
-            These should help convey a sense of aspiration and possibility,
-            which are often associated with the real estate market.
+          <p className="text-2xl text-center text-white max-w-3xl mb-12 opacity-0 animate-fade-in-up delay-300">
+            Book your dream vacation today and let us take care of the rest.
           </p>
-        </div>
-
-        <div className="max-w-7xl">
-          {/* Search widget */}
-          <div
-            className="bg-white/97 backdrop-blur-xl p-7 opacity-0 animate-fade-in-up delay-400"
-            style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.25)" }}
-          >
-            {/* Buy / Rent toggle */}
-            <div className="flex gap-1 p-1 bg-neutral-100 w-fit mb-6">
-              {(["for-sale", "for-rent"] as const).map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setStatus(s)}
-                  className={[
-                    "btn btn-sm border-none font-semibold text-sm transition-all duration-250",
-                    status === s
-                      ? "bg-primary text-white"
-                      : "bg-transparent text-neutral-700",
-                  ].join(" ")}
-                >
-                  {s === "for-sale" ? "Buy" : "Rent"}
-                </button>
-              ))}
-            </div>
-
-            <form onSubmit={handleSearch}>
-              <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_auto] gap-3 mb-3">
-                {/* Location */}
-                <div className="relative">
-                  <MapPin
-                    size={14}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none"
-                  />
-                  <input
-                    className="input pl-9"
-                    placeholder="City or neighborhood"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                  />
-                </div>
-                {/* Type */}
-                <select
-                  className="input select"
-                  value={propertyType}
-                  onChange={(e) => setPropertyType(e.target.value)}
-                >
-                  <option value="">Property Type</option>
-                  <option value="house">House</option>
-                  <option value="apartment">Apartment</option>
-                  <option value="condo">Condo</option>
-                  <option value="villa">Villa</option>
-                  <option value="penthouse">Penthouse</option>
-                  <option value="townhouse">Townhouse</option>
-                </select>
-                {/* Budget */}
-                <select
-                  className="input select"
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                >
-                  <option value="">Max Budget</option>
-                  <option value="500000">$500K</option>
-                  <option value="1000000">$1M</option>
-                  <option value="2000000">$2M</option>
-                  <option value="5000000">$5M</option>
-                  <option value="10000000">$10M+</option>
-                </select>
-                {/* CTA */}
-                <button
-                  type="submit"
-                  className="btn btn-primary whitespace-nowrap"
-                >
-                  <Search size={15} /> Search
-                </button>
-              </div>
-            </form>
-
-            {/* Quick links */}
-            <div className="flex gap-2 flex-wrap items-center">
-              <span className="text-sm text-neutral-700">Popular:</span>
-              {[
-                "New York",
-                "Beverly Hills",
-                "Miami Beach",
-                "San Francisco",
-              ].map((city) => (
-                <button
-                  key={city}
-                  onClick={() => router.push(`/properties?city=${city}`)}
-                  className="text-sm text-neutral-700 border border-neutral-200 px-3 py-1 bg-transparent cursor-pointer transition-all duration-200 hover:border-accent hover:text-accent"
-                >
-                  {city}
-                </button>
-              ))}
-            </div>
-          </div>
+          {/* Button */}
+          <button className="btn btn-secondary-outlined"> Book Rooms </button>
         </div>
       </div>
     </section>

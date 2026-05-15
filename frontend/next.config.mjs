@@ -9,6 +9,8 @@ const nextConfig = {
         }, 
         {
             hostname: "cdn.sanity.io"
+        },{
+            hostname: "assets.lummi.ai"
         }
     ]
     }

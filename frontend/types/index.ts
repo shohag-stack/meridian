@@ -1,3 +1,4 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { Message } from './../../node_modules/react-hook-form/dist/types/errors.d';
 // ============================================================
 // RAYSO.STUDIO — Real Estate Template Types
@@ -33,7 +34,6 @@ export interface Form {
   budget?: string;
   to: string;
   property?: string;
-  template: "agent" | "contact";
 }
 
 export interface ContactForm {
@@ -45,70 +45,61 @@ export interface ContactForm {
   interest: string,
 }
 
-export interface PropertyAgent {
-  _id: string;
-  name: string;
-  title: string;
-  phone: string;
-  email: string;
-  photo?: string;
-  bio?: string;
-  listings?: number;
-  soldProperties?: number;
-}
 
-export interface PropertyFeature {
+export interface amenities {
   icon: string;
-  label: string;
+  title: string;
+  description: string;
 }
 
-export interface Property {
+export interface Accommodation {
   _id: string;
   slug: string;
+
+  // Basic
   title: string;
-  status: PropertyStatus;
-  type: PropertyType;
-  price: number;
-  priceFrequency?: 'month' | 'year' | null; // for rentals
-  featured: boolean;
-  newListing: boolean;
-  
-  // Location
-  address: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  neighborhood?: string;
-  coordinates?: { lat: number; lng: number };
-  
-  // Details
-  bedrooms: number;
-  bathrooms: number;
-  garages?: number;
-  area: number; // sqft
-  lotSize?: number; // sqft
-  yearBuilt?: number;
-  floors?: number;
-  
+  subTitle?: string;
+  type:
+    | "villa"
+    | "suite"
+    | "deluxe-room"
+    | "ocean-view-room"
+    | "bungalow"
+    | "presidential-suite";
+
+  featured?: boolean;
+  face: string;
+
+
+  // Capacity
+  guests: number;
+  bedrooms?: number;
+  bathrooms?: number;
+  roomSize?: number; // sqft or sqm
+  beds?: string;
+
+
   // Media
-  mainImage: SanityImage | string;
+  mainImage: StaticImport | string;
   gallery?: SliderImage[];
-  
+
   // Content
-  description: string;
   shortDescription?: string;
+  description: string;
+
   features?: string[];
-  amenities?: string[];
-  
-  // Relations
-  agent: PropertyAgent;
-  
+  amenities?: amenities[];
+
+  // Booking
+  availability?: "available" | "limited" | "booked";
+
   // Meta
   createdAt: string;
   updatedAt: string;
 }
 
 export type SliderImage = {
+  label?: string;
   asset: {
     url: string;
   };

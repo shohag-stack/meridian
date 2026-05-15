@@ -2,36 +2,44 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Bricolage_Grotesque, Manrope } from "next/font/google";
+import { Playfair_Display, Italiana, Inter} from "next/font/google";
 import SmoothScrollWrapper from "@/components/animation/LenisWrapper";
 import RaysoCta from "@/components/RaysoCta";
+import { Weight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: {
-    default: "EstateHaven — Premium Real Estate nextjs Template",
-    template: "%s | EstateHaven",
+    default: "Meridian — Premium Restaurant nextjs Template",
+    template: "%s | Meridian",
   },
   description:
-    "Discover exceptional properties with EstateHaven. Luxury homes, penthouses, villas, and more — expertly curated for discerning buyers.",
+    "Discover exceptional restaurants with Meridian. Fine dining, unique experiences, and more — expertly curated for discerning diners.",
   keywords: [
-    "real estate",
-    "luxury homes",
-    "property for sale",
-    "property for rent",
+    "restaurants",
+    "fine dining",
+    "culinary experiences",
+    "food and beverage",
   ],
   openGraph: {
-    title: "EstateHaven — Premium Real Estate",
-    description: "Discover exceptional properties with EstateHaven.",
+    title: "Meridian — Premium Restaurant",
+    description: "Make your vaccation memorable with Meridian. Book your table now!",
     type: "website",
   },
 };
 
-const brico_grotesque = Bricolage_Grotesque({
-  variable: "--font-sans",
+const italiana = Italiana({
+  variable: "--font-serif",
+  weight: "400",
   subsets: ["latin"],
-});
+})
 
-const manrope = Manrope({
+const playfair_Display = Playfair_Display({
+  variable: "--font-display",
+  weight: "500",
+  subsets: ["latin"],
+})
+
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -43,7 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${brico_grotesque.variable}`}>
+      <body className={`${playfair_Display.variable} ${italiana.variable} ${inter.variable}`}>
         <RaysoCta />
         <Navbar />
         <main>
