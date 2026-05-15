@@ -13,6 +13,5 @@ export async function sendContactEmail(form: Form) {
     firstName,
     lastName,
     subject: `New contact from ${form.firstName}`,
-    template: "contact",
   });
 }
