@@ -1,6 +1,5 @@
 "use client";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
-import PageHeader from "@/components/sections/PageHeader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Form } from "@/types";
 import { sendContactEmail } from "@/(core)/lib/sendContactEmail";
@@ -35,12 +34,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHeader
-        path="/img/listingbg1.png"
-        title="Get in Touch"
-        eyebrow="Reach Out"
-        subtitle="Whether you're ready to buy, sell, or simply explore your options — our team is here to help."
-      />
 
       <section className="section-cream">
         <div className="container-site">

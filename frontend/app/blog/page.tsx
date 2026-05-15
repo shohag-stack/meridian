@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHeader from "@/components/sections/PageHeader";
 import PostCard from "@/components/ui/PostCard";
 import Image from "next/image";
 import {getBlogs, getBlogBySlug} from "@/(core)/fetch/getBlogs";
@@ -21,13 +20,6 @@ export default async function BlogPage() {
 
   return (
     <>
-      {/* Header */}
-      <PageHeader
-        eyebrow="The eastern heaven blog"
-        title="Insights & Advice"
-        subtitle="Market intelligence, expert advice, and stories from the world of real estate."
-        path="/img/listingbg1.png"
-      />
       <section className="section">
         <div className="container-site">
           {/* Featured post */}
