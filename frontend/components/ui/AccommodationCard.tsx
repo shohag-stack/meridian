@@ -20,11 +20,6 @@ export default function AccommodationCard({
       ? accommodation.mainImage
       : "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80";
 
-  const price = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: accommodation.currency || "USD",
-    maximumFractionDigits: 0,
-  }).format(accommodation.pricePerNight);
 
   if (variant === "horizontal") {
     return (
@@ -50,21 +45,10 @@ export default function AccommodationCard({
             </span>
           </div>
 
-          {/* Price */}
-          <div className="absolute bottom-4 left-4">
-            <span className="font-display text-2xl text-white font-semibold">
-              {price}
-            </span>
-
-            <p className="text-white/80 text-sm">per night</p>
-          </div>
         </div>
 
         {/* Content */}
         <div className="p-6 flex flex-col justify-center flex-1">
-          <span className="eyebrow mb-2">
-            {accommodation.resortName}
-          </span>
 
           <h3 className="heading-5 text-neutral-900 mb-3">
             {accommodation.title}
@@ -107,12 +91,6 @@ export default function AccommodationCard({
             )}
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm text-neutral-500">
-            <MapPin size={16} />
-            <span>
-              {accommodation.city}, {accommodation.country}
-            </span>
-          </div>
         </div>
       </Link>
     );
@@ -144,11 +122,11 @@ export default function AccommodationCard({
             {accommodation.type.replace("-", " ")}
           </span>
 
-          {accommodation.newArrival && (
+          {/* {accommodation.newArrival && (
             <span className="badge badge-featured">
               New
             </span>
-          )}
+          )} */}
         </div>
       </div>
 
