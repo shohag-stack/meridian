@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Bed, Bath, Square, MapPin, Users } from "lucide-react";
+import { Bed, Bath, Square, Users } from "lucide-react";
 import type { Accommodation } from "@/types";
 import { StatItem } from "./StatItem";
 
@@ -122,11 +122,6 @@ export default function AccommodationCard({
             {accommodation.type.replace("-", " ")}
           </span>
 
-          {/* {accommodation.newArrival && (
-            <span className="badge badge-featured">
-              New
-            </span>
-          )} */}
         </div>
       </div>
 

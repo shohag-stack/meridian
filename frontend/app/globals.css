@@ -236,6 +236,14 @@
   }
 }
 
+@utility btn-static {
+  @apply bg-(--color-primary-light) text-white;
+
+  &:hover {
+    @apply bg-(--color-primary) text-white;
+  }
+}
+
 @utility btn-secondary-outlined {
   @apply bg-transparent text-neutral-50 border-1 border-neutral-50;
 

@@ -1,15 +1,37 @@
-import { amenities } from "@/types";
 import { Accommodation } from "@/types";
 import Wifi from "@/components/icons/Wifi";
 import Bathroom from "@/components/icons/Bathroom";
 import Hairdryer from "../icons/Hairdryer";
 import Tv from "../icons/Tv";
+import Desk from "../icons/Desk";
+import ShowerHead from "../icons/ShowerHead";
+import slippers from "../icons/slippers";
+import Curtains from "../icons/Curtains";
+import Bathrobes from "../icons/Bathrobes";
+import Balcony from "../icons/Balcony";
+import Ac from "../icons/Ac";
+import NonSmoking from "../icons/NonSmoking";
+import Refrigerator from "../icons/Refrigerator";
+import Towel from "../icons/Towel";
+import Kettle from "../icons/Kettle";
 
 const amenityIcons: Record<string, any> = {
   wifi: Wifi,
   bath: Bathroom,
   hairdryer: Hairdryer,
   tv: Tv,
+  desk: Desk,
+  showerHead: ShowerHead,
+  slippers: slippers,
+  curtains: Curtains,
+  bathrobes: Bathrobes,
+  balcony: Balcony,
+  ac: Ac,
+  nonSmoking: NonSmoking,
+  refrigerator: Refrigerator,
+  towel: Towel,
+  kettle: Kettle
+
 };
 
 export default function AccommodationAmenities({

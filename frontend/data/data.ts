@@ -90,6 +90,17 @@ export const ACCOMMODATION: Accommodation[] = [
         title: "Bathroom",
         description: "Private bathroom",
       },
+      {
+        icon: "desk",
+        title: "Practicle - Phone,safe, and desk",
+        description: "Phone, safe, and desk",
+      },
+
+      {
+        icon: "hairdryer",
+        title: "Hair Dryer",
+        description: "Free hair dryer",
+      },
 
       {
         icon: "tv",
@@ -97,10 +108,56 @@ export const ACCOMMODATION: Accommodation[] = [
         description: "Cable channels and smart TV",
       },
       {
-        icon: "hairdryer",
-        title: "Hair Dryer",
-        description: "Free hair dryer",
+        icon: "showerHead",
+        title: "Shower Head",
+        description: "Rain shower with movable shower head",
       },
+      {
+        icon: "slippers",
+        title: "Slippers",
+        description: "Comfortable slippers for your stay",
+      }, {
+        icon: "curtains",
+        title: "Blackout Curtains",
+        description: "Sleep - Blackout drapes and curtains"
+      },
+      {
+        icon: "bathrobes",
+        title: "Bathrobes",
+        description: "Soft bathrobes for your comfort",
+      },
+      {
+        icon: "balcony",
+        title: "Private balcony",
+        description: "Enjoy your own outdoor space with stunning views",
+      },
+      {
+        icon: "ac",
+        title: "Air Conditioning",
+        description: "Comfort - Air conditioning and daily housekeeping",
+      },
+      {
+        icon: "nonSmoking",
+        title: "Non-smoking",
+        description: "Non-smoking rooms"
+      },
+      {
+        icon: "refrigerator",
+        title: "Refrigerator",
+        description: "Refrigerator and complimentary water"
+      },
+      {
+        icon: "towel",
+        title: "Towels",
+        description: "Beach bag and pool towel"
+      },
+      {
+        icon: "kettle",
+        title: "Kettle",
+        description: "Coffee and tea tray set with kettle"
+      },
+
+
     ],
 
     availability: "available",
