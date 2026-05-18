@@ -70,9 +70,9 @@ export interface Accommodation {
   featured?: boolean;
   face: string;
 
-
   // Capacity
   guests: number;
+  maxGuests?: number;
   bedrooms?: number;
   bathrooms?: number;
   roomSize?: number; // sqft or sqm
@@ -154,4 +154,40 @@ export interface PropertyFilters {
   minArea?: number;
   maxArea?: number;
   sortBy?: 'price-asc' | 'price-desc' | 'newest' | 'oldest' | 'area-asc' | 'area-desc';
+}
+
+
+export interface BookingFormValues {
+  adults: number;
+  children: number;
+  checkIn: string;
+  checkOut: string;
+  promoCode: string;
+}
+
+
+export interface CounterProps {
+  label: string;
+  value: number;
+  min?: number;
+  max?: number;
+  onChange: (v: number) => void;
+}
+
+export interface DateFieldProps {
+  label: string;
+  value: string;
+  min?: string;
+  onChange: (v: string) => void;
+  onBlur: () => void;
+  error?: string;
+  name: string;
+}
+
+export interface SearchParams {
+  checkIn?:  string;
+  checkOut?: string;
+  adults?:   string;
+  children?: string;
+  promo?:    string;
 }

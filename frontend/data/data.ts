@@ -77,6 +77,7 @@ export const ACCOMMODATION: Accommodation[] = [
       "Direct Lagoon Access",
       "Sunset Lounge Deck",
     ],
+    maxGuests: 4,
 
     amenities: [
       {

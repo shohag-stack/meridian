@@ -168,7 +168,7 @@ export default function AccommodationCard({
 
         {/* Description */}
         <div className="flex items-center gap-1.5">
-          <span className="text-md text-neutral-700 line-clamp-3 mb-8">
+          <span className="text-md text-neutral-700 line-clamp-3">
             {accommodation.description}
           </span>
         </div>

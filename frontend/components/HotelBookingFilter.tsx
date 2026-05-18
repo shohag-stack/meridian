@@ -2,84 +2,14 @@
 
 import { useForm, Controller } from "react-hook-form";
 import { useState, useRef, useEffect } from "react";
+import GuestsIcon from "./icons/GuestsIcon";
+import PromoCode from "./icons/PromoCode";
+import { toISODate } from "@/app/utilis";
+import { BookingFormValues } from "@/types";
+import { DateField } from "./ui/DateField";
+import { Counter } from "./ui/Counter";
+import { useRouter } from "next/navigation";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
-interface BookingFormValues {
-  adults: number;
-  children: number;
-  checkIn: string;
-  checkOut: string;
-  promoCode: string;
-}
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-function formatDate(iso: string) {
-  if (!iso) return "";
-  const d = new Date(iso + "T00:00:00");
-  return d.toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
-function toISODate(offsetDays = 0) {
-  const d = new Date();
-  d.setDate(d.getDate() + offsetDays);
-  return d.toISOString().split("T")[0];
-}
-
-// ── Icons ─────────────────────────────────────────────────────────────────────
-const GuestIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="7" r="4" />
-    <path d="M5.5 21a8.38 8.38 0 0 1 13 0" />
-  </svg>
-);
-
-const CalendarIcon = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="4" width="18" height="18" rx="2" />
-    <line x1="16" y1="2" x2="16" y2="6" />
-    <line x1="8" y1="2" x2="8" y2="6" />
-    <line x1="3" y1="10" x2="21" y2="10" />
-  </svg>
-);
-
-const TagIcon = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-    <line x1="7" y1="7" x2="7.01" y2="7" />
-  </svg>
-);
 
 const ChevronDownIcon = () => (
   <svg
@@ -111,135 +41,12 @@ const ChevronUpIcon = () => (
   </svg>
 );
 
-// ── Counter ───────────────────────────────────────────────────────────────────
-interface CounterProps {
-  label: string;
-  value: number;
-  min?: number;
-  max?: number;
-  onChange: (v: number) => void;
-}
-
-function Counter({ label, value, min = 0, max = 10, onChange }: CounterProps) {
-  return (
-    <div className="flex items-center justify-between py-3 border-b border-neutral-200 last:border-0">
-      <span className="font-body text-sm text-neutral-700">{label}</span>
-      <div className="flex items-center gap-3">
-        <button
-          type="button"
-          onClick={() => onChange(Math.max(min, value - 1))}
-          disabled={value <= min}
-          className="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center
-                     hover:bg-primary hover:text-white transition-all duration-200
-                     disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <span className="text-base leading-none mb-px">−</span>
-        </button>
-        <span className="font-display text-base font-medium text-neutral-950 w-4 text-center">
-          {value}
-        </span>
-        <button
-          type="button"
-          onClick={() => onChange(Math.min(max, value + 1))}
-          disabled={value >= max}
-          className="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center
-                     hover:bg-primary hover:text-white transition-all duration-200
-                     disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <span className="text-base leading-none mb-px">+</span>
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// ── DateField ─────────────────────────────────────────────────────────────────
-// Clicking the visible div calls showPicker() on the hidden-but-real input.
-// The input has pointer-events:none so only the div click fires showPicker,
-// preventing a double-open on browsers that also bubble the click to the input.
-interface DateFieldProps {
-  label: string;
-  value: string;
-  min?: string;
-  onChange: (v: string) => void;
-  onBlur: () => void;
-  error?: string;
-  name: string;
-}
-
-function DateField({
-  label,
-  value,
-  min,
-  onChange,
-  onBlur,
-  error,
-  name,
-}: DateFieldProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  function open() {
-    try {
-      inputRef.current?.showPicker();
-    } catch {
-      inputRef.current?.click();
-    }
-  }
-
-  return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="flex-1 min-w-0 flex items-center gap-3 px-5 py-4
-                 border-b md:border-b-0 md:border-r border-neutral-200
-                 hover:bg-cream transition-colors duration-200 cursor-pointer relative select-none"
-    >
-      <span className="text-primary shrink-0">
-        <CalendarIcon />
-      </span>
-      <span className="flex-1 overflow-hidden">
-        <span className="eyebrow block mb-0.5">{label}</span>
-        <span className="font-display text-sm text-neutral-950 truncate block">
-          {value ? formatDate(value) : "Select date"}
-        </span>
-      </span>
-
-      {/* Real input — invisible & pointer-events-none so showPicker() works */}
-      <input
-        ref={inputRef}
-        type="date"
-        name={name}
-        value={value}
-        min={min}
-        onChange={(e) => onChange(e.target.value)}
-        onBlur={onBlur}
-        style={{
-          position: "absolute",
-          opacity: 0,
-          pointerEvents: "none",
-          width: 1,
-          height: 1,
-          top: '100%',
-          marginTop: 8,
-          left: 0,
-        }}
-      />
-
-      {error && (
-        <span className="absolute bottom-1 left-14 text-[10px] text-error font-body">
-          {error}
-        </span>
-      )}
-    </div>
-  );
-}
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function HotelBookingBar() {
   const [guestOpen, setGuestOpen] = useState(false);
   const guestRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const {
     control,
@@ -271,7 +78,17 @@ export default function HotelBookingBar() {
   }, []);
 
   function onSubmit(data: BookingFormValues) {
-    console.log("Booking submitted:", data);
+
+    const params = new URLSearchParams({
+        adults: data.adults.toString(),
+        children: data.children.toString(),
+        checkIn: data.checkIn,
+        checkOut: data.checkOut,
+        promoCode: data.promoCode,
+    })
+
+    router.push(`accommodations?${params.toString()}`)
+    
   }
 
   return (
@@ -290,7 +107,7 @@ export default function HotelBookingBar() {
                        hover:bg-cream transition-colors duration-200 cursor-pointer"
           >
             <span className="text-primary shrink-0">
-              <GuestIcon />
+              <GuestsIcon />
             </span>
             <span className="text-left overflow-hidden flex-1">
               <span className="eyebrow block mb-0.5">Guest</span>
@@ -398,7 +215,7 @@ export default function HotelBookingBar() {
                             border-b md:border-b-0 md:border-r border-neutral-200"
             >
               <span className="text-primary shrink-0">
-                <TagIcon />
+                <PromoCode />
               </span>
               <span className="flex-1 overflow-hidden">
                 <label
