@@ -9,7 +9,7 @@ export default function AccommodationDetails({accommodation}: {accommodation: Ac
           <h2 className="heading-2">
             {accommodation.subTitle}
           </h2>
-          <p className="text-xl">{accommodation.description}</p>
+          <p className="text-xl mb-10">{accommodation.description}</p>
           <button className="btn btn-primary"> Book Now </button>
         </div>
       </div>

@@ -18,9 +18,6 @@ export interface SanityImage {
   caption?: string;
 }
 
-export type PropertyStatus = 'for-sale' | 'for-rent' | 'sold' | 'off-market';
-export type PropertyType = 'house' | 'apartment' | 'condo' | 'villa' | 'penthouse' | 'townhouse' | 'land' | 'commercial';
-
 
 export interface Form {
   name: string,
@@ -28,12 +25,11 @@ export interface Form {
   lastName?: string;
   email: string;
   phone: string;
-  interest?: string;
+  country: string;
   subject?: string;
   message?: string;
   budget?: string;
   to: string;
-  property?: string;
 }
 
 export interface ContactForm {
@@ -116,15 +112,6 @@ export interface BlogPost {
   body: PortableTextBlock[]; // Uncomment when Sanity is integrated
 }
 
-export interface Testimonial {
-  _id: string;
-  name: string;
-  role: string;
-  photo?: SanityImage | string;
-  rating: number;
-  content: string;
-  propertyBought?: string;
-}
 
 export interface SiteSettings {
   siteName: string;
@@ -142,19 +129,6 @@ export interface SiteSettings {
   };
 }
 
-// Utility type for filter state
-export interface PropertyFilters {
-  status?: PropertyStatus | 'all';
-  type?: PropertyType | 'all';
-  minPrice?: number;
-  maxPrice?: number;
-  bedrooms?: number;
-  bathrooms?: number;
-  city?: string;
-  minArea?: number;
-  maxArea?: number;
-  sortBy?: 'price-asc' | 'price-desc' | 'newest' | 'oldest' | 'area-asc' | 'area-desc';
-}
 
 
 export interface BookingFormValues {

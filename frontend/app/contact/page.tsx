@@ -34,14 +34,12 @@ export default function ContactPage() {
 
   return (
     <>
-
-      <section className="section-cream">
+      <section className="section-cream mt-20">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 items-start">
             {/* Contact info */}
             <div>
               <h2 className="heading-2 mb-2">Contact Information</h2>
-              <span className="divider-accent mb-8" />
 
               <div className="flex flex-col gap-8 mb-10">
                 {[
@@ -74,34 +72,20 @@ export default function ContactPage() {
                 ].map(({ icon: Icon, title, lines }) => (
                   <div key={title} className="flex gap-4">
                     <div className="w-12 h-12 rounded-xl bg-neutral-50 flex items-center justify-center shrink-0">
-                      <Icon size={19} className="text-accent" />
+                      <Icon size={19} className="text-primary-light" />
                     </div>
                     <div>
-                      <div className="font-semibold text-xl text-neutral-900 mb-1">
+                      <div className="text-lg font-medium text-neutral-950 mb-1">
                         {title}
                       </div>
                       {lines.map((l) => (
-                        <div key={l} className="text-base text-neutral-500">
+                        <div key={l} className="text-base text-neutral-700">
                           {l}
                         </div>
                       ))}
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Map placeholder */}
-              <div className="rounded-xl overflow-hidden border border-neutral-200 h-56">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(
-                    `new york`,
-                  )}&output=embed`}
-                />
               </div>
             </div>
 
@@ -126,8 +110,10 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <>
-                  <h2 className="heading-3 mb-1">Send Us a Message</h2>
-                  <p className="text-sm text-neutral-500 mb-8">
+                  <h2 className="heading-2 uppercase">
+                    Send Us a Message
+                  </h2>
+                  <p className="text-base text-neutral-600 mb-8">
                     Fill out the form and we'll get back to you shortly.
                   </p>
 
@@ -165,18 +151,12 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="label-text">I'm Interested In</label>
-                        <select
-                          className="input select"
-                          {...register("interest")}
-                        >
-                          <option value="">Select...</option>
-                          <option value="buying">Buying a Property</option>
-                          <option value="selling">Selling a Property</option>
-                          <option value="renting">Renting</option>
-                          <option value="investing">Investment Advice</option>
-                          <option value="other">Other</option>
-                        </select>
+                        <label className="label-text">Country *</label>
+                        <input
+                          className="input"
+                          {...register("country", { required: true })}
+                          placeholder="Thailand"
+                        ></input>
                       </div>
                     </div>
                     <div>
@@ -217,6 +197,26 @@ export default function ContactPage() {
                 </>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-24">
+              
+
+        <div className="container-site">
+          {/* Map placeholder */}
+          <div className="rounded-xl overflow-hidden border border-neutral-200 h-140">
+            <iframe
+              width="100%"
+              height="100%"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(
+                `${process.env.NEXT_PUBLIC_OFFICE_ADDRESS}, New York, NY`,
+              )}&output=embed`}
+            />
           </div>
         </div>
       </section>
