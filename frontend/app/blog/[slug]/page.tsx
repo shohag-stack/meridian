@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Clock, Calendar, ArrowLeft, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
-import { BLOG_POSTS, formatDate } from "@/data/data";
-import { getBlogBySlug } from "@/(core)/fetch/getBlogs";
+import {formatDate } from "@/data/data";
+import { getBlogBySlug, getBlogs } from "@/(core)/fetch/getBlogs";
 import { PortableText } from "@portabletext/react";
 import urlFor from "@/(core)/sanity/lib/image";
 import { PortableTextComponents } from "@portabletext/react";
@@ -12,6 +12,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
+  const BLOG_POSTS = await getBlogs();
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
 
@@ -28,8 +29,8 @@ const portableComponents: PortableTextComponents = {
     )
   },
   block: {
-    h1: ({children})=> (<h1 className="heading-1 my-2">{children}</h1>),
-    h2: ({children})=> (<h2 className="heading-2 my-2">{children}</h2>),
+    h1: ({children})=> (<h1 className="capitalize leading-20 heading-1 my-2">{children}</h1>),
+    h2: ({children})=> (<h2 className="lowercase heading-2 my-2">{children}</h2>),
     h3: ({children})=> (<h3 className="heading-3 my-2">{children}</h3>),
     h4: ({children})=> (<h4 className="heading-4 py-4">{children}</h4>),
     h5: ({children})=> (<h5 className="heading-5">{children}</h5>),
@@ -41,7 +42,7 @@ const portableComponents: PortableTextComponents = {
     ),
 
     normal: ({ children }) => (
-      <p className="text-lg text-neutral-600 leading-relaxed mb-4">
+      <p className="text-lg text-neutral-700 leading-relaxed mb-4">
         {children}
       </p>
     ),
@@ -51,7 +52,7 @@ const portableComponents: PortableTextComponents = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = await getBlogBySlug({slug});
   if (!post) return { title: "Post Not Found" };
   return { title: post.title, description: post.excerpt };
 }
@@ -59,8 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getBlogBySlug({ slug });
-
-  console.log("showing single blog post from slug page", post);
+  const BLOG_POSTS = await getBlogs();
 
   if (!post) notFound();
 

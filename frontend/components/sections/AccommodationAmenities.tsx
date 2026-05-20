@@ -14,6 +14,7 @@ import NonSmoking from "../icons/NonSmoking";
 import Refrigerator from "../icons/Refrigerator";
 import Towel from "../icons/Towel";
 import Kettle from "../icons/Kettle";
+import { AMENITY_DEFINITIONS, AmenityKey } from "../../../studio/schemaTypes/accommodations";
 
 const amenityIcons: Record<string, any> = {
   wifi: Wifi,
@@ -39,25 +40,38 @@ export default function AccommodationAmenities({
 }: {
   accommodation: Accommodation;
 }) {
+
+
+
+  console.log(accommodation.amenities);
+
+  const ameneties = accommodation.amenities
+
+  if (!ameneties) return null
+
+  const enabledAmenities = (Object.keys(AMENITY_DEFINITIONS) as AmenityKey[]).filter((key)=> (ameneties[key] === true))
+
+
   return (
     <div className="container-site section">
       <h2 className="heading-2">Amenities</h2>
       <div className="grid grid-cols-3 gap-x-20 gap-y-10 bg-neutral-50 p-10">
-        {accommodation.amenities?.map((item) => {
-          const Icon = amenityIcons[item.icon];
+        {enabledAmenities.map((key) => {
+          const Icon = amenityIcons[key];
+          const { title, description } = AMENITY_DEFINITIONS[key];
 
           return (
-            <div key={item.title} className="flex items-start gap-4">
+            <div key={title} className="flex items-start gap-4">
               <div className="mt-1.5">
                 {Icon && <Icon size={24} />}
               </div>
 
               <div>
                 <p className="text-[#7B2942] text-xl font-medium">
-                  {item.title}
+                  {title}
                 </p>
 
-                <p className="text-[#7B2942]/80 text-lg">{item.description}</p>
+                <p className="text-[#7B2942]/80 text-lg">{description}</p>
               </div>
             </div>
           );

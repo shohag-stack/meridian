@@ -1,5 +1,5 @@
 import post from './post'
-import {amenityObject, sliderImageObject, unavailablePeriodObject, accommodationSchema} from './accommodations'
+import {amenitiesObject, sliderImageObject, unavailablePeriodObject, accommodationSchema} from './accommodations'
 import agent from './agent'
 
-export const schemaTypes = [post, amenityObject, sliderImageObject, unavailablePeriodObject, accommodationSchema, agent]
+export const schemaTypes = [post, amenitiesObject, sliderImageObject, unavailablePeriodObject, accommodationSchema, agent]

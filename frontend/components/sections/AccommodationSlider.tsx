@@ -26,11 +26,11 @@ export default function AccommodationSlider({
             {accommodation.gallery?.map((image, index) => (
               <div
                 key={index}
-                className="flex-[0_0_70%] md:flex-[0_0_70%] px-6 relative"
+                className="flex-[0_0_70%] md:flex-[0_0_70%] px-1 relative"
               >
                 <div className="overflow-hidden">
                   <img
-                    src={image.asset.url}
+                    src={image.url}
                     alt=""
                     className="w-full h-[500px] object-cover"
                   />

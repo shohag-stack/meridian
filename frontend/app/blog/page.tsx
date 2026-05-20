@@ -18,6 +18,16 @@ export default async function BlogPage() {
 
   const featured = blogPosts[0];
 
+  console.log("showing blog posts & featured posts", blogPosts, featured)
+
+  if (!featured && blogPosts.length === 0) {
+    return (
+      <div className="container-site section mt-24">
+      <h2 className="heading-3 text-center">No blog posts found.</h2>
+    </div>
+    )
+  }
+
   return (
     <>
       <section className="section">

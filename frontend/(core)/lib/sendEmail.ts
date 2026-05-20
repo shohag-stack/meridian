@@ -13,8 +13,7 @@ export default async function sendEmail(form: Form) {
     email,
     phone,
     message,
-    property,
-    to
+    subject,
   } = form;
   const fullName = `${firstName} ${lastName}`;
 
@@ -73,7 +72,7 @@ const html =`
     const res = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      subject: `New inquiry from ${fullName}`,
+      subject: subject || "New Contact Form Message",
       html: html,
       replyTo: email
     });

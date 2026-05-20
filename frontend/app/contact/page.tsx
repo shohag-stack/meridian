@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Form } from "@/types";
 import { sendContactEmail } from "@/(core)/lib/sendContactEmail";
 import { useState } from "react";
+import PageHeader from "@/components/ui/PageHeader";
+import { contactHeader } from "@/data/data";
 
 export default function ContactPage() {
   const {
@@ -34,7 +36,8 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="section-cream mt-20">
+    <PageHeader header={contactHeader} />
+      <section className="section-cream">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 items-start">
             {/* Contact info */}
@@ -60,8 +63,8 @@ export default function ContactPage() {
                     icon: Mail,
                     title: "Email",
                     lines: [
-                      "hello@estatehaven.com",
-                      "listings@estatehaven.com",
+                      "hello@meridian.com",
+                      "reservations@meridian.com",
                     ],
                   },
                   {
@@ -95,11 +98,11 @@ export default function ContactPage() {
                 <div className="text-center py-12 flex flex-col items-center gap-5">
                   <div
                     className="w-18 h-18 rounded-full flex items-center justify-center"
-                    style={{ background: "rgba(45,122,79,0.1)" }}
+                    style={{ background: "var(--bg-neutral-300)" }}
                   >
-                    <CheckCircle size={36} className="text-accent" />
+                    <CheckCircle size={36} className="text-primary" />
                   </div>
-                  <h3 className="heading-3">Message Sent!</h3>
+                  <h3 className="heading-3 text-primary">Message Sent!</h3>
                   <p className="text-neutral-500 max-w-sm">
                     Thank you for reaching out. One of our agents will be in
                     touch within 24 hours.
@@ -172,7 +175,7 @@ export default function ContactPage() {
                       <textarea
                         className="input"
                         rows={5}
-                        placeholder="Tell us about your property goals, timeline, budget, or specific requirements..."
+                        placeholder="Tell us about your situation and how we can help. The more details you provide, the better we can assist you."
                         style={{ resize: "vertical" }}
                         {...register("message", { required: true })}
                       />

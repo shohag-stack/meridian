@@ -1,5 +1,6 @@
 import AccommodationCard from '@/components/ui/AccommodationCard';
 import { getAccommodations } from '@/(core)/fetch/getAccomodations';
+import Image from 'next/image';
 
 export default async function Accommodations() {
   const ACCOMMODATIONS = await getAccommodations()
@@ -15,6 +16,9 @@ export default async function Accommodations() {
               Welcome to The World of Luxury and Comfort
             </h2>
             <p>Phi Phi the Beach Resort is a dream location for any visitor looking for either an eventful or relaxing holiday. Situated on the quiet Long Beach, which overlooks the stunning Maya bay island</p>
+            <div className='flex justify-center mt-10'>
+                <Image src="/img/trust-badge.svg" alt="Vector" width={300} height={300} />
+            </div>
           </div>
         </div>
 

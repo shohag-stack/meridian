@@ -35,6 +35,9 @@ export default async function AccommodationPage({ params }: Props) {
   const { slug } = await params;
   const accommodation = await getAccommodationsBySlug({ slug });
 
+
+  console.log("showing accommodation:", accommodation);
+
   if (!accommodation) notFound();
 
   return (

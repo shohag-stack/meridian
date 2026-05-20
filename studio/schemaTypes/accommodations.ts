@@ -1,33 +1,43 @@
 import { defineField, defineType } from "sanity";
 
 // ── Amenity (object used inside accommodation) ────────────────────────────────
-export const amenityObject = defineType({
-  name: "amenity",
-  title: "Amenity",
+export const AMENITY_DEFINITIONS = {
+  wifi:         { title: "Wi-Fi",              description: "Free high-speed Wi-Fi"                          },
+  bath:         { title: "Bathroom",           description: "Private en-suite bathroom"                      },
+  hairdryer:    { title: "Hair Dryer",         description: "Complimentary hair dryer"                       },
+  tv:           { title: "Smart TV",           description: "Cable channels and smart TV"                    },
+  desk:         { title: "Work Desk",          description: "Phone, safe, and desk"                          },
+  showerHead:   { title: "Rain Shower",        description: "Rain shower with movable shower head"           },
+  slippers:     { title: "Slippers",           description: "Comfortable slippers for your stay"             },
+  curtains:     { title: "Blackout Curtains",  description: "Blackout drapes for a restful sleep"            },
+  bathrobes:    { title: "Bathrobes",          description: "Soft bathrobes for your comfort"                },
+  balcony:      { title: "Private Balcony",    description: "Enjoy your own outdoor space with stunning views"},
+  ac:           { title: "Air Conditioning",   description: "Air conditioning and daily housekeeping"        },
+  nonSmoking:   { title: "Non-Smoking",        description: "Non-smoking rooms"                              },
+  refrigerator: { title: "Refrigerator",       description: "Refrigerator and complimentary water"           },
+  towel:        { title: "Towels",             description: "Beach bag and pool towel"                       },
+  kettle:       { title: "Kettle",             description: "Coffee and tea tray set with kettle"            },
+};
+ 
+export type AmenityKey = keyof typeof AMENITY_DEFINITIONS;
+ 
+// ── Sanity object schema — one boolean per amenity ────────────────────────────
+export const amenitiesObject = defineType({
+  name: "amenities",
+  title: "Amenities",
   type: "object",
-  fields: [
-    defineField({
-      name: "icon",
-      title: "Icon Key",
-      type: "string",
-      description: "e.g. wifi, bath, tv, ac, balcony — matches your icon map",
-      validation: (R) => R.required(),
-    }),
-    defineField({
-      name: "title",
-      title: "Title",
-      type: "string",
-      validation: (R) => R.required(),
-    }),
-    defineField({
-      name: "description",
-      title: "Description",
-      type: "string",
-    }),
-  ],
-  preview: {
-    select: { title: "title", subtitle: "icon" },
+  options: {
+    collapsible: true,
+    collapsed: false,
   },
+  fields: (Object.keys(AMENITY_DEFINITIONS) as AmenityKey[]).map((key) =>
+    defineField({
+      name: key,
+      title: AMENITY_DEFINITIONS[key].title,
+      type: "boolean",
+      initialValue: false,
+    })
+  ),
 });
 
 // ── Gallery image (object used inside accommodation) ──────────────────────────
@@ -233,9 +243,8 @@ export const accommodationSchema = defineType({
     defineField({
       name: "amenities",
       title: "Amenities",
-      type: "array",
+      type: "amenities",
       group: "content",
-      of: [{ type: "amenity" }],
     }),
 
     // ── Booking ─────────────────────────────────────────────

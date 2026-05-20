@@ -3,7 +3,7 @@
 // Replace these with Sanity GROQ queries when integrating CMS.
 // ============================================================
 
-import type { Accommodation, BlogPost, Testimonial } from "@/types";
+import type { Accommodation, BlogPost, ExperienceItem } from "@/types";
 
 export const ACCOMMODATION: Accommodation[] = [
   {
@@ -30,37 +30,25 @@ export const ACCOMMODATION: Accommodation[] = [
     gallery: [
       {
         label: "Private Infinity Pool",
-        asset: {
-          url: "https://assets.lummi.ai/assets/QmX74f4cu1uD4rhgCneM6rc4cWS7W4dfNs3t8Nw8M24cNP?auto=format&w=1500",
-        },
+        url: "https://assets.lummi.ai/assets/QmX74f4cu1uD4rhgCneM6rc4cWS7W4dfNs3t8Nw8M24cNP?auto=format&w=1500",
       },
       {
         label: "Sunset Lounge Deck",
-        asset: {
-          url: "https://assets.lummi.ai/assets/QmXVxC1XSYyxyYUbBiCdiKi35MH7BhFHuUozhUPGmz7amp?auto=format&w=1500",
-        },
+        url: "https://assets.lummi.ai/assets/QmXVxC1XSYyxyYUbBiCdiKi35MH7BhFHuUozhUPGmz7amp?auto=format&w=1500",
       },
 
       {
-        asset: {
-          url: "https://assets.lummi.ai/assets/QmNkXpP88AQ2xwL6ZwsveSEWRATLju3VKXrM6kiTTTqXoS?auto=format&w=1500",
-        },
+        url: "https://assets.lummi.ai/assets/QmNkXpP88AQ2xwL6ZwsveSEWRATLju3VKXrM6kiTTTqXoS?auto=format&w=1500",
       },
 
       {
-        asset: {
-          url: "https://assets.lummi.ai/assets/QmSFJ5Uv7SVVHhSE1YW2bVdBdxz3U5xKjzXmsyuGUn942t?auto=format&w=1500",
-        },
+        url: "https://assets.lummi.ai/assets/QmSFJ5Uv7SVVHhSE1YW2bVdBdxz3U5xKjzXmsyuGUn942t?auto=format&w=1500",
       },
       {
-        asset: {
-          url: "https://assets.lummi.ai/assets/QmfNdUrTnRMLzex7ntSJTVFsCinXwaEdmZ1fcJy3c6pGgW?auto=format&w=1500",
-        },
+        url: "https://assets.lummi.ai/assets/QmfNdUrTnRMLzex7ntSJTVFsCinXwaEdmZ1fcJy3c6pGgW?auto=format&w=1500",
       },
       {
-        asset: {
-          url: "https://assets.lummi.ai/assets/QmQGcdj8JhrEbrSaTueZKKLvi6kZWzQayaexmLM2JPpRRX?auto=format&w=1500",
-        },
+        url: "https://assets.lummi.ai/assets/QmQGcdj8JhrEbrSaTueZKKLvi6kZWzQayaexmLM2JPpRRX?auto=format&w=1500",
       },
     ],
 
@@ -79,87 +67,23 @@ export const ACCOMMODATION: Accommodation[] = [
     ],
     maxGuests: 4,
 
-    amenities: [
-      {
-        icon: "wifi",
-        title: "Internet",
-        description: "Free Wi-Fi",
-      },
-
-      {
-        icon: "bath",
-        title: "Bathroom",
-        description: "Private bathroom",
-      },
-      {
-        icon: "desk",
-        title: "Practicle - Phone,safe, and desk",
-        description: "Phone, safe, and desk",
-      },
-
-      {
-        icon: "hairdryer",
-        title: "Hair Dryer",
-        description: "Free hair dryer",
-      },
-
-      {
-        icon: "tv",
-        title: "Entertainment",
-        description: "Cable channels and smart TV",
-      },
-      {
-        icon: "showerHead",
-        title: "Shower Head",
-        description: "Rain shower with movable shower head",
-      },
-      {
-        icon: "slippers",
-        title: "Slippers",
-        description: "Comfortable slippers for your stay",
-      }, {
-        icon: "curtains",
-        title: "Blackout Curtains",
-        description: "Sleep - Blackout drapes and curtains"
-      },
-      {
-        icon: "bathrobes",
-        title: "Bathrobes",
-        description: "Soft bathrobes for your comfort",
-      },
-      {
-        icon: "balcony",
-        title: "Private balcony",
-        description: "Enjoy your own outdoor space with stunning views",
-      },
-      {
-        icon: "ac",
-        title: "Air Conditioning",
-        description: "Comfort - Air conditioning and daily housekeeping",
-      },
-      {
-        icon: "nonSmoking",
-        title: "Non-smoking",
-        description: "Non-smoking rooms"
-      },
-      {
-        icon: "refrigerator",
-        title: "Refrigerator",
-        description: "Refrigerator and complimentary water"
-      },
-      {
-        icon: "towel",
-        title: "Towels",
-        description: "Beach bag and pool towel"
-      },
-      {
-        icon: "kettle",
-        title: "Kettle",
-        description: "Coffee and tea tray set with kettle"
-      },
-
-
-    ],
+    amenities: {
+      wifi: true,
+      bath: true,
+      desk: true,
+      hairdryer: true,
+      tv: true,
+      showerHead: true,
+      slippers: true,
+      curtains: true,
+      bathrobes: true,
+      balcony: true,
+      ac: true,
+      nonSmoking: true,
+      refrigerator: true,
+      towel: true,
+      kettle: true,
+    },
 
     availability: "available",
 
@@ -485,41 +409,6 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    _id: "test-1",
-    name: "Robert & Claire Ashford",
-    role: "Purchased in Beverly Hills",
-    photo:
-      "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=100&h=100&fit=crop",
-    rating: 5,
-    content:
-      "Working with the EstateHaven team was an exceptional experience from beginning to end. They understood exactly what we were looking for and found us a home that exceeded every expectation.",
-    propertyBought: "Casa Serena Villa",
-  },
-  {
-    _id: "test-2",
-    name: "Daniel Mercer",
-    role: "Purchased in Manhattan",
-    photo:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    rating: 5,
-    content:
-      "The professionalism and market knowledge demonstrated throughout our purchase process was unmatched. Highly recommend to anyone looking for a truly white-glove real estate experience.",
-    propertyBought: "The Meridian Penthouse",
-  },
-  {
-    _id: "test-3",
-    name: "Isabelle Torres",
-    role: "Rented in Chicago",
-    photo:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
-    rating: 5,
-    content:
-      "I've worked with real estate agents across three cities, and EstateHaven stands apart. Responsive, honest, and genuinely invested in finding the right fit rather than just closing a deal.",
-  },
-];
-
 // Utility functions
 export const formatPrice = (
   price: number,
@@ -560,3 +449,48 @@ export const formatDate = (dateStr: string): string => {
     year: "numeric",
   });
 };
+
+export const contactHeader = {
+  title: "Contact Us",
+  shortDescription: "You can contact us using the form, one of the links below, or by calling us directly to find out more.",
+  mainImage: "/img/contact-header.png",
+}
+
+
+export const experiences: ExperienceItem[] = [
+  {
+    label: "Sea Series",
+    image:
+      "https://assets.lummi.ai/assets/QmXRLbDGcHeyTjvpA3G4iKVXJifKSJpZxAijoo57DNCUL8?auto=format&w=1500",
+    href: "#",
+    span: "wide",
+  },
+  {
+    label: "Beachfront",
+    image:
+      "https://assets.lummi.ai/assets/QmRTiU6cofR8Kxe8Z7L6jZZHGPaKLqrjUTFLmYR7afHFxo?auto=format&w=1500",
+    href: "#",
+    span: "normal",
+  },
+  {
+    label: "Picnic",
+    image:
+      "https://assets.lummi.ai/assets/QmPr5zjtKcMR6YFFfmGx3FLhpqmthbZKs1UbsXYXZjXGY3?auto=format&w=1500",
+    href: "#",
+    span: "normal",
+  },
+  {
+    label: "Thai Massage",
+    image:
+      "https://assets.lummi.ai/assets/QmYJTV3nf9LDjbczLSg3sznuDLZxSRHjryHaB94pCkU6oe?auto=format&w=1500",
+    href: "#",
+    span: "normal",
+  },
+  {
+    label: "Fitness",
+    image:
+      "https://assets.lummi.ai/assets/QmPCYrsKv3JEAzikCSu2M9EBqkW2iKf4hMKkhKLTNk2abL?auto=format&w=1500",
+    href: "#",
+    span: "normal",
+  },
+];

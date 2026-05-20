@@ -1,3 +1,4 @@
+import { AmenityKey } from './../../studio/schemaTypes/accommodations';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { Message } from './../../node_modules/react-hook-form/dist/types/errors.d';
 // ============================================================
@@ -16,6 +17,13 @@ export interface SanityImage {
   };
   alt?: string;
   caption?: string;
+}
+
+export interface ExperienceItem {
+  label: string;
+  image: string;
+  href?: string;
+  span?: "wide" | "normal"; // wide = 2 cols
 }
 
 
@@ -84,7 +92,7 @@ export interface Accommodation {
   description: string;
 
   features?: string[];
-  amenities?: amenities[];
+  amenities?: Partial<Record<AmenityKey, boolean>>;
 
   // Booking
   availability?: "available" | "limited" | "booked";
@@ -96,9 +104,7 @@ export interface Accommodation {
 
 export type SliderImage = {
   label?: string;
-  asset: {
     url: string;
-  };
 };
 
 export interface BlogPost {
