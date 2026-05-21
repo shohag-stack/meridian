@@ -26,6 +26,13 @@ export interface ExperienceItem {
   span?: "wide" | "normal"; // wide = 2 cols
 }
 
+export interface Facilities {
+  _id: string
+  title: string;
+  description: string;
+  thumbImage: string;
+}
+
 
 export interface Form {
   name: string,

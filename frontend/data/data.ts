@@ -3,7 +3,7 @@
 // Replace these with Sanity GROQ queries when integrating CMS.
 // ============================================================
 
-import type { Accommodation, BlogPost, ExperienceItem } from "@/types";
+import type { Accommodation, BlogPost, ExperienceItem, Facilities } from "@/types";
 
 export const ACCOMMODATION: Accommodation[] = [
   {
@@ -494,3 +494,67 @@ export const experiences: ExperienceItem[] = [
     span: "normal",
   },
 ];
+
+
+export const facilitiesHeader = {
+  title: "Facilities",
+  shortDescription: "Travel is the ultimate way to explore the world, embrace new cultures, and create unforgettable memories. Whether you’re wandering through ancient streets.",
+  mainImage: "/img/facilities.jpg"
+}
+
+export const facilities: Facilities[] = [
+  {
+    _id: "1",
+    title: "Online Room Booking",
+    description: "Book rooms effortlessly with real-time updates, instant confirmation, and secure pricing for a smooth travel experience.",
+    thumbImage: 'https://assets.lummi.ai/assets/QmXw8XxZHvESeMzFbPyfwxH7rKTAXiTJ2pYQgiLDb8e7CS?auto=format&w=1500'
+  },
+  {
+    _id: '2',
+    title: "Event & Conference Room",
+    description: "Reserve professional spaces for meetings or events with instant confirmation, scheduling, and transparent cost details.",
+    thumbImage: "https://assets.lummi.ai/assets/QmZehJnWEczKmPVdUgFDzGevwAUdNnRW1XDhtHjhY8tkRg?auto=format&w=1500"
+  },
+  {
+    _id: "3",
+    title: "Custom Travel Planning",
+    description: "Plan your dream trip with tailored itineraries, live updates, instant booking, and fair transparent pricing anytime.",
+    thumbImage: "https://assets.lummi.ai/assets/QmexYXhc3faH3H9qmbgcmG6eUpPeUdVe1cdjbZCQeRmP6o?auto=format&w=1500"
+  },
+  {
+    _id: "4",
+    title: "Corporate Stay Management",
+    description: "Simplify corporate travel with managed stays, instant confirmation, and real-time availability designed for business comfort.",
+    thumbImage: "https://assets.lummi.ai/assets/QmeSMohAxgj6E2aXzmUqgzV6MP9UxEyKWbjYLAYEivSZWV?auto=format&w=1500"
+  },
+  {
+    _id: "5",
+    title: "City Tour Arrangements",
+    description: "Discover top attractions with guided tours, instant booking, flexible timing, and transparent pricing for every traveler.",
+    thumbImage: "https://assets.lummi.ai/assets/QmXwLu5Nta5jzVg5kA2Zx23TFknhYodrFPCs75AP2PkzAf?auto=format&w=1500"
+  },
+  {
+    _id: "6",
+    title: "Multi-Destination Packages",
+    description: "Explore multiple cities seamlessly with flexible routes, instant booking, real-time updates, and transparent travel costs.",
+    thumbImage: "https://assets.lummi.ai/assets/QmVVJKuxFXsSrt7kUNhyggjWHma7hKxgsLvu5WS98Nd4fp?auto=format&w=1500"
+  },
+  {
+    _id: "7",
+    title: "Corporate Stay Management",
+    description: "Simplify corporate travel with managed stays, instant confirmation, and real-time availability designed for business comfort.",
+    thumbImage: "https://assets.lummi.ai/assets/QmSvvpVLcFh5aGeHbymbWiZLVrpKttTRmgNPqa5eVRiUV7?auto=format&w=1500"
+  },
+  {
+    _id: "8",
+    title: "City Tour Arrangements",
+    description: "Discover top attractions with guided tours, instant booking, flexible timing, and transparent pricing for every traveler.",
+    thumbImage: "https://assets.lummi.ai/assets/QmUNf6GeXJdZMy14K3eaUyFGDJhnsBtuZAc5kuSGoD9Rj3?auto=format&w=1500"
+  },
+  {
+    _id: "6",
+    title: "Multi-Destination Packages",
+    description: "Explore multiple cities seamlessly with flexible routes, instant booking, real-time updates, and transparent travel costs.",
+    thumbImage: "https://assets.lummi.ai/assets/QmSmJF2C8ymsRtC59riGmH48SmmvT1q9WJY4EEuASysZWj?auto=format&w=1500"
+  },
+]
