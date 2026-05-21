@@ -43,11 +43,9 @@ export const ACCOMMODATION: Accommodation[] = [
         label: "Sunset Lounge Deck",
         url: "https://assets.lummi.ai/assets/QmXVxC1XSYyxyYUbBiCdiKi35MH7BhFHuUozhUPGmz7amp?auto=format&w=1500",
       },
-
       {
         url: "https://assets.lummi.ai/assets/QmNkXpP88AQ2xwL6ZwsveSEWRATLju3VKXrM6kiTTTqXoS?auto=format&w=1500",
       },
-
       {
         url: "https://assets.lummi.ai/assets/QmSFJ5Uv7SVVHhSE1YW2bVdBdxz3U5xKjzXmsyuGUn942t?auto=format&w=1500",
       },
@@ -63,7 +61,7 @@ export const ACCOMMODATION: Accommodation[] = [
       "Spacious and serene, this villa offers ideal comfort for small families or two couples.",
 
     description:
-      "Designed to combine spaciousness and elegance, the Family Room category offers 45 m² distributed across two connected rooms: one of 20 m², featuring a Queen bed and a bathroom with a rain shower; and a second, 25 m², with King or twin bed and a full bathroom with bathtub. Ideal for up to four guests, this elegant and light-filled room offers city views and a layout that ensures both privacy and relaxation for every member of the family. ",
+      "Designed to combine spaciousness and elegance, the Family Room category offers connected luxury living spaces with premium comfort and ocean-inspired interiors.",
 
     features: [
       "Private Infinity Pool",
@@ -72,6 +70,7 @@ export const ACCOMMODATION: Accommodation[] = [
       "Direct Lagoon Access",
       "Sunset Lounge Deck",
     ],
+
     maxGuests: 4,
 
     amenities: {
@@ -97,6 +96,433 @@ export const ACCOMMODATION: Accommodation[] = [
     createdAt: "2026-05-14T10:00:00Z",
     updatedAt: "2026-05-14T10:00:00Z",
   },
+
+  {
+    _id: "room-2",
+    slug: "garden-suite-resort",
+
+    title: "Garden Suite",
+    subTitle: "A peaceful retreat surrounded by tropical greenery",
+
+    type: "suite",
+
+    featured: true,
+    face: "garden",
+
+    guests: 3,
+    bedrooms: 1,
+    bathrooms: 1,
+    roomSize: 950,
+    beds: "1 King Bed",
+
+    mainImage:
+      "https://assets.lummi.ai/assets/QmXVxC1XSYyxyYUbBiCdiKi35MH7BhFHuUozhUPGmz7amp?auto=format&w=1500",
+
+    gallery: [
+      {
+        label: "Garden Lounge",
+        url: "https://assets.lummi.ai/assets/QmSFJ5Uv7SVVHhSE1YW2bVdBdxz3U5xKjzXmsyuGUn942t?auto=format&w=1500",
+      },
+      {
+        label: "Luxury Bedroom",
+        url: "https://assets.lummi.ai/assets/QmNkXpP88AQ2xwL6ZwsveSEWRATLju3VKXrM6kiTTTqXoS?auto=format&w=1500",
+      },
+      {
+        url: "https://assets.lummi.ai/assets/QmQGcdj8JhrEbrSaTueZKKLvi6kZWzQayaexmLM2JPpRRX?auto=format&w=1500",
+      },
+    ],
+
+    shortDescription:
+      "Elegant suite designed for relaxation and tropical comfort.",
+
+    description:
+      "This garden-facing suite blends indoor comfort with outdoor serenity for a luxurious island experience.",
+
+    features: [
+      "Private Terrace",
+      "Garden View",
+      "Rain Shower",
+      "Lounge Area",
+      "King Bed",
+    ],
+
+    maxGuests: 3,
+
+    amenities: {
+      wifi: true,
+      bath: true,
+      desk: true,
+      hairdryer: true,
+      tv: true,
+      showerHead: true,
+      slippers: true,
+      curtains: true,
+      bathrobes: true,
+      balcony: true,
+      ac: true,
+      nonSmoking: true,
+      refrigerator: true,
+      towel: true,
+      kettle: true,
+    },
+
+    availability: "available",
+
+    createdAt: "2026-05-15T10:00:00Z",
+    updatedAt: "2026-05-15T10:00:00Z",
+  },
+
+  {
+    _id: "room-3",
+    slug: "sunset-water-villa",
+
+    title: "Sunset Water Villa",
+    subTitle: "Romantic overwater escape with stunning sunset views",
+
+    type: "villa",
+
+    featured: true,
+    face: "ocean",
+
+    guests: 2,
+    bedrooms: 1,
+    bathrooms: 1,
+    roomSize: 1200,
+    beds: "1 King Bed",
+
+    mainImage:
+      "https://assets.lummi.ai/assets/QmNkXpP88AQ2xwL6ZwsveSEWRATLju3VKXrM6kiTTTqXoS?auto=format&w=1500",
+
+    gallery: [
+      {
+        label: "Ocean Deck",
+        url: "https://assets.lummi.ai/assets/QmX74f4cu1uD4rhgCneM6rc4cWS7W4dfNs3t8Nw8M24cNP?auto=format&w=1500",
+      },
+      {
+        label: "Luxury Bathroom",
+        url: "https://assets.lummi.ai/assets/QmfNdUrTnRMLzex7ntSJTVFsCinXwaEdmZ1fcJy3c6pGgW?auto=format&w=1500",
+      },
+    ],
+
+    shortDescription:
+      "A romantic villa floating above crystal-clear turquoise waters.",
+
+    description:
+      "Crafted for couples seeking luxury, privacy, and uninterrupted ocean sunsets.",
+
+    features: [
+      "Lagoon Access",
+      "Private Deck",
+      "Outdoor Bath",
+      "Ocean Views",
+      "Sunset Lounge",
+    ],
+
+    maxGuests: 2,
+
+    amenities: {
+      wifi: true,
+      bath: true,
+      desk: true,
+      hairdryer: true,
+      tv: true,
+      showerHead: true,
+      slippers: true,
+      curtains: true,
+      bathrobes: true,
+      balcony: true,
+      ac: true,
+      nonSmoking: true,
+      refrigerator: true,
+      towel: true,
+      kettle: true,
+    },
+
+    availability: "available",
+
+    createdAt: "2026-05-16T10:00:00Z",
+    updatedAt: "2026-05-16T10:00:00Z",
+  },
+
+  {
+  _id: "room-4",
+  slug: "royal-family-suite",
+
+  title: "Royal Family Suite",
+  subTitle: "Spacious comfort designed for memorable family stays",
+
+  type: "suite",
+
+  featured: false,
+  face: "garden",
+
+  guests: 6,
+  bedrooms: 3,
+  bathrooms: 2,
+  roomSize: 2200,
+  beds: "3 Queen Beds",
+
+  mainImage:
+    "https://assets.lummi.ai/assets/QmSFJ5Uv7SVVHhSE1YW2bVdBdxz3U5xKjzXmsyuGUn942t?auto=format&w=1500",
+
+  gallery: [
+    {
+      label: "Family Lounge",
+      url: "https://assets.lummi.ai/assets/QmQGcdj8JhrEbrSaTueZKKLvi6kZWzQayaexmLM2JPpRRX?auto=format&w=1500",
+    },
+    {
+      label: "Dining Space",
+      url: "https://assets.lummi.ai/assets/QmfNdUrTnRMLzex7ntSJTVFsCinXwaEdmZ1fcJy3c6pGgW?auto=format&w=1500",
+    },
+  ],
+
+  shortDescription:
+    "A spacious suite tailored for families and group travelers.",
+
+  description:
+    "Featuring multiple bedrooms, generous lounge spaces, and elegant interiors designed for comfort and privacy.",
+
+  features: [
+    "Private Balcony",
+    "Family Lounge",
+    "Dining Area",
+    "Garden View",
+    "Rain Shower",
+  ],
+
+  maxGuests: 6,
+
+  amenities: {
+    wifi: true,
+    bath: true,
+    desk: true,
+    hairdryer: true,
+    tv: true,
+    showerHead: true,
+    slippers: true,
+    curtains: true,
+    bathrobes: true,
+    balcony: true,
+    ac: true,
+    nonSmoking: true,
+    refrigerator: true,
+    towel: true,
+    kettle: true,
+  },
+
+  availability: "available",
+
+  createdAt: "2026-05-17T10:00:00Z",
+  updatedAt: "2026-05-17T10:00:00Z",
+},
+
+{
+  _id: "room-5",
+  slug: "lagoon-premium-villa",
+
+  title: "Lagoon Premium Villa",
+  subTitle: "Luxury living above crystal-clear waters",
+
+  type: "villa",
+
+  featured: true,
+  face: "lagoon",
+
+  guests: 2,
+  bedrooms: 1,
+  bathrooms: 1,
+  roomSize: 1350,
+  beds: "1 King Bed",
+
+  mainImage:
+    "https://assets.lummi.ai/assets/QmfNdUrTnRMLzex7ntSJTVFsCinXwaEdmZ1fcJy3c6pGgW?auto=format&w=1500",
+
+  gallery: [
+    {
+      label: "Infinity Pool",
+      url: "https://assets.lummi.ai/assets/QmX74f4cu1uD4rhgCneM6rc4cWS7W4dfNs3t8Nw8M24cNP?auto=format&w=1500",
+    },
+    {
+      label: "Ocean Bedroom",
+      url: "https://assets.lummi.ai/assets/QmNkXpP88AQ2xwL6ZwsveSEWRATLju3VKXrM6kiTTTqXoS?auto=format&w=1500",
+    },
+  ],
+
+  shortDescription:
+    "An elegant villa combining privacy, luxury, and oceanfront serenity.",
+
+  description:
+    "This premium lagoon villa offers expansive indoor-outdoor living with uninterrupted tropical views.",
+
+  features: [
+    "Private Pool",
+    "Lagoon Deck",
+    "Outdoor Bath",
+    "Ocean Access",
+    "Sun Lounge",
+  ],
+
+  maxGuests: 2,
+
+  amenities: {
+    wifi: true,
+    bath: true,
+    desk: true,
+    hairdryer: true,
+    tv: true,
+    showerHead: true,
+    slippers: true,
+    curtains: true,
+    bathrobes: true,
+    balcony: true,
+    ac: true,
+    nonSmoking: true,
+    refrigerator: true,
+    towel: true,
+    kettle: true,
+  },
+
+  availability: "available",
+
+  createdAt: "2026-05-18T10:00:00Z",
+  updatedAt: "2026-05-18T10:00:00Z",
+},
+
+{
+  _id: "room-6",
+  slug: "executive-ocean-suite",
+
+  title: "Executive Ocean Suite",
+  subTitle: "Sophisticated comfort with panoramic sea views",
+
+  type: "suite",
+
+  featured: false,
+  face: "ocean",
+
+  guests: 3,
+  bedrooms: 1,
+  bathrooms: 1,
+  roomSize: 1100,
+  beds: "1 King Bed",
+
+  mainImage:
+    "https://assets.lummi.ai/assets/QmQGcdj8JhrEbrSaTueZKKLvi6kZWzQayaexmLM2JPpRRX?auto=format&w=1500",
+
+  gallery: [
+    {
+      label: "Ocean Balcony",
+      url: "https://assets.lummi.ai/assets/QmXVxC1XSYyxyYUbBiCdiKi35MH7BhFHuUozhUPGmz7amp?auto=format&w=1500",
+    },
+  ],
+
+  shortDescription:
+    "Premium ocean-facing suite perfect for leisure and business stays.",
+
+  description:
+    "Designed with refined interiors, luxury bedding, and calming ocean-inspired details.",
+
+  features: [
+    "Ocean Balcony",
+    "Workspace",
+    "Rain Shower",
+    "Luxury Bedding",
+    "Mini Bar",
+  ],
+
+  maxGuests: 3,
+
+  amenities: {
+    wifi: true,
+    bath: true,
+    desk: true,
+    hairdryer: true,
+    tv: true,
+    showerHead: true,
+    slippers: true,
+    curtains: true,
+    bathrobes: true,
+    balcony: true,
+    ac: true,
+    nonSmoking: true,
+    refrigerator: true,
+    towel: true,
+    kettle: true,
+  },
+
+  availability: "available",
+
+  createdAt: "2026-05-19T10:00:00Z",
+  updatedAt: "2026-05-19T10:00:00Z",
+},
+
+{
+  _id: "room-7",
+  slug: "honeymoon-beach-villa",
+
+  title: "Honeymoon Beach Villa",
+  subTitle: "Private beachfront escape crafted for couples",
+
+  type: "villa",
+
+  featured: true,
+  face: "beach",
+
+  guests: 2,
+  bedrooms: 1,
+  bathrooms: 1,
+  roomSize: 1450,
+  beds: "1 King Bed",
+
+  mainImage:
+    "https://assets.lummi.ai/assets/QmX74f4cu1uD4rhgCneM6rc4cWS7W4dfNs3t8Nw8M24cNP?auto=format&w=1500",
+
+  gallery: [
+    {
+      label: "Beach Lounge",
+      url: "https://assets.lummi.ai/assets/QmSFJ5Uv7SVVHhSE1YW2bVdBdxz3U5xKjzXmsyuGUn942t?auto=format&w=1500",
+    },
+  ],
+
+  shortDescription:
+    "Romantic beachfront villa offering privacy and tropical luxury.",
+
+  description:
+    "Enjoy intimate beachfront living with elegant interiors and relaxing outdoor spaces.",
+
+  features: [
+    "Beach Access",
+    "Outdoor Dining",
+    "Private Terrace",
+    "King Bed",
+    "Rain Shower",
+  ],
+
+  maxGuests: 2,
+
+  amenities: {
+    wifi: true,
+    bath: true,
+    desk: true,
+    hairdryer: true,
+    tv: true,
+    showerHead: true,
+    slippers: true,
+    curtains: true,
+    bathrobes: true,
+    balcony: true,
+    ac: true,
+    nonSmoking: true,
+    refrigerator: true,
+    towel: true,
+    kettle: true,
+  },
+
+  availability: "available",
+
+  createdAt: "2026-05-20T10:00:00Z",
+  updatedAt: "2026-05-20T10:00:00Z",
+},
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -107,7 +533,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "From wellness-focused amenities to sustainable design, discover the defining trends that are shaping high-end residential real estate this year.",
     mainImage:
-      "https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmWcqCGdfoRy2D5ChJcfQDwe4Aqr3CwUEVnZtvx9sME7GK_epkvqp.avif",
+      "https://assets.lummi.ai/assets/QmWsfMVzu4nygwUEhoBdydPtFcuiwVvgspEgK5pXqaEgXU?auto=format&w=1500",
 
     publishedAt: "2024-03-08T10:00:00Z",
     readingTime: 6,
@@ -151,7 +577,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Navigating the luxury real estate market requires a different playbook. Here's everything you need to know before making your move.",
     mainImage:
-      "https://res.cloudinary.com/dq9ckspti/image/upload/v1777362598/QmdprfJvhYmtNr9U9JNbFjV75bT25xXmkUNkk9ePLxsPiP_mtbhvu.avif",
+      "https://assets.lummi.ai/assets/QmZehJnWEczKmPVdUgFDzGevwAUdNnRW1XDhtHjhY8tkRg?auto=format&w=1500",
 
     publishedAt: "2024-02-22T10:00:00Z",
     readingTime: 9,
@@ -192,11 +618,11 @@ export const BLOG_POSTS: BlogPost[] = [
     _id: "blog-3",
     slug: "neighborhood-spotlight-brooklyn-heights",
     title:
-      "Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard",
+      "Why Brooklyn Heights Is the New Gold Standard",
     excerpt:
       "Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America's most coveted addresses.",
     mainImage:
-      "https://res.cloudinary.com/dq9ckspti/image/upload/v1777362598/QmPr7ZsLPPoyeJgPpbw1KscGgAadrTdkxtHBDWMQRRW2N7_be2l5u.avif",
+      "https://assets.lummi.ai/assets/QmR1iNjXGH6SCPPTC7zrxRVVzXx2xoQDGvhDMn4D1b9MSr?auto=format&w=1500",
 
     publishedAt: "2024-02-10T10:00:00Z",
     readingTime: 5,
@@ -281,12 +707,11 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     _id: "blog-5",
     slug: "neighborhood-spotlight-brooklyn-heights",
-    title:
-      "Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard",
+    title: "Why Brooklyn Heights Is the New Gold Standard",
     excerpt:
       "Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America's most coveted addresses.",
     mainImage:
-      "https://res.cloudinary.com/dq9ckspti/image/upload/v1777362597/QmXX4NNBg9UnkSNhUnmEppHFhfcY1nSfeybs3SVPYmhaTW_cmelgo.avif",
+      "https://assets.lummi.ai/assets/QmSmJF2C8ymsRtC59riGmH48SmmvT1q9WJY4EEuASysZWj?auto=format&w=1500",
     publishedAt: "2024-02-10T10:00:00Z",
     readingTime: 5,
     body: [
@@ -326,8 +751,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     _id: "blog-6",
     slug: "neighborhood-spotlight-brooklyn-heights",
-    title:
-      "Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard",
+    title:"Why Brooklyn Heights Is the New Gold Standard",
     excerpt:
       "Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America's most coveted addresses.",
     mainImage:
@@ -373,7 +797,7 @@ export const BLOG_POSTS: BlogPost[] = [
     _id: "blog-7",
     slug: "neighborhood-spotlight-brooklyn-heights",
     title:
-      "Neighborhood Spotlight: Why Brooklyn Heights Is the New Gold Standard",
+      "Why Brooklyn Heights Is the New Gold Standard",
     excerpt:
       "Cobblestone streets, iconic brownstones, and sweeping Manhattan views — Brooklyn Heights has cemented its status as one of America's most coveted addresses.",
     mainImage:
@@ -615,7 +1039,7 @@ export const faqs: FAQItem[] = [
 export const galleryHeader = {
   title: "Gallery",
   shortDescription:
-    "You can contact us using the form, one of the links below, or by calling us directly to find out more.",
+    "Explore our stunning gallery showcasing the beauty and elegance of our properties, amenities, and unforgettable experiences that await you at our resort.",
   mainImage: "/img/contact-header.jpg",
 };
 

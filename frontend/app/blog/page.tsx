@@ -50,7 +50,7 @@ export default async function BlogPage() {
               </div>
               {/* Content */}
               <div className="flex flex-col justify-center p-10 lg:p-14 group">
-                <h2 className="heading-4 mb-4 leading-none group-hover:text-accent transition-all">
+                <h2 className="heading-3 mb-4 leading-none group-hover:text-accent transition-all">
                   {featured.title}
                 </h2>
                 <p className="text-neutral-700 leading-relaxed mb-6">

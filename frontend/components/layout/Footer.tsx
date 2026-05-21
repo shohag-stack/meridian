@@ -3,23 +3,23 @@ import { MapPin, Phone, Mail, Globe, MessageCircle, Share2, ExternalLink } from 
 import Image from 'next/image';
 
 const FOOTER_LINKS = {
-  Properties: [
-    { label: 'For Sale',         href: '/properties?status=for-sale'  },
-    { label: 'For Rent',         href: '/properties?status=for-rent'  },
-    { label: 'Featured Listings',href: '/properties?featured=true'    },
-    { label: 'New Listings',     href: '/properties?new=true'         },
+  Accommodations: [
+    { label: "Villas",            href: "/accommodations?type=villa"           },
+    { label: "Suites",            href: "/accommodations?type=suite"           },
+    { label: "Ocean View Rooms",  href: "/accommodations?type=ocean-view-room" },
+    { label: "Bungalows",         href: "/accommodations?type=bungalow"        },
   ],
-  Company: [
-    { label: 'About Us',  href: '/about'       },
-    { label: 'Our Team',  href: '/about#team'  },
-    { label: 'Blog',      href: '/blog'        },
-    { label: 'Careers',   href: '/careers'     },
+  Experiences: [
+    { label: "Dining",            href: "/experiences#dining"      },
+    { label: "Spa & Wellness",    href: "/experiences#spa"         },
+    { label: "Water Sports",      href: "/experiences#watersports" },
+    { label: "Private Events",    href: "/experiences#events"      },
   ],
-  Services: [
-    { label: 'Buy a Home',          href: '/services/buy'        },
-    { label: 'Sell a Home',         href: '/services/sell'       },
-    { label: 'Property Management', href: '/services/management' },
-    { label: 'Investment',          href: '/services/investment' },
+  Resort: [
+    { label: "About Us",          href: "/about"   },
+    { label: "Gallery",           href: "/gallery" },
+    { label: "Blog",              href: "/blog"    },
+    { label: "Contact",           href: "/contact" },
   ],
 };
 
@@ -86,7 +86,7 @@ export default function Footer() {
           {[
             { Icon: MapPin,  text: '1400 Fifth Ave, Suite 300\nNew York, NY 10010' },
             { Icon: Phone,   text: '+1 (555) 123-4567'       },
-            { Icon: Mail,    text: 'hello@estatehaven.com'   },
+            { Icon: Mail,    text: 'hello@meridian.com'   },
           ].map(({ Icon, text }) => (
             <div key={text} className="flex items-start gap-3">
               <Icon size={15} className="text-accent mt-0.5 shrink-0" />
@@ -100,7 +100,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-site py-5 flex flex-wrap justify-between items-center gap-4">
           <p className="text-sm text-white/35">
-            © {new Date().getFullYear()} EstateHaven. All rights reserved. Template by{' '}
+            © {new Date().getFullYear()} Meridian. All rights reserved. Template by{' '}
             <a href="https://rayso.studio" className="text-accent no-underline">rayso.studio</a>
           </p>
           <div className="flex gap-6">

@@ -7,7 +7,7 @@ import AccommodationCard from "@/components/ui/AccommodationCard";
 export default async function PropertiesPage({searchParams}: {searchParams: SearchParams} ) {
 
 
-  const { checkIn, checkOut, adults, children } = await searchParams;
+  const { adults, children } = await searchParams;
   const allAccommodations = await getAccommodations();
   const guestsRequested =
     adults || children
