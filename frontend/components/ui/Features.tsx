@@ -1,69 +1,122 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function Features() {
-  const containerRef = useRef(null);
+gsap.registerPlugin(ScrollTrigger);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+interface PanelProps {
+  src: string;
+  title: string;
+}
 
-  // FIRST SECTION (0 → 0.5)
-  const firstScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2]);
-  const firstOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 1, 0]);
-  const firstY = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
+function Panel({ src, title }: PanelProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const textRef  = useRef<HTMLDivElement>(null);
+  const words    = title.split(" ");
 
-  // SECOND SECTION (0.5 → 1)
-  const secondScale = useTransform(scrollYProgress, [0.5, 1], [1, 1.2]);
-  const secondOpacity = useTransform(scrollYProgress, [0.45, 0.55, 1], [0, 1, 1]);
-  const secondY = useTransform(scrollYProgress, [0.5, 1], [100, -100]);
+  useEffect(() => {
+    const panel = panelRef.current;
+    const video = videoRef.current;
+    const text  = textRef.current;
+    if (!panel || !video || !text) return;
+
+    const wordEls = text.querySelectorAll<HTMLSpanElement>(".word");
+
+    const ctx = gsap.context(() => {
+
+      gsap.set(wordEls, { yPercent: 110 });
+
+      // ── Video zoom ─────────────────────────────────────────────
+      gsap.fromTo(video, { scale: 1 }, {
+        scale: 1.18,
+        ease: "none",
+        scrollTrigger: {
+          trigger: panel,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // ── Single timeline for word enter → hold → exit ───────────
+      // Panel scroll distance = 100vh (sticky).
+      // We divide it into 3 phases via the timeline's progress labels.
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+
+      // Phase 1 (0–30%): words rise in
+      tl.to(wordEls, {
+        yPercent: 0,
+        ease: "none",
+        duration: 0.3,
+      });
+
+      // Phase 2 (30–60%): words hold at centre
+      tl.to(wordEls, {
+        yPercent: 0,
+        ease: "none",
+        duration: 0.3,
+      });
+
+      // Phase 3 (60–100%): words exit upward
+      tl.to(wordEls, {
+        yPercent: -120,
+        ease: "none",
+        duration: 0.4,
+      });
+
+    }, panel);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={containerRef} className="relative h-[600vh]">
+    <div ref={panelRef} className="sticky top-0 h-screen overflow-hidden">
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
-      {/* FIRST */}
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <motion.video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/pool-2.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ scale: firstScale }}
-        />
+      <div className="absolute inset-0 bg-black/30" />
 
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ opacity: firstOpacity, y: firstY }}
-        >
-          <h1 className="heading-1 text-white">Private Pool</h1>
-        </motion.div>
+      <div
+        ref={textRef}
+        className="absolute inset-0 flex items-center justify-center"
+        aria-label={title}
+      >
+        <div className="heading-1 text-white flex flex-wrap justify-center gap-x-[0.25em]">
+          {words.map((word, i) => (
+            <span key={i} className="inline-block overflow-hidden leading-[1.1]">
+              <span className="word inline-block will-change-transform">
+                {word}
+              </span>
+            </span>
+          ))}
+        </div>
       </div>
+    </div>
+  );
+}
 
-      {/* SECOND */}
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <motion.video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/bbq.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ scale: secondScale }}
-        />
-
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ opacity: secondOpacity, y: secondY }}
-        >
-          <h1 className="heading-1 text-white">Private BBQ</h1>
-        </motion.div>
-      </div>
-
+export default function Features() {
+  return (
+    <section className="relative h-[600vh]">
+      <Panel src="/videos/pool.mp4" title="Private Pool" />
+      <Panel src="/videos/bbq.mp4"  title="Private BBQ"  />
     </section>
   );
 }

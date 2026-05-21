@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }: Props) {
         />
         <div className="container-site absolute bottom-12 left-1/2 -translate-x-1/2 w-full">
           <div className="max-w-3xl">
-            <h1 className="heading-1 text-white mb-5">{post.title}</h1>
+            <h1 className="heading-1 capitalize text-white mb-5">{post.title}</h1>
             <div className="flex items-center gap-6 flex-wrap">
               <div className="flex items-center gap-1.5 text-sm text-neutral-300">
                 <Calendar size={13} /> {formatDate(post.publishedAt)}
