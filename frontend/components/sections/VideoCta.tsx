@@ -12,7 +12,7 @@ export default function VideoCta() {
         playsInline
       />
       <div className="absolute inset-0 flex flex-col text-center items-center justify-end z-10 py-28">
-        <h2 className="heading-2 md:heading-1 max-w-2xl text-white text-center">
+        <h2 style={{ color: "white" }} className="text-neutral-50 heading-2 md:heading-1 max-w-2xl text-center">
           Escape to stillness, privacy and soul
         </h2>
         <button className="btn btn-primary"> Find Yourself a Room </button>
