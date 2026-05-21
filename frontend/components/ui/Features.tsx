@@ -47,7 +47,7 @@ function Panel({ src, title }: PanelProps) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: panel,
-          start: "top top",
+          start: "top center",
           end: "bottom top",
           scrub: 1.2,
         },
