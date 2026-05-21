@@ -1,185 +1,313 @@
-# 🏡 Estate Heaven
+# Meridian — Luxury Resort Template
 
-> A modern, full-stack real estate website template built with Next.js 16, Sanity CMS, Tailwind CSS v4, and TypeScript. Designed to work out of the box with beautiful demo data — connect your own Sanity project when you're ready.
-
-[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?logo=next.js)](https://nextjs.org)
-[![Sanity](https://img.shields.io/badge/Sanity-CMS-red?logo=sanity)](https://sanity.io)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://typescriptlang.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+A premium, production-ready website template for luxury resorts and boutique hotels. Built with Next.js 16, Sanity Studio v4, GSAP animations, and Tailwind CSS v4.
 
 ---
 
-## ✨ Features
+## What's Included
 
-- **Zero-config demo** — works immediately with built-in dummy data, no Sanity setup required
-- **Sanity CMS ready** — add your env vars and switch to live data instantly
-- **Property listings** — filterable by status, type, price range, and bedrooms
-- **Blog** — full blog with Sanity Portable Text support
-- **Agent profiles** — team/agent management via Sanity
-- **Contact form** — powered by Resend email API
-- **Smooth scrolling** — Lenis scroll integration
-- **Responsive** — mobile-first design across all screen sizes
-- **SEO ready** — dynamic metadata per page
-- **TypeScript** — fully typed throughout
+- **Next.js 16 Frontend** — App Router, Server Components, TypeScript
+- **Sanity Studio v4** — Full CMS with custom schemas for accommodations, blog, and site settings
+- **Tailwind CSS v4** — Custom design system with brand tokens, utility classes, and component styles
+- **GSAP Animations** — Scroll-driven sticky panels, word-split reveals, scrubbed timelines
+- **Mock Data** — Ready-to-use placeholder content so you can see the full site before connecting Sanity
+- **Booking Filter** — Date + guest filter bar with URL-based state (no backend required)
+- **Embla Carousel** — Gallery sliders for accommodation detail pages
+- **Email via Resend** — Contact form wired to Resend API
+- **Lenis Smooth Scroll** — Buttery smooth scrolling out of the box
 
 ---
 
-## 🗂️ Project Structure
+## Tech Stack
+
+| Layer | Technology | Version |
+|---|---|---|
+| Framework | Next.js | 16.2.4 |
+| Language | TypeScript | ^5 |
+| Styling | Tailwind CSS | ^4.2.4 |
+| CMS | Sanity Studio | ^4.22.0 |
+| Animations | GSAP + ScrollTrigger | ^3.15.0 |
+| Smooth Scroll | Lenis | ^1.3.23 |
+| Forms | React Hook Form | ^7.74.0 |
+| Carousel | Embla Carousel | ^8.6.0 |
+| Email | Resend | ^6.12.2 |
+| Icons | Lucide React | ^1.11.0 |
+| React | React | 19.2.x |
+
+---
+
+## Project Structure
 
 ```
-estate-heaven/
+meridian/
 ├── frontend/               # Next.js application
-│   ├── app/
-│   │   ├── (core)/         # Sanity, fetchers, queries
-│   │   ├── about/
-│   │   ├── blog/
-│   │   ├── contact/
-│   │   └── properties/
+│   ├── app/                # App Router pages
+│   │   ├── accommodations/ # Listing + detail pages
+│   │   ├── blog/           # Blog listing + post pages
+│   │   └── contact/        # Contact page
 │   ├── components/
-│   ├── data/               # Demo/dummy data fallback
-│   ├── public/
-│   ├── types/
-│   ├── .env.example
-│   └── package.json
+│   │   ├── animation/      # AnimatedHeading, SectionHeader
+│   │   ├── icons/          # Amenity + UI icons
+│   │   ├── sections/       # Page sections (Hero, Features, FAQ…)
+│   │   └── ui/             # Reusable UI (AccommodationCard, DateField…)
+│   ├── (core)/
+│   │   └── fetch/          # Data fetching functions (getAccommodations…)
+│   ├── types/              # TypeScript interfaces
+│   └── styles/globals.css  # Tailwind v4 design tokens
+│
 ├── studio/                 # Sanity Studio
-└── package.json            # Root workspace
+│   └── schemaTypes/        # Accommodation, Blog, Site Settings schemas
+│
+└── package.json            # Root workspace config
 ```
 
 ---
 
-## 🚀 Quick Start
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.17 or later
+- A [Sanity](https://sanity.io) account (free tier works)
 
 ### 1. Install dependencies
+
+From the root folder:
 
 ```bash
 npm install
 ```
 
-### 2. Run the development server
+### 2. Set up environment variables
+
+Create `frontend/.env.local`:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_TOKEN=your_read_token
+
+# Optional — for contact form
+RESEND_API_KEY=your_resend_api_key
+CONTACT_EMAIL=hello@yourresort.com
+```
+
+Create `studio/.env.local`:
+
+```env
+SANITY_STUDIO_PROJECT_ID=your_project_id
+SANITY_STUDIO_DATASET=production
+```
+
+Your **Project ID** and **Dataset** are found in [sanity.io/manage](https://sanity.io/manage).
+
+### 3. Run both servers
 
 ```bash
 npm run dev
 ```
 
-This starts both the **Next.js frontend** (`localhost:3000`) and the **Sanity Studio** (`localhost:3333`) in parallel.
-
-> The site runs immediately with demo data — no environment variables needed.
+This starts:
+- **Frontend** → [http://localhost:3000](http://localhost:3000)
+- **Sanity Studio** → [http://localhost:3333](http://localhost:3333)
 
 ---
 
-## 🔌 Connect Your Own Sanity CMS
+## Connecting Sanity
 
-Once you're ready to use your own content:
+The template ships with mock data so it works out of the box. When you're ready to use real content:
 
-### 1. Create a Sanity project
-
-Go to [sanity.io](https://sanity.io), create a new project, and note your **Project ID**.
-
-### 2. Set up environment variables
-
-Copy `.env.example` to `.env.local`:
+### Step 1 — Create a Sanity project
 
 ```bash
-cp frontend/.env.example frontend/.env.local
+cd studio
+npx sanity init
 ```
 
-Fill in your values:
+Or use your existing project by setting the project ID in `.env.local`.
 
-```env
-# Sanity
-NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id_here
-NEXT_PUBLIC_SANITY_DATASET=production
-NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
-```
-
-### 3. Deploy Sanity Studio
+### Step 2 — Deploy the studio
 
 ```bash
 npm run deploy:studio
 ```
 
-### 4. Add your content
+### Step 3 — Add content
 
-Open your deployed Studio and start adding properties, blog posts, and agents.
+Open your deployed studio (or `localhost:3333`) and add accommodations, blog posts, and site settings.
 
----
+### Step 4 — Switch from mock data to Sanity
 
-## ⚙️ Environment Variables
+In each fetch function under `frontend/(core)/fetch/`, replace the mock data import with the Sanity client query. Each file has a comment showing exactly where to swap:
 
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Optional* | Your Sanity project ID |
-| `NEXT_PUBLIC_SANITY_DATASET` | Optional* | Sanity dataset (default: `production`) |
-| `NEXT_PUBLIC_SANITY_API_VERSION` | Optional* | Sanity API version |
-| `NEXT_PUBLIC_MAP_KEY` | Optional | Map integration API key |
-| `GOOGLE_CLIENT_ID` | Optional | Google OAuth client ID |
-| `GOOGLE_CLIENT_SECRET` | Optional | Google OAuth client secret |
-| `RESEND_API_KEY` | Optional | Resend API key for contact form |
-| `CONTACT_EMAIL` | Optional | Email to receive contact form submissions |
-| `RESEND_FROM_EMAIL` | Optional | From email address for Resend |
-| `NEXT_PUBLIC_SITE_URL` | Optional | Your deployed site URL |
+```ts
+// Replace this:
+import { ACCOMMODATION } from "@/data/mockData";
+return ACCOMMODATION;
 
-> *If Sanity variables are not set, the site automatically falls back to built-in demo data.
+// With this:
+import { client } from "@/sanity/client";
+import { GETALLACCOMMODATIONS } from "@/queries";
+return client.fetch(GETALLACCOMMODATIONS);
+```
 
 ---
 
-## 📦 Sanity Content Types
+## Design System
 
-| Schema | Description |
+All design tokens live in `frontend/styles/globals.css`. Edit them freely to match your brand.
+
+### Colors
+
+```css
+--color-primary:       #99023C   /* Deep rose — buttons, accents */
+--color-primary-light: #C9034F   /* Hover states */
+--color-primary-dark:  #49031E   /* Dark variant */
+--color-cream:         #F4E9EE   /* Page background */
+--color-neutral-950:   #49031E   /* Headings */
+```
+
+### Typography
+
+```css
+--font-display: "Playfair Display"   /* Headings */
+--font-body:    "Inter"              /* Body text */
+```
+
+### Key Utility Classes
+
+| Class | Usage |
 |---|---|
-| `property` | Property listings with images, details, and location |
-| `post` | Blog posts with Portable Text content |
-| `agent` | Real estate agent profiles |
+| `heading-1` | Hero headings, uppercase |
+| `heading-2` | Section headings |
+| `eyebrow` | Small uppercase labels |
+| `btn btn-primary` | Primary CTA button |
+| `btn btn-white` | White button on dark backgrounds |
+| `container-site` | Max-width centered container |
+| `section` | Standard vertical padding |
+| `section-dark` | Dark (primary) background section |
+| `section-cream` | Cream background section |
+| `property-card` | Accommodation card with hover |
+
+> **Note:** `heading-1` and `heading-2` set `color` directly. To use them on dark backgrounds add `style={{ color: "white" }}` or a `heading-light` utility.
 
 ---
 
-## 🛠️ Tech Stack
+## Booking Filter
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Next.js | 16.2 | React framework with App Router |
-| Sanity | 12.x | Headless CMS |
-| Tailwind CSS | v4 | Utility-first styling |
-| TypeScript | 5 | Type safety |
-| Lenis | 1.3 | Smooth scroll |
-| Resend | 6.x | Contact form emails |
-| React Hook Form | 7.x | Form handling |
-| Embla Carousel | 8.x | Property image carousel |
-| Lucide React | — | Icons |
+The booking bar pushes filter state into the URL as search params:
 
----
+```
+/accommodations?checkIn=2026-06-01&checkOut=2026-06-07&adults=2&children=0
+```
 
-## 📜 Scripts
-
-| Command | Description |
-|---|---|
-| `npm run dev` | Start frontend + studio in parallel |
-| `npm run dev:frontend` | Start frontend only |
-| `npm run dev:studio` | Start Sanity Studio only |
-| `npm run deploy:studio` | Deploy Sanity Studio |
-| `npm run validate` | Validate Sanity template config |
+The `accommodations/page.tsx` server component reads these params and filters the list by:
+- **Guest capacity** — `accommodation.guests >= requested`
+- **Availability status** — `availability === "available"`
+- **Date conflicts** — checks `unavailablePeriods[]` for overlaps (when populated in Sanity)
 
 ---
 
-## 🌐 Deploy to Vercel
+## Amenities System
 
-1. Push your repo to GitHub
-2. Import project in [Vercel](https://vercel.com)
+Amenities use a **boolean map** rather than a freeform array. The single source of truth is `AMENITY_DEFINITIONS` in `studio/schemaTypes/accommodations.ts`:
+
+```ts
+export const AMENITY_DEFINITIONS = {
+  wifi:      { title: "Wi-Fi",        description: "Free high-speed Wi-Fi" },
+  bath:      { title: "Bathroom",     description: "Private en-suite bathroom" },
+  // ...
+}
+```
+
+In Sanity Studio, editors tick checkboxes. In the frontend, only `true` values render. To add a new amenity: add it to `AMENITY_DEFINITIONS`, add its icon to `amenityIcons` in `AccommodationAmenities.tsx`, and it appears automatically in both Studio and the UI.
+
+---
+
+## Animations
+
+### GSAP ScrollTrigger — Features Section
+
+The sticky scroll video panels in `Features.tsx` use a single scrubbed timeline per panel:
+
+- **0–30%** scroll → title words rise into view
+- **30–60%** scroll → words hold at centre
+- **60–100%** scroll → words exit upward
+
+Scrub is set to `1.2` (seconds of lag) for a smooth, premium feel.
+
+### AnimatedHeading
+
+Drop the `<AnimatedHeading>` component anywhere for a word-split reveal:
+
+```tsx
+<AnimatedHeading title="Your Heading Here" className="heading-1 text-white" />
+```
+
+Triggers once when the element enters the viewport via `IntersectionObserver`.
+
+> **Note:** GSAP ScrollTrigger conflicts with React StrictMode. Add `reactStrictMode: false` to `next.config.ts` for development.
+
+---
+
+## Deployment
+
+### Frontend — Vercel (recommended)
+
+1. Push to GitHub
+2. Import the repo in [vercel.com](https://vercel.com)
 3. Set **Root Directory** to `frontend`
-4. Add your environment variables in Vercel dashboard under **Settings → Environment Variables**
+4. Add environment variables from your `.env.local`
 5. Deploy
 
-> If you don't add Sanity env vars, the deployed site will use demo data automatically.
+### Studio — Sanity hosting
+
+```bash
+npm run deploy:studio
+```
+
+This deploys to `https://your-project.sanity.studio`.
 
 ---
 
-## 📄 License
+## Customisation Guide
 
-MIT License — free to use in personal and commercial projects.
+### Changing brand colors
+
+Edit the CSS variables at the top of `frontend/styles/globals.css`:
+
+```css
+--color-primary: #your-color;
+--color-cream:   #your-background;
+```
+
+### Changing fonts
+
+1. Update the Google Fonts import in `frontend/app/layout.tsx`
+2. Update `--font-display` and `--font-body` in `globals.css`
+
+### Adding a new accommodation type
+
+1. Add the type string to the `type` union in `frontend/types/index.ts`
+2. Add it to the `options.list` array in the Sanity schema (`studio/schemaTypes/accommodations.ts`)
+
+### Adding a new page section
+
+1. Create the component in `frontend/components/sections/`
+2. Import and place it in the relevant `page.tsx`
 
 ---
 
-## 💬 Support
+## Support
 
-Built by [Rayso Studio](https://rayso.studio). For questions or issues, open a GitHub issue or reach out via the studio website.
+If you have questions or run into issues, reach out via the contact form on the purchase page.
+
+---
+
+## License
+
+This template is licensed for use in a single commercial project. You may not resell or redistribute the source code. See the full license on the purchase page.
+
+---
+
+*Built by [RAYSO.STUDIO](https://rayso.studio)*
