@@ -15,7 +15,7 @@ export default function Facilities() {
           description="Enjoy the comforts of home with the luxury of a resort. From fully equipped kitchens and laundry machines to daily housekeeping and butler services, every detail is designed to elevate your stay. Relax on the terrace."
         />
 
-        <div className="grid grid-cols-3 gap-3 px-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 px-2">
         {experiences.map((exp) => (
           <Link
             key={exp.label}
@@ -41,7 +41,7 @@ export default function Facilities() {
 
             {/* Label */}
             <div className="absolute bottom-6 left-6">
-              <span className="font-display text-white text-3xl uppercase">
+              <span className="font-display text-white text-2xl md:text-3xl uppercase">
                 {exp.label}
               </span>
             </div>

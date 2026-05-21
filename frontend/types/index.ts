@@ -33,6 +33,11 @@ export interface Facilities {
   thumbImage: string;
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 
 export interface Form {
   name: string,
@@ -178,3 +183,18 @@ export interface SearchParams {
   children?: string;
   promo?:    string;
 }
+
+
+export type GalleryImage = {
+  _id: string;
+  url: string;
+};
+
+export type Gallery = {
+  _id: string;
+  title: string;
+  slug?: string;
+  images: GalleryImage[];
+};
+
+export type Galleries = Gallery[];

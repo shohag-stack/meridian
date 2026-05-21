@@ -6,7 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Blogs() {
-  const blogs = await getBlogs();
+  const posts = await getBlogs();
+
+  const blogs = posts.slice(0, 3);
 
   return (
     <div className="container-site section">

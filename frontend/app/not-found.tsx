@@ -1,24 +1,30 @@
-import Link from 'next/link';
-import { Home, Search } from 'lucide-react';
+import Link from "next/link";
+import { Home, Search } from "lucide-react";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-off-white text-center px-6">
-      <div className="max-w-lg">
-        <div className="font-display font-black text-neutral-100 leading-none mb-0"
-          style={{ fontSize: 'clamp(6rem, 20vw, 10rem)', letterSpacing: '-0.04em' }}>
-          404
-        </div>
-        <h1 className="heading-2 mb-4 -mt-4 relative z-10">Page Not Found</h1>
-        <p className="text-neutral-500 mb-10 leading-relaxed">
-          The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+    <div className="relative min-h-screen flex items-center bg-off-white px-6">
+      <Image src={'/img/404.jpg'} alt="404" fill />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-[1]"/>
+
+      <div className="container-site relative z-10">
+        <h1 className=" heading-3 md:heading-1 text-neutral-50 mb-4 -mt-4 max-w-2xl">
+          Sorry, That page could not be found
+        </h1>
+        <p className="mb-10 leading-relaxed text-xl text-neutral-50">
+          The requested age either doesn’t exist or you don’t have access to it.
         </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/" className="btn btn-primary btn-lg gap-2">
-            <Home size={17} /> Go Home
+        <div className="flex gap-4 flex-wrap">
+          <Link href="/" className="btn btn-secondary-outlined btn-lg gap-2">
+            <Home size={17} /> Go Back Home
           </Link>
-          <Link href="/properties" className="btn btn-secondary btn-lg gap-2">
-            <Search size={17} /> Browse Properties
+          <Link
+            href="/accommodations"
+            className="btn btn-secondary btn-lg gap-2 text-neutral-50"
+          >
+            <Search size={17} /> Browse Accommodations
           </Link>
         </div>
       </div>

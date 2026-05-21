@@ -3,7 +3,14 @@
 // Replace these with Sanity GROQ queries when integrating CMS.
 // ============================================================
 
-import type { Accommodation, BlogPost, ExperienceItem, Facilities } from "@/types";
+import type {
+  Accommodation,
+  BlogPost,
+  ExperienceItem,
+  Facilities,
+  FAQItem,
+  Gallery,
+} from "@/types";
 
 export const ACCOMMODATION: Accommodation[] = [
   {
@@ -452,10 +459,10 @@ export const formatDate = (dateStr: string): string => {
 
 export const contactHeader = {
   title: "Contact Us",
-  shortDescription: "You can contact us using the form, one of the links below, or by calling us directly to find out more.",
+  shortDescription:
+    "You can contact us using the form, one of the links below, or by calling us directly to find out more.",
   mainImage: "/img/contact-header.png",
-}
-
+};
 
 export const experiences: ExperienceItem[] = [
   {
@@ -495,66 +502,196 @@ export const experiences: ExperienceItem[] = [
   },
 ];
 
-
 export const facilitiesHeader = {
   title: "Facilities",
-  shortDescription: "Travel is the ultimate way to explore the world, embrace new cultures, and create unforgettable memories. Whether you’re wandering through ancient streets.",
-  mainImage: "/img/facilities.jpg"
-}
+  shortDescription:
+    "Travel is the ultimate way to explore the world, embrace new cultures, and create unforgettable memories. Whether you’re wandering through ancient streets.",
+  mainImage: "/img/facilities.jpg",
+};
 
 export const facilities: Facilities[] = [
   {
     _id: "1",
     title: "Online Room Booking",
-    description: "Book rooms effortlessly with real-time updates, instant confirmation, and secure pricing for a smooth travel experience.",
-    thumbImage: 'https://assets.lummi.ai/assets/QmXw8XxZHvESeMzFbPyfwxH7rKTAXiTJ2pYQgiLDb8e7CS?auto=format&w=1500'
+    description:
+      "Book rooms effortlessly with real-time updates, instant confirmation, and secure pricing for a smooth travel experience.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmXw8XxZHvESeMzFbPyfwxH7rKTAXiTJ2pYQgiLDb8e7CS?auto=format&w=1500",
   },
   {
-    _id: '2',
+    _id: "2",
     title: "Event & Conference Room",
-    description: "Reserve professional spaces for meetings or events with instant confirmation, scheduling, and transparent cost details.",
-    thumbImage: "https://assets.lummi.ai/assets/QmZehJnWEczKmPVdUgFDzGevwAUdNnRW1XDhtHjhY8tkRg?auto=format&w=1500"
+    description:
+      "Reserve professional spaces for meetings or events with instant confirmation, scheduling, and transparent cost details.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmZehJnWEczKmPVdUgFDzGevwAUdNnRW1XDhtHjhY8tkRg?auto=format&w=1500",
   },
   {
     _id: "3",
     title: "Custom Travel Planning",
-    description: "Plan your dream trip with tailored itineraries, live updates, instant booking, and fair transparent pricing anytime.",
-    thumbImage: "https://assets.lummi.ai/assets/QmexYXhc3faH3H9qmbgcmG6eUpPeUdVe1cdjbZCQeRmP6o?auto=format&w=1500"
+    description:
+      "Plan your dream trip with tailored itineraries, live updates, instant booking, and fair transparent pricing anytime.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmexYXhc3faH3H9qmbgcmG6eUpPeUdVe1cdjbZCQeRmP6o?auto=format&w=1500",
   },
   {
     _id: "4",
     title: "Corporate Stay Management",
-    description: "Simplify corporate travel with managed stays, instant confirmation, and real-time availability designed for business comfort.",
-    thumbImage: "https://assets.lummi.ai/assets/QmeSMohAxgj6E2aXzmUqgzV6MP9UxEyKWbjYLAYEivSZWV?auto=format&w=1500"
+    description:
+      "Simplify corporate travel with managed stays, instant confirmation, and real-time availability designed for business comfort.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmeSMohAxgj6E2aXzmUqgzV6MP9UxEyKWbjYLAYEivSZWV?auto=format&w=1500",
   },
   {
     _id: "5",
     title: "City Tour Arrangements",
-    description: "Discover top attractions with guided tours, instant booking, flexible timing, and transparent pricing for every traveler.",
-    thumbImage: "https://assets.lummi.ai/assets/QmXwLu5Nta5jzVg5kA2Zx23TFknhYodrFPCs75AP2PkzAf?auto=format&w=1500"
+    description:
+      "Discover top attractions with guided tours, instant booking, flexible timing, and transparent pricing for every traveler.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmXwLu5Nta5jzVg5kA2Zx23TFknhYodrFPCs75AP2PkzAf?auto=format&w=1500",
   },
   {
     _id: "6",
     title: "Multi-Destination Packages",
-    description: "Explore multiple cities seamlessly with flexible routes, instant booking, real-time updates, and transparent travel costs.",
-    thumbImage: "https://assets.lummi.ai/assets/QmVVJKuxFXsSrt7kUNhyggjWHma7hKxgsLvu5WS98Nd4fp?auto=format&w=1500"
+    description:
+      "Explore multiple cities seamlessly with flexible routes, instant booking, real-time updates, and transparent travel costs.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmVVJKuxFXsSrt7kUNhyggjWHma7hKxgsLvu5WS98Nd4fp?auto=format&w=1500",
   },
   {
     _id: "7",
     title: "Corporate Stay Management",
-    description: "Simplify corporate travel with managed stays, instant confirmation, and real-time availability designed for business comfort.",
-    thumbImage: "https://assets.lummi.ai/assets/QmSvvpVLcFh5aGeHbymbWiZLVrpKttTRmgNPqa5eVRiUV7?auto=format&w=1500"
+    description:
+      "Simplify corporate travel with managed stays, instant confirmation, and real-time availability designed for business comfort.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmSvvpVLcFh5aGeHbymbWiZLVrpKttTRmgNPqa5eVRiUV7?auto=format&w=1500",
   },
   {
     _id: "8",
     title: "City Tour Arrangements",
-    description: "Discover top attractions with guided tours, instant booking, flexible timing, and transparent pricing for every traveler.",
-    thumbImage: "https://assets.lummi.ai/assets/QmUNf6GeXJdZMy14K3eaUyFGDJhnsBtuZAc5kuSGoD9Rj3?auto=format&w=1500"
+    description:
+      "Discover top attractions with guided tours, instant booking, flexible timing, and transparent pricing for every traveler.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmUNf6GeXJdZMy14K3eaUyFGDJhnsBtuZAc5kuSGoD9Rj3?auto=format&w=1500",
   },
   {
     _id: "6",
     title: "Multi-Destination Packages",
-    description: "Explore multiple cities seamlessly with flexible routes, instant booking, real-time updates, and transparent travel costs.",
-    thumbImage: "https://assets.lummi.ai/assets/QmSmJF2C8ymsRtC59riGmH48SmmvT1q9WJY4EEuASysZWj?auto=format&w=1500"
+    description:
+      "Explore multiple cities seamlessly with flexible routes, instant booking, real-time updates, and transparent travel costs.",
+    thumbImage:
+      "https://assets.lummi.ai/assets/QmSmJF2C8ymsRtC59riGmH48SmmvT1q9WJY4EEuASysZWj?auto=format&w=1500",
   },
-]
+];
+
+export const faqs: FAQItem[] = [
+  {
+    question: "Getting started with Fortune?",
+    answer:
+      "Make the best models with the best data. Scale Data Engine leverages your enterprise data, and with Scale Generative AI Platform, safely unlocks the value of AI.",
+  },
+  {
+    question: "Integration options?",
+    answer:
+      "We support a wide range of integrations including REST APIs, webhooks, and native connectors for popular platforms like Salesforce, HubSpot, and Slack.",
+  },
+  {
+    question: "Data security measures?",
+    answer:
+      "All data is encrypted in transit and at rest using AES-256. We are SOC 2 Type II certified and comply with GDPR and CCPA regulations.",
+  },
+  {
+    question: "Fortune's reporting and analytics?",
+    answer:
+      "Fortune provides real-time dashboards, custom report builders, and exportable data in CSV or PDF formats so your team can make informed decisions.",
+  },
+  {
+    question: "Support options for Fortune?",
+    answer:
+      "We offer 24/7 email support, live chat during business hours, and dedicated account managers for enterprise plans.",
+  },
+];
+
+export const galleryHeader = {
+  title: "Gallery",
+  shortDescription:
+    "You can contact us using the form, one of the links below, or by calling us directly to find out more.",
+  mainImage: "/img/contact-header.jpg",
+};
+
+export const galleryCategory = [
+  {
+    _id: "1",
+    title: "Overview",
+    slug: "overview",
+  },
+  {
+    _id: "2",
+    title: "Stay",
+    slug: "stay",
+  },
+  {
+    _id: "3",
+    title: "Eat & Drink",
+    slug: "eatdrink",
+  },
+  {
+    _id: "4",
+    title: "Pool",
+    slug: "pool",
+  },
+  {
+    _id: "5",
+    title: "Meetings & Events",
+    slug: "meetings",
+  },
+  {
+    _id: "6",
+    title: "Others",
+    slug: "others",
+  },
+];
+
+export const galleries: Gallery[] = [
+  {
+    _id: "1",
+    title: "Overview",
+    slug: "overview",
+    images: [
+      {
+        _id: "1",
+        url: "https://assets.lummi.ai/assets/QmWsfMVzu4nygwUEhoBdydPtFcuiwVvgspEgK5pXqaEgXU?auto=format&w=1500",
+      },
+
+      {
+        _id: "2",
+        url: "https://assets.lummi.ai/assets/QmXw8XxZHvESeMzFbPyfwxH7rKTAXiTJ2pYQgiLDb8e7CS?auto=format&w=1500",
+      },
+      {
+        _id: "3",
+        url: "https://assets.lummi.ai/assets/Qmd9v1fkAGREd44bkru9p73c7YsJvGRVTEGAKQnSgvmJk7?auto=format&w=1500",
+      },
+    ],
+  },
+
+  {
+    _id: "2",
+    title: "Stay",
+    slug: "stay",
+    images: [
+      {
+        _id: "1",
+        url: "https://assets.lummi.ai/assets/QmSmJF2C8ymsRtC59riGmH48SmmvT1q9WJY4EEuASysZWj?auto=format&w=1500",
+      },
+
+      {
+        _id: "2",
+        url: "https://assets.lummi.ai/assets/QmZehJnWEczKmPVdUgFDzGevwAUdNnRW1XDhtHjhY8tkRg?auto=format&w=1500",
+      },
+      {
+        _id: "3",
+        url: "https://assets.lummi.ai/assets/QmR1iNjXGH6SCPPTC7zrxRVVzXx2xoQDGvhDMn4D1b9MSr?auto=format&w=1500",
+      },
+    ],
+  },
+];

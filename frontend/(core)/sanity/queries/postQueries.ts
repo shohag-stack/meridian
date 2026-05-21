@@ -23,3 +23,8 @@ export const SINGLE_POST_QUERY = `
 export const ALL_POST_SLUG = `*[_type == "post"]{
 "slug": slug.current
 }`
+
+
+export const GALLERY_QUERIES = `
+*[_type == "galleries"]
+`
