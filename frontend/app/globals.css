@@ -35,6 +35,7 @@
 
   --color-territory: #FFCC00;
 
+
   /* font-sizes */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -544,5 +545,11 @@
 .slide-btn {
 
   @apply top-1/2 transform -translate-y-1/2 bg-white p-4 shadow-md opacity-80 hover:opacity-100 transition-opacity duration-300;
+
+}
+
+nextjs-portal {
+
+  display: none !important;
 
 }

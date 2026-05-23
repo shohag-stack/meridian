@@ -13,7 +13,8 @@ const nextConfig = {
             hostname: "assets.lummi.ai"
         }
     ]
-    }
+    },
+
     
 };
 
