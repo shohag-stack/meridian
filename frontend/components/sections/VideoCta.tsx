@@ -5,7 +5,7 @@ export default function VideoCta() {
     <div className="relative w-full h-[70vh] overflow-hidden container-site mb-20 rounded-2xl">
       <video
         className="absolute inset-0 h-full object-cover w-full"
-        src="/videos/pool-2.mp4"
+        src="https://res.cloudinary.com/dq9ckspti/video/upload/v1779598624/preview_5_rgfngh.mp4"
         autoPlay
         muted
         loop

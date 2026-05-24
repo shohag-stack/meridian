@@ -115,8 +115,8 @@ function Panel({ src, title }: PanelProps) {
 export default function Features() {
   return (
     <section className="relative h-[600vh]">
-      <Panel src="/videos/pool.mp4" title="Private Pool" />
-      <Panel src="/videos/bbq.mp4"  title="Private BBQ"  />
+      <Panel src="https://res.cloudinary.com/dq9ckspti/video/upload/v1779598625/preview_1_bpst7f.mp4" title="Private Pool" />
+      <Panel src="https://res.cloudinary.com/dq9ckspti/video/upload/v1779598624/preview_6_c3ixxu.mp4"  title="Private BBQ"  />
     </section>
   );
 }
