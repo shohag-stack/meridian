@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair_Display.variable} ${italiana.variable} ${inter.variable}`}>
-        {/* <RaysoCta /> */}
+        <RaysoCta />
         <Navbar />
         <main>
           <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
